@@ -1,6 +1,5 @@
-package tspsdk
+package query
 
-/*================== 体温 ====================*/
 type TemperatureRecentQuery struct {
 	ImeiSn string
 	Uuid   string
@@ -19,4 +18,10 @@ type TemperaturesQuery struct {
 
 type TemperatureUploadQuery struct {
 	ImeiSn string // 设备号
+}
+
+// 设置体温测量间隔时间
+type TemperatureUpload struct {
+	ImeiSn string // 设备号
+	Second int    // 体温上报间隔时间（单位秒）
 }

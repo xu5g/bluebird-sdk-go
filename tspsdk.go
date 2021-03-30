@@ -1,7 +1,9 @@
 package tspsdk
 
+import "github.com/xu5g/bluebird-sdk-go/util"
+
 type Config struct {
-	HttpClient *Request
+	HttpClient *util.Request
 }
 
 type Tsp struct {
@@ -12,7 +14,7 @@ type Tsp struct {
 func NewClient(token string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
-			HttpClient: &Request{
+			HttpClient: &util.Request{
 				Token: token,
 			},
 		},
@@ -23,7 +25,7 @@ func NewClient(token string) *Tsp {
 func NewAuth(appKey, secret string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
-			&Request{
+			&util.Request{
 				AppKey: appKey,
 				Secret: secret,
 			},

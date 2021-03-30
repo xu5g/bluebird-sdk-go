@@ -1,20 +1,6 @@
-package tspsdk
-
-type Result struct {
-	Status  int    `json:"status"`            // 必选,返回码
-	Message string `json:"message,omitempty"` // 可选，返回消息
-}
-
-// 获取token
-type AuthResult struct {
-	Result
-	Data    struct {
-		Token string `json:"token"` //权限令牌，调用其它接口时需要提供token，有效期为 1 小时，过期后无法使用
-	} `json:"data,omitempty"` // 返回结果
-}
+package result
 
 
-/*====================== 体温 ==========================*/
 type TemperatureEntity struct {
 	PrimaryKey  string `json:"primary_key"`
 	Id          int64  `json:"id"`

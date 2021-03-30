@@ -6,6 +6,7 @@ import (
 	"github.com/gogf/gf/crypto/gsha1"
 	"github.com/gogf/gf/os/gtime"
 	"github.com/gogf/gf/util/grand"
+	"github.com/xu5g/bluebird-sdk-go/result"
 	"net/url"
 )
 
@@ -14,7 +15,7 @@ type Auth struct {
 }
 
 // 获取token
-func (p *Auth) GetToken() (*AuthResult, error) {
+func (p *Auth) GetToken() (*result.AuthResult, error) {
 	appKey := p.Cfg.HttpClient.AppKey
 	tranSid := fmt.Sprintf("%s%s%s", appKey, gtime.Now().Format("YmdHis"), grand.Letters(12))
 	sign := gsha1.Encrypt(fmt.Sprintf("%s%s%s%s", p.Cfg.HttpClient.Secret, appKey, tranSid, p.Cfg.HttpClient.Secret))
@@ -30,7 +31,7 @@ func (p *Auth) GetToken() (*AuthResult, error) {
 	}
 
 	jsonString := res.Export()
-	var authEntity = new(AuthResult)
+	var authEntity = new(result.AuthResult)
 	err = json.Unmarshal([]byte(jsonString), authEntity)
 	if err != nil {
 		return nil, err

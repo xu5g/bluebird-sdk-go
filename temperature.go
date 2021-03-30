@@ -2,6 +2,8 @@ package tspsdk
 
 import (
 	"encoding/json"
+	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/xu5g/bluebird-sdk-go/result"
 	"net/url"
 	"strconv"
 )
@@ -11,7 +13,7 @@ type Temperature struct {
 }
 
 // 获取最新体温数据
-func (p *Temperature) GetTemperature(query *TemperatureRecentQuery) (*TemperatureResult, error) {
+func (p *Temperature) GetTemperature(query *query.TemperatureRecentQuery) (*result.TemperatureResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -22,7 +24,7 @@ func (p *Temperature) GetTemperature(query *TemperatureRecentQuery) (*Temperatur
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(TemperatureResult)
+	var temperatureEntity = new(result.TemperatureResult)
 	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
 	if err != nil {
 		return nil, err
@@ -31,7 +33,7 @@ func (p *Temperature) GetTemperature(query *TemperatureRecentQuery) (*Temperatur
 }
 
 // 获取体温列表
-func (p *Temperature) GetTemperatures(query *TemperaturesQuery) (*TemperaturesResult, error) {
+func (p *Temperature) GetTemperatures(query *query.TemperaturesQuery) (*result.TemperaturesResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -48,7 +50,7 @@ func (p *Temperature) GetTemperatures(query *TemperaturesQuery) (*TemperaturesRe
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(TemperaturesResult)
+	var temperatureEntity = new(result.TemperaturesResult)
 	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
 	if err != nil {
 		return nil, err
@@ -57,7 +59,7 @@ func (p *Temperature) GetTemperatures(query *TemperaturesQuery) (*TemperaturesRe
 }
 
 // 获取体温测量间隔时间
-func (p *Temperature) GetTemperatureUpload(query *TemperatureUploadQuery) (*TemperatureUploadResult, error) {
+func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadQuery) (*result.TemperatureUploadResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
@@ -67,10 +69,32 @@ func (p *Temperature) GetTemperatureUpload(query *TemperatureUploadQuery) (*Temp
 	}
 
 	jsonString := res.Export()
-	var temperatureUploadResult = new(TemperatureUploadResult)
+	var temperatureUploadResult = new(result.TemperatureUploadResult)
 	err = json.Unmarshal([]byte(jsonString), temperatureUploadResult)
 	if err != nil {
 		return nil, err
 	}
 	return temperatureUploadResult, nil
+}
+
+// 设置体温测量间隔时间
+func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUpload) (*result.Result, error) {
+
+	var data = make(map[string]interface{})
+	data["imei_sn"] = param.ImeiSn
+	data["second"] = param.Second
+
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetToken(p.Cfg.HttpClient.Token).SetUrl(TSPTemperatureUploadPutUrl).SetData(data).HttpRequest()
+	if err != nil {
+		return nil, err
+	}
+
+	jsonString := res.Export()
+
+	var result = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
 }
