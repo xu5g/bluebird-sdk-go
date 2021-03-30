@@ -1,0 +1,4 @@
+.idea
+go.sum
+config/config.toml
+*_test.go
