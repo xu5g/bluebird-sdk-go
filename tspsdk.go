@@ -11,23 +11,25 @@ type Tsp struct {
 }
 
 // 获取其它接口数据时在header里面携带token
-func NewClient(token string) *Tsp {
+func NewClient(gateWay, token string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
 			HttpClient: &util.Request{
 				Token: token,
+				GateWay: gateWay,
 			},
 		},
 	}
 }
 
 // 获取token（只用来获取token）
-func NewAuth(appKey, secret string) *Tsp {
+func NewAuth(gateWay, appKey, secret string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
 			&util.Request{
 				AppKey: appKey,
 				Secret: secret,
+				GateWay: gateWay,
 			},
 		},
 	}

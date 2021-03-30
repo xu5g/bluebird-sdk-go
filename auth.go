@@ -25,7 +25,7 @@ func (p *Auth) GetToken() (*result.AuthResult, error) {
 	params.Set("appkey", appKey)
 	params.Set("sign", sign)
 
-	res, err := p.Cfg.HttpClient.SetUrl(AuthURL + "?" + params.Encode()).SetMethod("get").HttpRequest()
+	res, err := p.Cfg.HttpClient.SetUrl(p.Cfg.HttpClient.GateWay + AuthPath + "?" + params.Encode()).SetMethod("get").HttpRequest()
 	if err != nil {
 		return nil, err
 	}

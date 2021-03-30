@@ -9,12 +9,13 @@ import (
 )
 
 type Request struct {
-	Token  string
-	Method string
-	Url    string
-	AppKey string
-	Secret string
-	Data []interface{}
+	GateWay string
+	Token   string
+	Method  string
+	Url     string
+	AppKey  string
+	Secret  string
+	Data    []interface{}
 }
 
 func (p *Request) SetToken(token string) *Request {
