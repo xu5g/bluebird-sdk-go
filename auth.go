@@ -31,13 +31,13 @@ func (p *Auth) GetToken() (*result.AuthResult, error) {
 	}
 
 	jsonString := res.Export()
-	var authEntity = new(result.AuthResult)
-	err = json.Unmarshal([]byte(jsonString), authEntity)
+	var result = new(result.AuthResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
 
-	return authEntity, err
+	return result, err
 }
 
 

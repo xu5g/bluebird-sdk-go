@@ -30,10 +30,10 @@ func (p *Step) GetSteps(query *query.StepsQuery) (*result.StepsResult, error) {
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.StepsResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
+	var result = new(result.StepsResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureEntity, nil
+	return result, nil
 }

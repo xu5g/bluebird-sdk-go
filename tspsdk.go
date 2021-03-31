@@ -78,3 +78,10 @@ func (p *Tsp) Sleep() *Sleep {
 	}
 }
 
+// 轨迹
+func (p *Tsp) Track() *Track {
+	return &Track{
+		Cfg: p.Cfg,
+	}
+}
+

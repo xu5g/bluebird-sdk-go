@@ -24,12 +24,12 @@ func (p *Heart) GetHeart(query *query.HeartRecentQuery) (*result.HeartResult, er
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.HeartResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
+	var result = new(result.HeartResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureEntity, nil
+	return result, nil
 }
 
 // 获取心率列表
@@ -50,12 +50,12 @@ func (p *Heart) GetHearts(query *query.HeartsQuery) (*result.HeartsResult, error
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.HeartsResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
+	var result = new(result.HeartsResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureEntity, nil
+	return result, nil
 }
 
 // 获取心率测量间隔时间
@@ -69,12 +69,12 @@ func (p *Heart) GetHeartUpload(query *query.HeartUploadQuery) (*result.HeartUplo
 	}
 
 	jsonString := res.Export()
-	var temperatureUploadResult = new(result.HeartUploadResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureUploadResult)
+	var result = new(result.HeartUploadResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureUploadResult, nil
+	return result, nil
 }
 
 // 设置心率测量间隔时间

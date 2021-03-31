@@ -24,12 +24,12 @@ func (p *Temperature) GetTemperature(query *query.TemperatureRecentQuery) (*resu
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.TemperatureResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
+	var result = new(result.TemperatureResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureEntity, nil
+	return result, nil
 }
 
 // 获取体温列表
@@ -50,12 +50,12 @@ func (p *Temperature) GetTemperatures(query *query.TemperaturesQuery) (*result.T
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.TemperaturesResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
+	var result = new(result.TemperaturesResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureEntity, nil
+	return result, nil
 }
 
 // 获取体温测量间隔时间
@@ -69,12 +69,12 @@ func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadQuery) 
 	}
 
 	jsonString := res.Export()
-	var temperatureUploadResult = new(result.TemperatureUploadResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureUploadResult)
+	var result = new(result.TemperatureUploadResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureUploadResult, nil
+	return result, nil
 }
 
 // 设置体温测量间隔时间
