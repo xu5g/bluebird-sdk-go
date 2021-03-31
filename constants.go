@@ -22,5 +22,8 @@ const (
 	TSPBloodUploadPutPath = "/tsp/blood/upload" // 设置血压测量间隔时间
 
 	/** 计步管理 **/
-	TSPStepsGetPath       = "/tsp/steps"        // 获取计步数据
+	TSPStepsGetPath       = "/tsp/steps"        // 获取计步数据列表
+
+	/** 睡眠管理 **/
+	TSPSleepsGetPath       = "/tsp/sleeps"        // 获取睡眠数据列表
 )

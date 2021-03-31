@@ -71,3 +71,10 @@ func (p *Tsp) Step() *Step {
 	}
 }
 
+// 睡眠
+func (p *Tsp) Sleep() *Sleep {
+	return &Sleep{
+		Cfg: p.Cfg,
+	}
+}
+

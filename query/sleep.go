@@ -1,6 +1,6 @@
 package query
 
-type StepsQuery struct {
+type SleepsQuery struct {
 	StartTime string // 开始时间
 	EndTime   string // 结束时间
 	ImeiSn    string // 设备号
