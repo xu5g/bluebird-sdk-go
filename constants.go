@@ -14,4 +14,10 @@ const (
 	TSPHeartsGetPath      = "/tsp/hearts"       // 获取心率结果列表
 	TSPHeartUploadGetPath = "/tsp/heart/upload" // 获取心率测量间隔时间
 	TSPHeartUploadPutPath = "/tsp/heart/upload" // 设置心率测量间隔时间
+
+	/** 血压管理 **/
+	TSPBloodGetPath       = "/tsp/blood"        // 获取最新血压数据
+	TSPBloodsGetPath      = "/tsp/bloods"       // 获取血压结果列表
+	TSPBloodUploadGetPath = "/tsp/blood/upload" // 获取血压测量间隔时间
+	TSPBloodUploadPutPath = "/tsp/blood/upload" // 设置血压测量间隔时间
 )

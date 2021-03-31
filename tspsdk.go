@@ -57,3 +57,10 @@ func (p *Tsp) Heart() *Heart {
 	}
 }
 
+// 血压
+func (p *Tsp) Blood() *Blood {
+	return &Blood{
+		Cfg: p.Cfg,
+	}
+}
+
