@@ -18,7 +18,7 @@ func (p *Blood) GetBlood(query *query.BloodRecentQuery) (*result.BloodResult, er
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func (p *Blood) GetBloods(query *query.BloodsQuery) (*result.BloodsResult, error
 	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func (p *Blood) GetBloodUpload(query *query.BloodUploadQuery) (*result.BloodUplo
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodUploadGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func (p *Blood) UpdateBloodUpload(param *query.BloodUpload) (*result.Result, err
 	data["imei_sn"] = param.ImeiSn
 	data["second"] = param.Second
 
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodUploadPutPath).SetData(data).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodUploadPutPath).SetData(data).HttpRequest()
 	if err != nil {
 		return nil, err
 	}

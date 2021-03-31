@@ -64,3 +64,10 @@ func (p *Tsp) Blood() *Blood {
 	}
 }
 
+// 计步
+func (p *Tsp) Step() *Step {
+	return &Step{
+		Cfg: p.Cfg,
+	}
+}
+

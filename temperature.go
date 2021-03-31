@@ -18,7 +18,7 @@ func (p *Temperature) GetTemperature(query *query.TemperatureRecentQuery) (*resu
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperatureGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperatureGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func (p *Temperature) GetTemperatures(query *query.TemperaturesQuery) (*result.T
 	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperaturesGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperaturesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadQuery) 
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperatureUploadGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperatureUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUpload) (*
 	data["imei_sn"] = param.ImeiSn
 	data["second"] = param.Second
 
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetToken(p.Cfg.HttpClient.Token).SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperatureUploadPutPath).SetData(data).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + TSPTemperatureUploadPutPath).SetData(data).HttpRequest()
 	if err != nil {
 		return nil, err
 	}

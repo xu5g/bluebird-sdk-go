@@ -1,7 +1,7 @@
 package tspsdk
 
 const (
-	AuthPath = "/auth/token" // 鉴权（auth）
+	TSPAuthPath = "/auth/token" // 鉴权（auth）
 
 	/** 体温管理 **/
 	TSPTemperatureGetPath       = "/tsp/temperature"        // 获取最新体温数据
@@ -20,4 +20,7 @@ const (
 	TSPBloodsGetPath      = "/tsp/bloods"       // 获取血压结果列表
 	TSPBloodUploadGetPath = "/tsp/blood/upload" // 获取血压测量间隔时间
 	TSPBloodUploadPutPath = "/tsp/blood/upload" // 设置血压测量间隔时间
+
+	/** 计步管理 **/
+	TSPStepsGetPath       = "/tsp/steps"        // 获取计步数据
 )

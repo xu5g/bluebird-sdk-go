@@ -11,16 +11,11 @@ import (
 type Request struct {
 	GateWay string
 	Token   string
-	Method  string
-	Url     string
 	AppKey  string
 	Secret  string
+	Method  string
+	Url     string
 	Data    []interface{}
-}
-
-func (p *Request) SetToken(token string) *Request {
-	p.Token = token
-	return p
 }
 
 func (p *Request) SetMethod(method string) *Request {
@@ -49,8 +44,7 @@ func (p *Request) HttpRequest() (*gjson.Json, error) {
 }
 
 /**
- * @Desc get请求方式
- * @Date 2021/3/12
+ * @Desc GET
  */
 func (p *Request) get() (*gjson.Json, error) {
 	client := g.Client()
@@ -81,7 +75,6 @@ func (p *Request) get() (*gjson.Json, error) {
 
 /**
  * @Desc POST
- * @Date 2021/3/12
  */
 func (p *Request) post() (*gjson.Json, error) {
 	client := g.Client()
@@ -109,7 +102,6 @@ func (p *Request) post() (*gjson.Json, error) {
 
 /**
  * @Desc PUT
- * @Date 2021/3/12
  */
 func (p *Request) put() (*gjson.Json, error) {
 	client := g.Client()
