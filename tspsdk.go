@@ -50,3 +50,10 @@ func (p *Tsp) Temperature() *Temperature {
 	}
 }
 
+// 心率
+func (p *Tsp) Heart() *Heart {
+	return &Heart{
+		Cfg: p.Cfg,
+	}
+}
+
