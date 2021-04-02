@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
+	"github.com/xu5g/bluebird-sdk-go/util"
 	"net/url"
 	"strconv"
 )
@@ -13,27 +14,27 @@ type Blood struct {
 }
 
 // 获取最新血压数据
-func (p *Blood) GetBlood(query *query.BloodRecentQuery) (*result.BloodResult, error) {
+func (p *Blood) GetBlood(query *query.BloodGetQuery) (*result.BloodGetResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.BloodResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
+	var result = new(result.BloodGetResult)
+	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	return temperatureEntity, nil
+	return result, nil
 }
 
 // 获取血压列表
-func (p *Blood) GetBloods(query *query.BloodsQuery) (*result.BloodsResult, error) {
+func (p *Blood) GetBloods(query *query.BloodsGetQuery) (*result.BloodsGetResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -41,57 +42,15 @@ func (p *Blood) GetBloods(query *query.BloodsQuery) (*result.BloodsResult, error
 	params.Set("end_time", query.EndTime)
 	params.Set("page", strconv.Itoa(int(query.Page)))
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
-	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
 
 	jsonString := res.Export()
-	var temperatureEntity = new(result.BloodsResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureEntity)
-	if err != nil {
-		return nil, err
-	}
-	return temperatureEntity, nil
-}
-
-// 获取血压测量间隔时间
-func (p *Blood) GetBloodUpload(query *query.BloodUploadQuery) (*result.BloodUploadResult, error) {
-	params := url.Values{}
-	params.Set("imei_sn", query.ImeiSn)
-
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodUploadGetPath + "?" + params.Encode()).HttpRequest()
-	if err != nil {
-		return nil, err
-	}
-
-	jsonString := res.Export()
-	var temperatureUploadResult = new(result.BloodUploadResult)
-	err = json.Unmarshal([]byte(jsonString), temperatureUploadResult)
-	if err != nil {
-		return nil, err
-	}
-	return temperatureUploadResult, nil
-}
-
-// 设置血压测量间隔时间
-func (p *Blood) UpdateBloodUpload(param *query.BloodUpload) (*result.Result, error) {
-
-	var data = make(map[string]interface{})
-	data["imei_sn"] = param.ImeiSn
-	data["second"] = param.Second
-
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + TSPBloodUploadPutPath).SetData(data).HttpRequest()
-	if err != nil {
-		return nil, err
-	}
-
-	jsonString := res.Export()
-
-	var result = new(result.Result)
+	var result = new(result.BloodsGetResult)
 	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err

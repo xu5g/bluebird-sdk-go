@@ -11,11 +11,11 @@ type TrackEntity struct {
 	Lng        string `json:"lng"`
 }
 
-// 轨迹数据列表
-type TracksResult struct {
+// 获取轨迹
+type TracksGetResult struct {
 	Result
 	Data struct {
 		Total  int          `json:"total"`
-		Result []StepEntity `json:"result"`
+		Result []TrackEntity `json:"result"`
 	} `json:"data,omitempty"` // 返回结果
 }

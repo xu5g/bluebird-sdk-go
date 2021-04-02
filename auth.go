@@ -7,6 +7,7 @@ import (
 	"github.com/gogf/gf/os/gtime"
 	"github.com/gogf/gf/util/grand"
 	"github.com/xu5g/bluebird-sdk-go/result"
+	"github.com/xu5g/bluebird-sdk-go/util"
 	"net/url"
 )
 
@@ -25,7 +26,7 @@ func (p *Auth) GetToken() (*result.AuthResult, error) {
 	params.Set("appkey", appKey)
 	params.Set("sign", sign)
 
-	res, err := p.Cfg.HttpClient.SetUrl(p.Cfg.HttpClient.GateWay + TSPAuthPath + "?" + params.Encode()).SetMethod("get").HttpRequest()
+	res, err := p.Cfg.HttpClient.SetUrl(p.Cfg.HttpClient.GateWay + util.TSPAuthPath + "?" + params.Encode()).SetMethod("get").HttpRequest()
 	if err != nil {
 		return nil, err
 	}

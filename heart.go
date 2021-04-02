@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
+	"github.com/xu5g/bluebird-sdk-go/util"
 	"net/url"
 	"strconv"
 )
@@ -18,7 +19,7 @@ func (p *Heart) GetHeart(query *query.HeartRecentQuery) (*result.HeartResult, er
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPHeartGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +45,7 @@ func (p *Heart) GetHearts(query *query.HeartsQuery) (*result.HeartsResult, error
 	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPHeartsGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +64,7 @@ func (p *Heart) GetHeartUpload(query *query.HeartUploadQuery) (*result.HeartUplo
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPHeartUploadGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +85,7 @@ func (p *Heart) UpdateHeartUpload(param *query.HeartUpload) (*result.Result, err
 	data["imei_sn"] = param.ImeiSn
 	data["second"] = param.Second
 
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + TSPHeartUploadPutPath).SetData(data).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
 		return nil, err
 	}

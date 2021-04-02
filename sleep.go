@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
+	"github.com/xu5g/bluebird-sdk-go/util"
 	"net/url"
 	"strconv"
 )
@@ -24,7 +25,7 @@ func (p *Sleep) GetSleeps(query *query.SleepsQuery) (*result.SleepsResult, error
 	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPSleepsGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPSleepsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}

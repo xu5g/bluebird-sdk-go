@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
+	"github.com/xu5g/bluebird-sdk-go/util"
 	"net/url"
 	"strconv"
 )
@@ -24,7 +25,7 @@ func (p *Step) GetSteps(query *query.StepsQuery) (*result.StepsResult, error) {
 	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
-	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + TSPStepsGetPath + "?" + params.Encode()).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPStepsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return nil, err
 	}

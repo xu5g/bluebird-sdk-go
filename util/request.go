@@ -52,6 +52,10 @@ func (p *Request) get() (*gjson.Json, error) {
 	if p.Token != "" {
 		client.SetHeader("token", p.Token)
 	}
+	client.SetHeader("sdkversion", SdkVersion)
+	client.SetHeader("transid","100000000")
+
+
 	res, err := client.Get(p.Url)
 
 	if err != nil {
@@ -82,6 +86,9 @@ func (p *Request) post() (*gjson.Json, error) {
 	if p.Token != "" {
 		client.SetHeader("token", p.Token)
 	}
+	client.SetHeader("sdkversion", SdkVersion)
+
+
 	res, err := client.Post(p.Url, p.Data)
 	if res.StatusCode != 200 {
 		return nil, errors.New(res.Status)
@@ -109,6 +116,9 @@ func (p *Request) put() (*gjson.Json, error) {
 	if p.Token != "" {
 		client.SetHeader("token", p.Token)
 	}
+	client.SetHeader("sdkversion", SdkVersion)
+
+
 	res, err := client.Put(p.Url, p.Data)
 	if res.StatusCode != 200 {
 		return nil, errors.New(res.Status)

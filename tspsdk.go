@@ -85,3 +85,10 @@ func (p *Tsp) Track() *Track {
 	}
 }
 
+// 设备
+func (p *Tsp) Device() *Device {
+	return &Device{
+		Cfg: p.Cfg,
+	}
+}
+

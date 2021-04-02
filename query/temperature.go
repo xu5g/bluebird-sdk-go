@@ -1,7 +1,8 @@
 package query
 
-type TemperatureRecentQuery struct {
-	ImeiSn string
+// 获取最新体温数据
+type TemperatureGetQuery struct {
+	ImeiSn string	// 设备Imei号 长度不超过20
 	Uuid   string
 }
 
