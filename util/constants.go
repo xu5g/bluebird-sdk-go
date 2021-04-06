@@ -52,5 +52,6 @@ const (
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
 	TSPFenceCreatePath = "/tsp/fence/create" // 添加围栏
+	TspFenceDeletePath = "/tsp/fence/delete" // 删除围栏
 
 )

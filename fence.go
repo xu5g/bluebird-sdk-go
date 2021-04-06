@@ -2,7 +2,6 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -25,20 +24,17 @@ func (p *Fence) GetFences(query *query.FencesGetQuery) (*result.FencesGetResult,
 	params.Set("shape_type", strconv.Itoa(int(query.ShapeType)))
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPFencesGetPath + "?" + params.Encode()).HttpRequest()
-	fmt.Println("res", res)
 
 	if err != nil {
 		return nil, err
 	}
 
 	jsonString := res.Export()
-	fmt.Println(jsonString)
 	var result = new(result.FencesGetResult)
 	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("result",result)
 	return result, nil
 }
 
@@ -62,6 +58,25 @@ func (p *Fence) CreateFence(query *query.FenceCreateQuery) (*result.FenceCreateR
 	jsonString := res.Export()
 
 	var result = new(result.FenceCreateResult)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
+// 删除围栏
+func (p *Fence) DeleteFence(query *query.FenceDeleteQuery) (*result.Result, error) {
+	var data = make(map[string]interface{})
+	data["id"] = query.Id
+	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspFenceDeletePath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return nil, err
+	}
+	jsonString := res.Export()
+
+	var result = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err

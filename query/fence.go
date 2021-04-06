@@ -19,6 +19,11 @@ type FenceCreateQuery struct {
 	NearRadius  int64  // 靠近围栏预警半径（单位：米）（必传）
 	ValidStart  string // 有效开始时间 PS: 08:00（必传）
 	ValidEnd    string // 有效结束时间 PS: 18:00（必传）
-	ValidWeek   int64  // 有效周天 周一至周日分别为1-7，逗号分割（1,2,3,4,5,6,7）（必传）
+	ValidWeek   string // 有效周天 周一至周日分别为1-7，逗号分割（1,2,3,4,5,6,7）（必传）
 	Uuid        string // uuid
+}
+
+// 删除围栏
+type FenceDeleteQuery struct {
+	Id int64	// 主键ID（必传）
 }

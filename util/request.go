@@ -39,6 +39,8 @@ func (p *Request) HttpRequest() (*gjson.Json, error) {
 		return p.post()
 	} else if p.Method == "put" {
 		return p.put()
+	} else if p.Method == "delete" {
+		return p.delete()
 	}
 	return nil, nil
 }
@@ -120,6 +122,36 @@ func (p *Request) put() (*gjson.Json, error) {
 
 
 	res, err := client.Put(p.Url, p.Data)
+	if res.StatusCode != 200 {
+		return nil, errors.New(res.Status)
+	}
+	if err != nil {
+		return nil, err
+	}
+	context := res.ReadAllString()
+	json := gjson.New(context)
+	status := json.GetVar("status").String()
+	message := json.GetVar("message").String()
+	if status == "0" {
+		return json, nil
+	} else {
+		return nil, errors.New(message)
+	}
+}
+
+/**
+ * @Desc DELETE
+ */
+func (p *Request) delete() (*gjson.Json, error) {
+	client := g.Client()
+	client.SetTimeout(5 * time.Second)
+	if p.Token != "" {
+		client.SetHeader("token", p.Token)
+	}
+	client.SetHeader("sdkversion", SdkVersion)
+
+
+	res, err := client.Delete(p.Url, p.Data)
 	if res.StatusCode != 200 {
 		return nil, errors.New(res.Status)
 	}
