@@ -20,81 +20,85 @@ type DevicesGetQuery struct {
 
 // 下发定位指令到终端
 type DeviceLocateQuery struct {
-	ImeiSn string	// 设备Imei号 长度不超过20（必传）
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
 // 获取设备是否在线
 type DeviceIsOnlineQuery struct {
-	ImeiSn string // 设备号 长度不超过20（必传）
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
 // 透传报文
 type DeviceMessageQuery struct {
-	ImeiSn  string // 设备号	设备号 长度不超过20（必传）
+	ImeiSn  string // 设备Imei号 长度不超过20（必传）
 	Message string // 报文内容（必传）
 }
 
+// 获取设备功能清单
 type DeviceModulesQuery struct {
-	ImeiSn string //not null
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
+// 绑定设备
 type DeviceBindQuery struct {
-	ImeiSn   string
-	TrueName string
-	Mobile   string
-	Uuid     string
+	ImeiSn   string // 设备Imei号 长度不超过20（必传）
+	TrueName string // 设备名称（必传）
+	Mobile   string // 设备内SIM卡的手机号（必传）
+	Uuid     string // 设备UUID（必传）
 }
 
+// 解绑设备
 type DeviceUnBindQuery struct {
-	ImeiSn string
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
+// 下发寻找设备指令
 type DeviceFindQuery struct {
-	ImeiSn string
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
 // 下发定位上报间隔指令
 type DeviceLocateUploadQuery struct {
-	ImeiSn string // 必传 设备号
-	Second int    // 必传 定位上报间隔，单位：秒
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+	Second int    // 必传 定位上报间隔，单位：秒（必传）
 }
 
 // 下发定位时间段指令
 type DeviceUdtimeQuery struct {
-	ImeiSn string // 必传
-	Start  string // 必传 开始时间，例如：06:00
-	End    string // 必传	结束时间，例如：22:00
+	ImeiSn string // 设备Imei号 长度不超过20必传（必传）
+	Start  string // 开始时间，格式：06:00（必传）
+	End    string // 结束时间，格式：22:00（必传）
 }
 
 // 下发设置亲情号码指令
 type DeviceFamilyQuery struct {
-	ImeiSn   string   // 必传
-	Families []family // 必传
+	ImeiSn   string   // 设备Imei号 长度不超过20（必传）
+	Families []Family // 亲情号号码信息（必传）
 }
-type family struct {
-	Relation string // 亲人名称
-	Mobile   string // 亲人手机号
+type Family struct {
+	Relation string `json:"relation"` // 亲人名称
+	Mobile   string `json:"mobile"`   // 亲人手机号
 }
 
+// 下发设置定位模式指令
 type DeviceLocateModeQuery struct {
-	ImeiSn     string
-	LocateMode string
+	ImeiSn     string // 设备Imei号 长度不超过20（必传）
+	LocateMode string // 定位模式 1：省电模式 2：智能模式 3：性能模式 （笔必传）
 }
 
+// 下发设置终端host指令
 type DeviceHostQuery struct {
-	ImeiSn string
-	Host   string
-	Post   string
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+	Host   string // 主机地址（必传）
+	Port   string // 端口号（必传）
 }
 
 // 下发关机指令
 type DevicePowerOffQuery struct {
-	ImeiSn string
-	Host   string
-	Post   string
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
 // 下发重启指令
 type DeviceRestartQuery struct {
-	ImeiSn string // 必传
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }

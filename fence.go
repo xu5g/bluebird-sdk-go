@@ -2,6 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -15,7 +16,7 @@ type Fence struct {
 
 
 // 获取围栏列表
-func (p *Temperature) GetFences(query *query.FencesQuery) (*result.FencesResult, error) {
+func (p *Fence) GetFences(query *query.FencesGetQuery) (*result.FencesGetResult, error) {
 	params := url.Values{}
 	params.Set("uuid", query.Uuid)
 	params.Set("page", strconv.Itoa(query.Page))
@@ -24,21 +25,25 @@ func (p *Temperature) GetFences(query *query.FencesQuery) (*result.FencesResult,
 	params.Set("shape_type", strconv.Itoa(int(query.ShapeType)))
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPFencesGetPath + "?" + params.Encode()).HttpRequest()
+	fmt.Println("res", res)
+
 	if err != nil {
 		return nil, err
 	}
 
 	jsonString := res.Export()
-	var result = new(result.FencesResult)
+	fmt.Println(jsonString)
+	var result = new(result.FencesGetResult)
 	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("result",result)
 	return result, nil
 }
 
 // 创建围栏
-func (p *Device) CreateFence(query *query.FenceCreateQuery) (*result.FenceCreateResult, error) {
+func (p *Fence) CreateFence(query *query.FenceCreateQuery) (*result.FenceCreateResult, error) {
 	var data = make(map[string]interface{})
 	data["truename"] = query.Truename
 	data["fence_type"] = query.FenceType

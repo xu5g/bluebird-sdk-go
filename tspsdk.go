@@ -92,3 +92,10 @@ func (p *Tsp) Device() *Device {
 	}
 }
 
+// 围栏
+func (p *Tsp) Fence() *Fence {
+	return &Fence{
+		Cfg: p.Cfg,
+	}
+}
+

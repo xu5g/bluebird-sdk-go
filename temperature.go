@@ -42,7 +42,6 @@ func (p *Temperature) GetTemperatures(query *query.TemperaturesQuery) (*result.T
 	params.Set("end_time", query.EndTime)
 	params.Set("page", strconv.Itoa(int(query.Page)))
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
-	params.Set("product_id", strconv.FormatInt(query.ProductId, 10))
 	params.Set("sort", query.Sort)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperaturesGetPath + "?" + params.Encode()).HttpRequest()

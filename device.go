@@ -182,9 +182,10 @@ func (p *Device) UnBindDevice(query *query.DeviceUnBindQuery) (*result.Result, e
 
 // 下发设备寻找指令
 func (p *Device) SendFindDevice(query *query.DeviceFindQuery) (*result.Result, error) {
-	var data = make(map[string]interface{})
-	data["imei_sn"] = query.ImeiSn
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceFindPath).SetData(data).HttpRequest()
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceFindPath + "?" + params.Encode()).HttpRequest()
 
 	if err != nil {
 		return nil, err
@@ -283,6 +284,8 @@ func (p *Device) SendLocateMode(query *query.DeviceLocateModeQuery) (*result.Res
 func (p *Device) SendHost(query *query.DeviceHostQuery) (*result.Result, error) {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
+	data["host"] = query.Host
+	data["port"] = query.Port
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceHostPath).SetData(data).HttpRequest()
 
 	if err != nil {
@@ -300,9 +303,10 @@ func (p *Device) SendHost(query *query.DeviceHostQuery) (*result.Result, error) 
 
 // 下发关机指令
 func (p *Device) SendPowerOff(query *query.DevicePowerOffQuery) (*result.Result, error) {
-	var data = make(map[string]interface{})
-	data["imei_sn"] = query.ImeiSn
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDevicePowerOffPath).SetData(data).HttpRequest()
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDevicePowerOffPath + "?" + params.Encode()).HttpRequest()
 
 	if err != nil {
 		return nil, err
@@ -318,10 +322,11 @@ func (p *Device) SendPowerOff(query *query.DevicePowerOffQuery) (*result.Result,
 }
 
 // 下发重启指令
-func (p *Device) SendRestartOff(query *query.DeviceRestartQuery) (*result.Result, error) {
-	var data = make(map[string]interface{})
-	data["imei_sn"] = query.ImeiSn
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceRestartPath).SetData(data).HttpRequest()
+func (p *Device) SendRestart(query *query.DeviceRestartQuery) (*result.Result, error) {
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceRestartPath + "?" + params.Encode()).HttpRequest()
 
 	if err != nil {
 		return nil, err

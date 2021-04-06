@@ -8,5 +8,5 @@ type TracksGetQuery struct {
 	Limit     int32  // 每页条数	范围为1-200（必传）
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 	ImeiSn    string // 设备Imei号 长度不超过20
-	Uuid      string // 设备Uuid		长度不超过40
+	Uuid      string // 设备Uuid	  长度不超过40
 }

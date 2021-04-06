@@ -6,14 +6,15 @@ type FenceEntity struct {
 	ImeiSn     string `json:"imei_sn,omitempty"`     // 设备号
 	Uuid       string `json:"uuid,omitempty"`        // uuid
 	PrimaryKey string `json:"primary_key,omitempty"` // 主键
+	TrueName   string `json:"truename"`
 }
 
 // 获取围栏列表
-type FencesResult struct {
+type FencesGetResult struct {
 	Result
 	Data struct {
-		Total  int           `json:"total"`
-		Result []FenceEntity `json:"result"`
+		Total  int                      `json:"total"`
+		Result []map[string]interface{} `json:"result"`
 	} `json:"data,omitempty"` // 返回结果
 }
 

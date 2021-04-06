@@ -1,7 +1,7 @@
 package query
 
 // 获取围栏列表
-type FencesQuery struct {
+type FencesGetQuery struct {
 	Page      int    // 页码 范围为1-5000（必传）
 	Limit     int    // 每页条数 范围为1-200（必传）
 	Uuid      string // 设备UUID 长度不超过40
