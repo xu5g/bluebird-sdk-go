@@ -4,7 +4,7 @@ const SdkVersion = "1.0.0"
 
 const (
 	// 身份认证
-	TSPAuthPath = "/auth/token" // 鉴权（auth）
+	TSPAuthPath = "/tsp/auth/token" // 鉴权（auth）
 
 	/** 体温管理 **/
 	TSPTemperatureGetPath       = "/tsp/temperature/get"        // 获取最新体温数据
