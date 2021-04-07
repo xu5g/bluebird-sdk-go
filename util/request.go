@@ -2,8 +2,11 @@ package util
 
 import (
 	"errors"
+	"fmt"
 	"github.com/gogf/gf/encoding/gjson"
 	"github.com/gogf/gf/frame/g"
+	"github.com/gogf/gf/os/gtime"
+	"github.com/gogf/gf/util/grand"
 	"strings"
 	"time"
 )
@@ -55,7 +58,7 @@ func (p *Request) get() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
-	client.SetHeader("transid","100000000")
+	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Letters(12)))
 
 
 	res, err := client.Get(p.Url)

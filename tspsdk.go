@@ -11,12 +11,13 @@ type Tsp struct {
 }
 
 // 获取其它接口数据时在header里面携带token
-func NewClient(gateWay, token string) *Tsp {
+func NewClient(gateWay, appKey, token string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
 			HttpClient: &util.Request{
 				Token: token,
 				GateWay: gateWay,
+				AppKey: appKey,
 			},
 		},
 	}
