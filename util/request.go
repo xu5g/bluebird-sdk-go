@@ -92,7 +92,7 @@ func (p *Request) post() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
-
+	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Letters(12)))
 
 	res, err := client.Post(p.Url, p.Data)
 	if res.StatusCode != 200 {
@@ -122,6 +122,7 @@ func (p *Request) put() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
+	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Letters(12)))
 
 
 	res, err := client.Put(p.Url, p.Data)
@@ -152,6 +153,7 @@ func (p *Request) delete() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
+	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Letters(12)))
 
 
 	res, err := client.Delete(p.Url, p.Data)
