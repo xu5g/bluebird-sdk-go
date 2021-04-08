@@ -24,12 +24,15 @@ type DeviceEntity struct {
 	LocateDirection   int64          `json:"locate_direction,omitempty"`   // 定位角度
 	LocateAddress     string         `json:"locate_address,omitempty"`     // 位置信息
 	PowerRate         int64          `json:"power_rate,omitempty"`         // 剩余电量
+	PowerStatus       int64          `json:"power_status,omitempty"`       // 剩余电量状态
 	Truename          string         `json:"truename,omitempty"`           // 终端名称
 	Uuid              string         `json:"uuid,omitempty"`               // 设备uuid
 	Lng               float64        `json:"lng,omitempty"`                // 经度
 	Lat               float64        `json:"lat,omitempty"`                // 维度
 	Udtime            udtime         `json:"udtime,omitempty"`             // 定位时间段
 	Status            int64          `json:"status,omitempty"`             // 设备状态 1：正常 2：弃用 3：停机
+	GsmRate           int64          `json:"gsm_rate,omitempty"`           // 信号值
+
 }
 
 type familyMember struct {
@@ -57,7 +60,7 @@ type DeviceGetResult struct {
 type DevicesResult struct {
 	Result
 	Data struct {
-		Total  int            `json:"total,omitempty"`
+		Total  int                      `json:"total,omitempty"`
 		Result []map[string]interface{} `json:"result,omitempty"`
 	} `json:"data,omitempty"` // 返回结果
 }
