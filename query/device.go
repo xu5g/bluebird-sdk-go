@@ -102,3 +102,9 @@ type DevicePowerOffQuery struct {
 type DeviceRestartQuery struct {
 	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
+
+// 下发聆听指令
+type DeviceMonitorQuery struct {
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+	Mobile string // 手机号（必传）
+}

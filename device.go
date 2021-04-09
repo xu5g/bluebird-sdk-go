@@ -71,6 +71,7 @@ func (p *Device) SendLocate(query *query.DeviceLocateQuery) (*result.Result, err
 		return nil, err
 	}
 	jsonString := res.Export()
+	fmt.Println(jsonString)
 
 	var result = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), result)
@@ -327,6 +328,27 @@ func (p *Device) SendRestart(query *query.DeviceRestartQuery) (*result.Result, e
 	params.Set("imei_sn", query.ImeiSn)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceRestartPath + "?" + params.Encode()).HttpRequest()
+
+	if err != nil {
+		return nil, err
+	}
+	jsonString := res.Export()
+
+	var result = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
+// 下发聆听指令
+func (p *Device) SendMonitor(query *query.DeviceMonitorQuery) (*result.Result, error) {
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+	params.Set("mobile", query.Mobile)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceMonitorPath + "?" + params.Encode()).HttpRequest()
 
 	if err != nil {
 		return nil, err
