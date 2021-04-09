@@ -362,3 +362,24 @@ func (p *Device) SendMonitor(query *query.DeviceMonitorQuery) (*result.Result, e
 	}
 	return result, nil
 }
+
+// 下发设置免打扰时间段指令
+func (p *Device) SendDnd(query *query.DeviceDndQuery) (*result.Result, error) {
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+	params.Set("dnd", query.Dnd)
+
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceDndPath + "?" + params.Encode()).HttpRequest()
+
+	if err != nil {
+		return nil, err
+	}
+	jsonString := res.Export()
+
+	var result = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}

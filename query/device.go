@@ -108,3 +108,9 @@ type DeviceMonitorQuery struct {
 	ImeiSn string // 设备Imei号 长度不超过20（必传）
 	Mobile string // 手机号（必传）
 }
+
+// 下发设置免打扰时间段指令
+type DeviceDndQuery struct {
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+	Dnd    string // 免打扰时间段 格式：8:00-11:30|123456;14:00-17:30|12345 12345表示周一到周五生效，1234567表示每天都生效（必传）
+}
