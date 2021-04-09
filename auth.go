@@ -18,7 +18,7 @@ type Auth struct {
 // 获取token
 func (p *Auth) GetToken() (*result.AuthResult, error) {
 	appKey := p.Cfg.HttpClient.AppKey
-	tranSid := fmt.Sprintf("%s%s%s", appKey, gtime.Now().Format("YmdHis"), grand.Letters(12))
+	tranSid := fmt.Sprintf("%s%s%s", appKey, gtime.Now().Format("YmdHis"), grand.Digits(12))
 	sign := gsha1.Encrypt(fmt.Sprintf("%s%s%s%s", p.Cfg.HttpClient.Secret, appKey, tranSid, p.Cfg.HttpClient.Secret))
 
 	params := url.Values{}
