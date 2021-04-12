@@ -16,12 +16,12 @@ type TemperaturesQuery struct {
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 }
 
-type TemperatureUploadQuery struct {
-	ImeiSn string // 设备IMEI号  长度不超过20
+type TemperatureUploadGetQuery struct {
+	ImeiSn string // 设备IMEI号  长度不超过20（必传）
 }
 
 // 设置体温测量间隔时间
-type TemperatureUpload struct {
-	ImeiSn string // 设备IMEI号  长度不超过20
-	Second int    // 体温上报间隔时间（单位秒）
+type TemperatureUploadSetQuery struct {
+	ImeiSn string // 设备IMEI号  长度不超过20（必传）
+	Second int    // 体温上报间隔时间（单位秒）（必传）
 }

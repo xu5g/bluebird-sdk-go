@@ -59,7 +59,7 @@ func (p *Heart) GetHearts(query *query.HeartsQuery) (*result.HeartsResult, error
 }
 
 // 获取心率测量间隔时间
-func (p *Heart) GetHeartUpload(query *query.HeartUploadQuery) (*result.HeartUploadResult, error) {
+func (p *Heart) GetHeartUpload(query *query.HeartUploadGetQuery) (*result.HeartUploadResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
@@ -78,7 +78,7 @@ func (p *Heart) GetHeartUpload(query *query.HeartUploadQuery) (*result.HeartUplo
 }
 
 // 设置心率测量间隔时间
-func (p *Heart) UpdateHeartUpload(param *query.HeartUpload) (*result.Result, error) {
+func (p *Heart) UpdateHeartUpload(param *query.HeartUploadSetQuery) (*result.Result, error) {
 
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn

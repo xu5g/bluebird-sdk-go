@@ -59,7 +59,7 @@ func (p *Temperature) GetTemperatures(query *query.TemperaturesQuery) (*result.T
 }
 
 // 获取体温测量间隔时间
-func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadQuery) (*result.TemperatureUploadResult, error) {
+func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadGetQuery) (*result.TemperatureUploadResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
@@ -78,7 +78,7 @@ func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadQuery) 
 }
 
 // 设置体温测量间隔时间
-func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUpload) (*result.Result, error) {
+func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUploadSetQuery) (*result.Result, error) {
 
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn

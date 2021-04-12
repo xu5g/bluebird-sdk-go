@@ -1,10 +1,12 @@
 package query
 
+// 获取最近一次测量的心率数据
 type HeartRecentQuery struct {
 	ImeiSn string // 设备IMEI号  长度不超过20（ImeiSn和Uuid不能同时为空）
 	Uuid   string // 设备uuid	长度不超过40
 }
 
+// 获取心率数据列表
 type HeartsQuery struct {
 	StartTime string // 开始时间	格式为2006-01-01 00:00:00（必传）
 	EndTime   string // 结束时间	格式为2006-01-01 00:00:00（必传）
@@ -15,12 +17,13 @@ type HeartsQuery struct {
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 }
 
-type HeartUploadQuery struct {
-	ImeiSn string // 设备IMEI号  长度不超过20
+// 获取心率数据上报时间间隔
+type HeartUploadGetQuery struct {
+	ImeiSn string // 设备IMEI号  长度不超过20（必传）
 }
 
-// 设置体温测量间隔时间
-type HeartUpload struct {
-	ImeiSn string // 设备IMEI号  长度不超过20
+// 设置心率数据上报时间间隔
+type HeartUploadSetQuery struct {
+	ImeiSn string // 设备IMEI号  长度不超过20（必传）
 	Second int    // 体温上报间隔时间（单位秒）
 }
