@@ -6,6 +6,12 @@ type DeviceGetQuery struct {
 	AttenceSn string // 设备考勤号	长度不超过10
 }
 
+// 更新设备信息
+type DeviceUpdateQuery struct {
+	ImeiSn   string // 设备Imei号 长度不超过20（必传）
+	Truename string // 设备名称 长度不超过50个字符（必传）
+}
+
 // 获取设备列表
 type DevicesGetQuery struct {
 	Page      int32  // 页码 范围为1-5000（必传）

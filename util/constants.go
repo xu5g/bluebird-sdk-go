@@ -33,6 +33,7 @@ const (
 
 	/** 设备管理 **/
 	TSPDeviceGetPath          = "/tsp/device/get"           // 获取设备详情
+	TSPDeviceUpdatePath       = "/tsp/device/update"        // 更新设备信息
 	TSPDevicesGetPath         = "/tsp/devices/get"          // 获取设备列表
 	TSPDeviceLocatePath       = "/tsp/device/locate"        // 下发定位指令到终端
 	TSPDeviceOnlinePath       = "/tsp/device/online"        // 获取设备是否在线

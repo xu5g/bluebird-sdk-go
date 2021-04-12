@@ -34,6 +34,26 @@ func (p *Device) GetDevice(query *query.DeviceGetQuery) (*result.DeviceGetResult
 	return result, nil
 }
 
+// 更新设备信息
+func (p *Device) DeviceUpdate(query *query.DeviceUpdateQuery) (*result.Result, error) {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["truename"] = query.Truename
+
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceUpdatePath).SetData(data).HttpRequest()
+	if err != nil {
+		return nil, err
+	}
+
+	jsonString := res.Export()
+	var result = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
 // 获取设备列表
 func (p *Device) GetDevices(query *query.DevicesGetQuery) (*result.DevicesResult, error) {
 	params := url.Values{}
