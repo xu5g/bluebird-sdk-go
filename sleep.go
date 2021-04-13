@@ -14,7 +14,7 @@ type Sleep struct {
 }
 
 // 获取睡眠列表
-func (p *Sleep) GetSleeps(query *query.SleepsQuery) (*result.SleepsResult, error) {
+func (p *Sleep) GetSleeps(query *query.SleepsGetQuery) (*result.SleepsResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)

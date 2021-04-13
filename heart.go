@@ -14,7 +14,7 @@ type Heart struct {
 }
 
 // 获取最新心率数据
-func (p *Heart) GetHeart(query *query.HeartRecentQuery) (*result.HeartResult, error) {
+func (p *Heart) GetHeart(query *query.HeartGetQuery) (*result.HeartResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -34,7 +34,7 @@ func (p *Heart) GetHeart(query *query.HeartRecentQuery) (*result.HeartResult, er
 }
 
 // 获取心率列表
-func (p *Heart) GetHearts(query *query.HeartsQuery) (*result.HeartsResult, error) {
+func (p *Heart) GetHearts(query *query.HeartsGetQuery) (*result.HeartsResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)

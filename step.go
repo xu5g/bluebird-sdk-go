@@ -14,7 +14,7 @@ type Step struct {
 }
 
 // 获取计步列表
-func (p *Step) GetSteps(query *query.StepsQuery) (*result.StepsResult, error) {
+func (p *Step) GetSteps(query *query.StepsGetQuery) (*result.StepsResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)

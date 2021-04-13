@@ -34,7 +34,7 @@ func (p *Temperature) GetTemperature(query *query.TemperatureGetQuery) (*result.
 }
 
 // 获取体温列表
-func (p *Temperature) GetTemperatures(query *query.TemperaturesQuery) (*result.TemperaturesResult, error) {
+func (p *Temperature) GetTemperatures(query *query.TemperaturesGetQuery) (*result.TemperaturesResult, error) {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
