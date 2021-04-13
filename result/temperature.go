@@ -6,7 +6,7 @@ type TemperatureEntity struct {
 	Id          int64  `json:"id"`
 	ImeiSn      string `json:"imei_sn"`
 	Uuid        string `json:"uuid"`
-	ProductId   int64  `json:"product_id"`
+	AppKey      int64  `json:"appkey"`
 	Temperature string `json:"temperature"`
 	CreateTime  string `json:"created"`
 }

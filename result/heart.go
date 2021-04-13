@@ -1,14 +1,13 @@
 package result
 
-
 type HeartEntity struct {
-	PrimaryKey  string `json:"primary_key"`
-	Id          int64  `json:"id"`
-	ImeiSn      string `json:"imei_sn"`
-	Uuid        string `json:"uuid"`
-	ProductId   int64  `json:"product_id"`
-	Heart string `json:"temperature"`
-	CreateTime  string `json:"created"`
+	PrimaryKey string `json:"primary_key"`
+	Id         int64  `json:"id"`
+	ImeiSn     string `json:"imei_sn"`
+	Uuid       string `json:"uuid"`
+	AppKey     int64  `json:"appkey"`
+	HeartRate  int64  `json:"heart_rate"`
+	CreateTime string `json:"create_time"`
 }
 
 // 体温最近测量数据

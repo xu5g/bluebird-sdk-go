@@ -5,10 +5,13 @@ type BloodEntity struct {
 	Id         int64  `json:"id"`
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
-	ProductId  int64  `json:"product_id"`
-	Blood      string `json:"temperature"`
-	CreateTime string `json:"created"`
+	AppKey     int64  `json:"appkey"`
+	BloodRate  string `json:"blood_rate"`
+	MaxRate    int64  `json:"max_rate"`
+	MinRate    int64  `json:"min_rate"`
+	CreateTime string `json:"create_time"`
 }
+
 
 type BloodGetResult struct {
 	Result
