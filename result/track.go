@@ -2,8 +2,8 @@ package result
 
 type TrackEntity struct {
 	ImeiSn       string `json:"imei_sn"`
-	Lat          string `json:"lat"`
-	Lng          string `json:"lng"`
+	Lat          float64 `json:"lat"`
+	Lng          float64 `json:"lng"`
 	IsLrd        int64  `json:"is_lrd"`
 	Height       int64  `json:"height"`
 	ProvinceId   int64  `json:"province_id"`
@@ -25,6 +25,6 @@ type TracksGetResult struct {
 	Result
 	Data struct {
 		Total  int           `json:"total"`
-		Result []TrackEntity `json:"result"`
+		Result []map[string]interface{} `json:"result"`
 	} `json:"data,omitempty"` // 返回结果
 }
