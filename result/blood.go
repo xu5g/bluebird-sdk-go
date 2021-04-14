@@ -25,3 +25,9 @@ type BloodsGetResult struct {
 		Result []BloodEntity `json:"result"`
 	} `json:"data,omitempty"` // 返回结果
 }
+
+// 血压测量间隔时间
+type BloodUploadResult struct {
+	Result
+	Data float64  `json:"data,omitempty"` // 返回结果
+}

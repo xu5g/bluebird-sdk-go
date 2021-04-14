@@ -57,3 +57,44 @@ func (p *Blood) GetBloods(query *query.BloodsGetQuery) (*result.BloodsGetResult,
 	}
 	return result, nil
 }
+
+// 获取血压测量间隔时间
+func (p *Blood) GetBloodUpload(query *query.BloodUploadGetQuery) (*result.TemperatureUploadResult, error) {
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodUploadGetPath + "?" + params.Encode()).HttpRequest()
+	if err != nil {
+		return nil, err
+	}
+
+	jsonString := res.Export()
+	var result = new(result.TemperatureUploadResult)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
+// 设置血压测量间隔时间
+func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) (*result.Result, error) {
+
+	var data = make(map[string]interface{})
+	data["imei_sn"] = param.ImeiSn
+	data["second"] = param.Second
+
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodUploadSetPath).SetData(data).HttpRequest()
+	if err != nil {
+		return nil, err
+	}
+
+	jsonString := res.Export()
+
+	var result = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), result)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}

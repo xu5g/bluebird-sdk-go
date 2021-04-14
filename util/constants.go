@@ -19,8 +19,10 @@ const (
 	TSPHeartUploadSetPath = "/tsp/heart/upload/set" // 设置心率测量间隔时间
 
 	/** 血压管理 **/
-	TSPBloodGetPath  = "/tsp/blood/get"  // 获取最新血压数据
-	TSPBloodsGetPath = "/tsp/bloods/get" // 获取血压结果列表
+	TSPBloodGetPath       = "/tsp/blood/get"        // 获取最新血压数据
+	TSPBloodsGetPath      = "/tsp/bloods/get"       // 获取血压结果列表
+	TSPBloodUploadGetPath = "/tsp/blood/upload/get" // 获取血压测量间隔时间
+	TSPBloodUploadSetPath = "/tsp/blood/upload/set" // 设置血压测量间隔时间
 
 	/** 计步管理 **/
 	TSPStepsGetPath = "/tsp/steps/get" // 获取计步数据列表

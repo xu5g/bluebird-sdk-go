@@ -2,7 +2,7 @@ package query
 
 // 获取最新体温数据
 type TemperatureGetQuery struct {
-	ImeiSn string // 设备IMEI号  长度不超过20（ImeiSn和Uuid不能同时为空）
+	ImeiSn string // 设备IMEI号  长度不超过20（必传）
 	Uuid   string // 设备uuid	长度不超过40
 }
 

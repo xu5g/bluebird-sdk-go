@@ -2,7 +2,7 @@ package query
 
 // 获取设备详情
 type DeviceGetQuery struct {
-	ImeiSn    string // 设备Imei号	长度不超过20（PS: ImeiSn和AttenceSn不能同时为空）
+	ImeiSn    string // 设备Imei号	长度不超过20（必传）
 	AttenceSn string // 设备考勤号	长度不超过10
 }
 
