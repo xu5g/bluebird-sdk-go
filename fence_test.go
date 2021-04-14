@@ -1,0 +1,46 @@
+package tspsdk
+
+import (
+	"fmt"
+	"github.com/xu5g/bluebird-sdk-go/query"
+	"testing"
+)
+
+// 获取围栏列表
+func TestFence_GetFences(t *testing.T) {
+	query := &query.FencesGetQuery{
+		Page: 1,
+		Limit: 10,
+	}
+
+	res, err := NewClient(gateWay, appKey, token).Fence().GetFences(query)
+	fmt.Println(res, err)
+}
+
+// 创建围栏
+func TestFence_CreateFence(t *testing.T) {
+	query := &query.FenceCreateQuery{
+		Truename: "围栏1",
+		FenceType: 1,
+		ShapeType: 2,
+		CollideType: 2,
+		Geo: "xxxx",
+		NearRadius: 1,
+		ValidStart: "xxx",
+		ValidEnd: "xxx",
+		ValidWeek: "xxx",
+	}
+
+	res, err := NewClient(gateWay, appKey, token).Fence().CreateFence(query)
+	fmt.Println(res, err)
+}
+
+// 删除围栏
+func TestFence_DeleteFence(t *testing.T) {
+	query := &query.FenceDeleteQuery{
+		Id: 1,
+	}
+
+	res, err := NewClient(gateWay, appKey, token).Fence().DeleteFence(query)
+	fmt.Println(res, err)
+}
