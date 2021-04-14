@@ -286,6 +286,7 @@ func (p *Device) SendFamily(query *query.DeviceFamilyQuery) (*result.Result, err
 func (p *Device) SendLocateMode(query *query.DeviceLocateModeQuery) (*result.Result, error) {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
+	data["locate_mode"] = query.LocateMode
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceLocateModePath).SetData(data).HttpRequest()
 
 	if err != nil {

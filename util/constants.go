@@ -47,7 +47,7 @@ const (
 	TSPDeviceLocateUploadPath = "/tsp/device/locate/upload" // 下发定位上报间隔指令
 	TSPDeviceUdtimePath       = "/tsp/device/udtime"        // 下发定位时间段指令
 	TSPDeviceFamilyPath       = "/tsp/device/family"        // 下发设置亲情号码指令
-	TSPDeviceLocateModePath   = "/tsp/device/locatemode"    // 下发设置定位模式指令
+	TSPDeviceLocateModePath   = "/tsp/device/locate/mode"   // 下发设置定位模式指令
 	TSPDeviceHostPath         = "/tsp/device/host"          // 下发设置终端host指令
 	TSPDevicePowerOffPath     = "/tsp/device/poweroff"      // 下发关机指令
 	TSPDeviceRestartPath      = "/tsp/device/restart"       // 下发重启指令
