@@ -64,7 +64,7 @@ func TestMacBook_DrawMacBook(t *testing.T) {
 // 删除macbook
 func TestMacBook_DeleteMacBook(t *testing.T) {
 	params := &query.MacbookDeleteQuery{
-		PrimaryKey: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+		MakAddr: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
 		Mac: "xxxxxxxxxxxxxxxxxxxxxxxxx",
 	}
 

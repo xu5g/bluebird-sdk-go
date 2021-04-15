@@ -43,6 +43,6 @@ type MacbookDrawQuery struct {
 
 // 删除macbook
 type MacbookDeleteQuery struct {
-	PrimaryKey string // primary_key（必传）
-	Mac        string // mac名称（必传）
+	MakAddr string // 主键（必传）
+	Mac     string // mac名称（必传）
 }

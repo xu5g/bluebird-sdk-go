@@ -114,7 +114,7 @@ func (p *MacBook) DrawMacBook(query *query.MacbookDrawQuery) (*result.Result, er
 // 删除macbook
 func (p *MacBook) DeleteMacBook(query *query.MacbookDeleteQuery) (*result.Result, error) {
 	var data = gmap.New(true)
-	data.Set("macaddr", query.PrimaryKey)
+	data.Set("macaddr", query.MakAddr)
 	data.Set("mac", query.Mac)
 
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookDeletePath).SetData(data).HttpRequest()
