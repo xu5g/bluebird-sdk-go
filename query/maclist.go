@@ -20,6 +20,6 @@ type MacListsGetQuery struct {
 
 // 删除maclist
 type MacListDeleteQuery struct {
-	PrimaryKey string // primary_key的值（必传）
-	Id         int64  // ID（必传）
+	MacAddr string // primary_key的值（必传）
+	Id      int64  // ID（必传）
 }

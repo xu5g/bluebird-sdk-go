@@ -64,7 +64,7 @@ func (p *MacList) GetMacLists(query *query.MacListsGetQuery) (*result.MacListsGe
 func (p *MacList) DeleteMacList(query *query.MacListDeleteQuery) (*result.Result, error) {
 	var data = gmap.New(true)
 	data.Set("id", query.Id)
-	data.Set("macaddr", query.PrimaryKey)
+	data.Set("macaddr", query.MacAddr)
 
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacListDeletePath).SetData(data).HttpRequest()
 	if err != nil {
