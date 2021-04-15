@@ -100,3 +100,17 @@ func (p *Tsp) Fence() *Fence {
 	}
 }
 
+// maclist
+func (p *Tsp) MacList() *MacList {
+	return &MacList{
+		Cfg: p.Cfg,
+	}
+}
+
+// macbook
+func (p *Tsp) MacBook() *MacBook {
+	return &MacBook{
+		Cfg: p.Cfg,
+	}
+}
+

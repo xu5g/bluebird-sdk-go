@@ -59,4 +59,14 @@ const (
 	TSPFenceCreatePath = "/tsp/fence/create" // 添加围栏
 	TspFenceDeletePath = "/tsp/fence/delete" // 删除围栏
 
+	/** 定位纠偏管理 **/
+	TspMacListCreatePath = "/tsp/maclist/create" // 添加maclist
+	TspMacListsGetPath   = "/tsp/maclists/get"   // 获取maclist列表
+	TspMacListDeletePath = "/tsp/maclist/delete" // 删除maclist
+	TspMacBooksGetPath   = "/tsp/macbooks/get"   // 获取macbook列表
+	TspMacBookGetPath    = "/tsp/macbook/get"    // 获取macbook详情
+	TspMacBookUpdatePath = "/tsp/macbook/update" // 更新macbook
+	TspMacBookDrawPath   = "/tsp/macbook/draw"   // 重绘macbook
+	TspMacBookDeletePath = "/tsp/macbook/delete" // 删除macbook
+
 )

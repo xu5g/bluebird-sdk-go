@@ -9,7 +9,7 @@ import (
 // 设备详情
 func TestDevice_GetDevice(t *testing.T) {
 	query := &query.DeviceGetQuery{
-		ImeiSn: "xxxxxxxxxxxxxxx",
+		ImeiSn: "589465010004004",
 	}
 	res, err := NewClient(gateWay, appKey, token).Device().GetDevice(query)
 	fmt.Println(res, err)
@@ -28,7 +28,7 @@ func TestDevice_GetDevices(t *testing.T) {
 // 下发定位指令
 func TestDevice_SendLocate(t *testing.T) {
 	query := &query.DeviceLocateQuery{
-		ImeiSn: "864002050010256",
+		ImeiSn: "862622050230273",
 	}
 	res, err := NewClient(gateWay, appKey, token).Device().SendLocate(query)
 	fmt.Println(res, err)
@@ -81,7 +81,7 @@ func TestDevice_BindDevice(t *testing.T) {
 // 解绑设备
 func TestDevice_UnBindDevice(t *testing.T) {
 	query := &query.DeviceUnBindQuery{
-		ImeiSn: "68946459036",
+		ImeiSn: "xxxxxxxxxxxxxx",
 	}
 
 	res, err := NewClient(gateWay, appKey, token).Device().UnBindDevice(query)
@@ -140,7 +140,7 @@ func TestDevice_SendFamily(t *testing.T) {
 // 下发设置定位模式指令
 func TestDevice_SendLocateMode(t *testing.T) {
 	query := &query.DeviceLocateModeQuery{
-		ImeiSn: "xxxxxxxxxxxxxxx",
+		ImeiSn: "589465010004004",
 		LocateMode: "1",
 	}
 
