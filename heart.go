@@ -14,27 +14,37 @@ type Heart struct {
 }
 
 // 获取最新心率数据
-func (p *Heart) GetHeart(query *query.HeartGetQuery) (*result.HeartResult, error) {
+func (p *Heart) GetHeart(query *query.HeartGetQuery) *result.HeartResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.HeartResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.HeartResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.HeartResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.HeartResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取心率列表
-func (p *Heart) GetHearts(query *query.HeartsGetQuery) (*result.HeartsResult, error) {
+func (p *Heart) GetHearts(query *query.HeartsGetQuery) *result.HeartsResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -46,39 +56,59 @@ func (p *Heart) GetHearts(query *query.HeartsGetQuery) (*result.HeartsResult, er
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.HeartsResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.HeartsResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.HeartsResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.HeartsResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取心率测量间隔时间
-func (p *Heart) GetHeartUpload(query *query.HeartUploadGetQuery) (*result.HeartUploadResult, error) {
+func (p *Heart) GetHeartUpload(query *query.HeartUploadGetQuery) *result.HeartUploadResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.HeartUploadResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.HeartUploadResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.HeartUploadResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.HeartUploadResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 设置心率测量间隔时间
-func (p *Heart) UpdateHeartUpload(param *query.HeartUploadSetQuery) (*result.Result, error) {
+func (p *Heart) UpdateHeartUpload(param *query.HeartUploadSetQuery) *result.Result {
 
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn
@@ -86,15 +116,22 @@ func (p *Heart) UpdateHeartUpload(param *query.HeartUploadSetQuery) (*result.Res
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
+
 	}
 
 	jsonString := res.Export()
 
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }

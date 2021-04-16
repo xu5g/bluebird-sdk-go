@@ -11,8 +11,8 @@ func TestTemperature_GetTemperature(t *testing.T) {
 	query := &query.TemperatureGetQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
 	}
-	res, err := NewClient(gateWay, appKey, token).Temperature().GetTemperature(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Temperature().GetTemperature(query)
+	fmt.Println(res)
 }
 
 // 体温数据列表
@@ -22,8 +22,8 @@ func TestTemperature_GetTemperatures(t *testing.T) {
 		Limit: 10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Temperature().GetTemperatures(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Temperature().GetTemperatures(query)
+	fmt.Println(res)
 }
 
 // 获取体温上报时间间隔
@@ -32,8 +32,8 @@ func TestTemperature_GetTemperatureUpload(t *testing.T) {
 		ImeiSn: "xxxxxxxxxxxxxxx",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Temperature().GetTemperatureUpload(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Temperature().GetTemperatureUpload(query)
+	fmt.Println(res)
 }
 
 func TestTemperature_UpdateTemperatureUpload(t *testing.T) {
@@ -42,6 +42,6 @@ func TestTemperature_UpdateTemperatureUpload(t *testing.T) {
 		Second: 400,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Temperature().UpdateTemperatureUpload(param)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Temperature().UpdateTemperatureUpload(param)
+	fmt.Println(res)
 }

@@ -15,6 +15,6 @@ func TestSleep_GetSleeps(t *testing.T) {
 		Limit: 10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Sleep().GetSleeps(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Sleep().GetSleeps(query)
+	fmt.Println(res)
 }

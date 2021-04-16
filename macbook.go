@@ -15,7 +15,7 @@ type MacBook struct {
 }
 
 // 获取macbook列表
-func (p *MacBook) GetMacBooks(query *query.MacBooksGetQuery) (*result.MacBooksGetResult, error) {
+func (p *MacBook) GetMacBooks(query *query.MacBooksGetQuery) *result.MacBooksGetResult {
 	params := url.Values{}
 	params.Set("start_time", query.StartTime)
 	params.Set("end_time", query.EndTime)
@@ -30,39 +30,59 @@ func (p *MacBook) GetMacBooks(query *query.MacBooksGetQuery) (*result.MacBooksGe
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBooksGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.MacBooksGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.MacBooksGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.MacBooksGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.MacBooksGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取macbook详情
-func (p *MacBook) GetMacBook(query *query.MacBookGetQuery) (*result.MacBookGetResult, error) {
+func (p *MacBook) GetMacBook(query *query.MacBookGetQuery) *result.MacBookGetResult {
 	params := url.Values{}
 	params.Set("mac", query.Mac)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.MacBookGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.MacBookGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.MacBookGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.MacBookGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 更新macbook
-func (p *MacBook) UpdateMacBook(query *query.MacbookUpdateQuery) (*result.Result, error) {
+func (p *MacBook) UpdateMacBook(query *query.MacbookUpdateQuery) *result.Result {
 	var data = gmap.New(true)
 	data.Set("mac", query.Mac)
 	data.Set("name", query.Name)
@@ -79,54 +99,72 @@ func (p *MacBook) UpdateMacBook(query *query.MacbookUpdateQuery) (*result.Result
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookUpdatePath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 重绘macbook
-func (p *MacBook) DrawMacBook(query *query.MacbookDrawQuery) (*result.Result, error) {
+func (p *MacBook) DrawMacBook(query *query.MacbookDrawQuery) *result.Result {
 	var data = gmap.New(true)
 	data.Set("mac", query.Mac)
 	data.Set("name", query.Name)
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookDrawPath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 删除macbook
-func (p *MacBook) DeleteMacBook(query *query.MacbookDeleteQuery) (*result.Result, error) {
+func (p *MacBook) DeleteMacBook(query *query.MacbookDeleteQuery) *result.Result {
 	var data = gmap.New(true)
 	data.Set("macaddr", query.MakAddr)
 	data.Set("mac", query.Mac)
 
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookDeletePath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }

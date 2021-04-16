@@ -14,27 +14,37 @@ type Blood struct {
 }
 
 // 获取最新血压数据
-func (p *Blood) GetBlood(query *query.BloodGetQuery) (*result.BloodGetResult, error) {
+func (p *Blood) GetBlood(query *query.BloodGetQuery) *result.BloodGetResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.BloodGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.BloodGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.BloodGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.BloodGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取血压列表
-func (p *Blood) GetBloods(query *query.BloodsGetQuery) (*result.BloodsGetResult, error) {
+func (p *Blood) GetBloods(query *query.BloodsGetQuery) *result.BloodsGetResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -46,39 +56,59 @@ func (p *Blood) GetBloods(query *query.BloodsGetQuery) (*result.BloodsGetResult,
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.BloodsGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.BloodsGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.BloodsGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.BloodsGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取血压测量间隔时间
-func (p *Blood) GetBloodUpload(query *query.BloodUploadGetQuery) (*result.TemperatureUploadResult, error) {
+func (p *Blood) GetBloodUpload(query *query.BloodUploadGetQuery) *result.BloodUploadResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.BloodUploadResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.TemperatureUploadResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.BloodUploadResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.BloodUploadResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 设置血压测量间隔时间
-func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) (*result.Result, error) {
+func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) *result.Result {
 
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn
@@ -86,15 +116,21 @@ func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) (*result.Res
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 
 	jsonString := res.Export()
 
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }

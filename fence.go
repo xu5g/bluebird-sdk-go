@@ -15,7 +15,7 @@ type Fence struct {
 
 
 // 获取围栏列表
-func (p *Fence) GetFences(query *query.FencesGetQuery) (*result.FencesGetResult, error) {
+func (p *Fence) GetFences(query *query.FencesGetQuery) *result.FencesGetResult {
 	params := url.Values{}
 	params.Set("uuid", query.Uuid)
 	params.Set("page", strconv.Itoa(query.Page))
@@ -26,20 +26,30 @@ func (p *Fence) GetFences(query *query.FencesGetQuery) (*result.FencesGetResult,
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPFencesGetPath + "?" + params.Encode()).HttpRequest()
 
 	if err != nil {
-		return nil, err
+		return &result.FencesGetResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.FencesGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.FencesGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.FencesGetResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 创建围栏
-func (p *Fence) CreateFence(query *query.FenceCreateQuery) (*result.FenceCreateResult, error) {
+func (p *Fence) CreateFence(query *query.FenceCreateQuery) *result.FenceCreateResult {
 	var data = make(map[string]interface{})
 	data["truename"] = query.Truename
 	data["fence_type"] = query.FenceType
@@ -53,33 +63,49 @@ func (p *Fence) CreateFence(query *query.FenceCreateQuery) (*result.FenceCreateR
 	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPFenceCreatePath).SetData(data).HttpRequest()
 
 	if err != nil {
-		return nil, err
+		return &result.FenceCreateResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 	jsonString := res.Export()
 
-	var result = new(result.FenceCreateResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.FenceCreateResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.FenceCreateResult{
+			Result: result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 删除围栏
-func (p *Fence) DeleteFence(query *query.FenceDeleteQuery) (*result.Result, error) {
+func (p *Fence) DeleteFence(query *query.FenceDeleteQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["id"] = query.Id
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspFenceDeletePath).SetData(data).HttpRequest()
 
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 	jsonString := res.Export()
 
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }

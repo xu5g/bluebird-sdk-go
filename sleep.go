@@ -14,7 +14,7 @@ type Sleep struct {
 }
 
 // 获取睡眠列表
-func (p *Sleep) GetSleeps(query *query.SleepsGetQuery) (*result.SleepsResult, error) {
+func (p *Sleep) GetSleeps(query *query.SleepsGetQuery) *result.SleepsResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -26,14 +26,24 @@ func (p *Sleep) GetSleeps(query *query.SleepsGetQuery) (*result.SleepsResult, er
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPSleepsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.SleepsResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.SleepsResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.SleepsResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.SleepsResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }

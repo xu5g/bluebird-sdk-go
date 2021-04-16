@@ -14,7 +14,7 @@ type Track struct {
 }
 
 // 获取轨迹列表
-func (p *Track) GetTracks(query *query.TracksGetQuery) (*result.TracksGetResult, error) {
+func (p *Track) GetTracks(query *query.TracksGetQuery) *result.TracksGetResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -26,14 +26,24 @@ func (p *Track) GetTracks(query *query.TracksGetQuery) (*result.TracksGetResult,
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTracksGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.TracksGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.TracksGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.TracksGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.TracksGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }

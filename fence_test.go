@@ -13,8 +13,8 @@ func TestFence_GetFences(t *testing.T) {
 		Limit: 10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Fence().GetFences(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Fence().GetFences(query)
+	fmt.Println(res)
 }
 
 // 创建围栏
@@ -31,8 +31,8 @@ func TestFence_CreateFence(t *testing.T) {
 		ValidWeek: "xxx",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Fence().CreateFence(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Fence().CreateFence(query)
+	fmt.Println(res)
 }
 
 // 删除围栏
@@ -41,6 +41,6 @@ func TestFence_DeleteFence(t *testing.T) {
 		Id: 1,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Fence().DeleteFence(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Fence().DeleteFence(query)
+	fmt.Println(res)
 }

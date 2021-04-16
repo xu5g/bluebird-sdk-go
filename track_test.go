@@ -16,6 +16,6 @@ func TestTrack_GetTracks(t *testing.T) {
 		ImeiSn: "863659041488510",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Track().GetTracks(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Track().GetTracks(query)
+	fmt.Println(res)
 }

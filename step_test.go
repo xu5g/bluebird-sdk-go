@@ -15,6 +15,6 @@ func TestStep_GetSteps(t *testing.T) {
 		Limit: 10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Step().GetSteps(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Step().GetSteps(query)
+	fmt.Println(res)
 }

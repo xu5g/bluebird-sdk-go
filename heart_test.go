@@ -11,8 +11,8 @@ func TestHeart_GetHeart(t *testing.T) {
 	query := &query.HeartGetQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
 	}
-	res, err := NewClient(gateWay, appKey, token).Heart().GetHeart(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Heart().GetHeart(query)
+	fmt.Println(res)
 }
 
 // 心率数据列表
@@ -24,8 +24,8 @@ func TestHeart_GetHearts(t *testing.T) {
 		Limit:     10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Heart().GetHearts(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Heart().GetHearts(query)
+	fmt.Println(res)
 }
 
 // 获取心率上报时间间隔
@@ -34,8 +34,8 @@ func TestHeart_GetHeartUpload(t *testing.T) {
 		ImeiSn: "xxxxxxxxxxxxxxx",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Heart().GetHeartUpload(query)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Heart().GetHeartUpload(query)
+	fmt.Println(res)
 }
 
 func TestHeart_UpdateHeartUpload(t *testing.T) {
@@ -44,6 +44,6 @@ func TestHeart_UpdateHeartUpload(t *testing.T) {
 		Second: 400,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).Heart().UpdateHeartUpload(param)
-	fmt.Println(res, err)
+	res := NewClient(gateWay, appKey, token).Heart().UpdateHeartUpload(param)
+	fmt.Println(res)
 }

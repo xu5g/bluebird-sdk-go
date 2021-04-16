@@ -16,8 +16,8 @@ func TestMacBook_GetMacBooks(t *testing.T) {
 		Limit:     10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacBook().GetMacBooks(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacBook().GetMacBooks(params)
+	fmt.Println(res)
 }
 
 // 获取macbook详情
@@ -26,8 +26,8 @@ func TestMacBook_GetMacBook(t *testing.T) {
 		Mac: "xxxxxxxxxxxxxxxxxxxxxxxxx",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacBook().GetMacBook(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacBook().GetMacBook(params)
+	fmt.Println(res)
 	fmt.Println(gconv.Map(res.Data))
 }
 
@@ -46,8 +46,8 @@ func TestMacBook_UpdateMacBook(t *testing.T) {
 		Remark:     "备注信息",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacBook().UpdateMacBook(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacBook().UpdateMacBook(params)
+	fmt.Println(res)
 }
 
 // 重绘macbook
@@ -57,8 +57,8 @@ func TestMacBook_DrawMacBook(t *testing.T) {
 		Mac:  "xxxxxxxxxxxxxxxxxxxxxxxxx",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacBook().DrawMacBook(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacBook().DrawMacBook(params)
+	fmt.Println(res)
 }
 
 // 删除macbook
@@ -68,6 +68,6 @@ func TestMacBook_DeleteMacBook(t *testing.T) {
 		Mac: "xxxxxxxxxxxxxxxxxxxxxxxxx",
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacBook().DeleteMacBook(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacBook().DeleteMacBook(params)
+	fmt.Println(res)
 }

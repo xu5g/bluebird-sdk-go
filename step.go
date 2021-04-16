@@ -14,7 +14,7 @@ type Step struct {
 }
 
 // 获取计步列表
-func (p *Step) GetSteps(query *query.StepsGetQuery) (*result.StepsResult, error) {
+func (p *Step) GetSteps(query *query.StepsGetQuery) *result.StepsResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -26,14 +26,24 @@ func (p *Step) GetSteps(query *query.StepsGetQuery) (*result.StepsResult, error)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPStepsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.StepsResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.StepsResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.StepsResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.StepsResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }

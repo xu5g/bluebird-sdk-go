@@ -14,27 +14,37 @@ type Temperature struct {
 }
 
 // 获取最新体温数据
-func (p *Temperature) GetTemperature(query *query.TemperatureGetQuery) (*result.TemperatureResult, error) {
+func (p *Temperature) GetTemperature(query *query.TemperatureGetQuery) *result.TemperatureResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.TemperatureResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.TemperatureResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.TemperatureResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.TemperatureResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取体温列表
-func (p *Temperature) GetTemperatures(query *query.TemperaturesGetQuery) (*result.TemperaturesResult, error) {
+func (p *Temperature) GetTemperatures(query *query.TemperaturesGetQuery) *result.TemperaturesResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -46,39 +56,59 @@ func (p *Temperature) GetTemperatures(query *query.TemperaturesGetQuery) (*resul
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperaturesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.TemperaturesResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.TemperaturesResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.TemperaturesResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.TemperaturesResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取体温测量间隔时间
-func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadGetQuery) (*result.TemperatureUploadResult, error) {
+func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadGetQuery) *result.TemperatureUploadResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.TemperatureUploadResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.TemperatureUploadResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.TemperatureUploadResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.TemperatureUploadResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 设置体温测量间隔时间
-func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUploadSetQuery) (*result.Result, error) {
+func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUploadSetQuery) *result.Result {
 
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn
@@ -86,15 +116,21 @@ func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUploadSetQ
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 
 	jsonString := res.Export()
 
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }
