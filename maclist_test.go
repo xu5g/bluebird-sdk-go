@@ -20,7 +20,7 @@ func TestMacList_MacListCreate(t *testing.T) {
 	fmt.Println(res)
 }
 
-// 获取maclist列表
+// 获取maclist列表 测试
 func TestMacList_GetMacLists(t *testing.T) {
 	params := &query.MacListsGetQuery{
 		Mac:       "xxxxxxxxxxxxxxxx",
