@@ -22,6 +22,7 @@ type DevicesGetQuery struct {
 	AttenceSn string // 设备考勤号 长度不超过10
 	IsOnline  string // 是否在线 1在线
 	ModelId   int64  // 设备型号ID
+	AppKey	  int64  // 应用ID
 }
 
 // 下发定位指令到终端

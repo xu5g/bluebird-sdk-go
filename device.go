@@ -81,6 +81,7 @@ func (p *Device) GetDevices(query *query.DevicesGetQuery) *result.DevicesResult 
 	params.Set("page", strconv.Itoa(int(query.Page)))
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
 	params.Set("model_id", strconv.FormatInt(query.ModelId, 10))
+	params.Set("appkey", strconv.FormatInt(query.AppKey, 10))
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDevicesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
