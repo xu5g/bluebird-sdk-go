@@ -15,7 +15,7 @@ type MacList struct {
 }
 
 // 添加maclist
-func (p *MacList) MacListCreate(query *query.MacListCreateQuery) (*result.Result, error) {
+func (p *MacList) MacListCreate(query *query.MacListCreateQuery) *result.Result {
 	var data = gmap.New(true)
 	data.Set("name", query.Name)
 	data.Set("lng", query.Lng)
@@ -25,20 +25,25 @@ func (p *MacList) MacListCreate(query *query.MacListCreateQuery) (*result.Result
 
 	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacListCreatePath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-
 	jsonString := res.Export()
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }
 
 // 获取mac列表
-func (p *MacList) GetMacLists(query *query.MacListsGetQuery) (*result.MacListsGetResult, error) {
+func (p *MacList) GetMacLists(query *query.MacListsGetQuery) *result.MacListsGetResult {
 	params := url.Values{}
 	params.Set("start_time", query.StartTime)
 	params.Set("end_time", query.EndTime)
@@ -48,34 +53,51 @@ func (p *MacList) GetMacLists(query *query.MacListsGetQuery) (*result.MacListsGe
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacListsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.MacListsGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.MacListsGetResult)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.MacListsGetResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.MacListsGetResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
 	}
-	return result, nil
+
+	return resData
 }
 
 // 删除maclist
-func (p *MacList) DeleteMacList(query *query.MacListDeleteQuery) (*result.Result, error) {
+func (p *MacList) DeleteMacList(query *query.MacListDeleteQuery) *result.Result {
 	var data = gmap.New(true)
 	data.Set("id", query.Id)
 	data.Set("macaddr", query.MacAddr)
 
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacListDeletePath).SetData(data).HttpRequest()
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
 
 	jsonString := res.Export()
-	var result = new(result.Result)
-	err = json.Unmarshal([]byte(jsonString), result)
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
-		return nil, err
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
 	}
-	return result, nil
+	return resData
 }

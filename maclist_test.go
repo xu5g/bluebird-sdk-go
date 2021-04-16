@@ -16,8 +16,8 @@ func TestMacList_MacListCreate(t *testing.T) {
 		Signal: 11,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacList().MacListCreate(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacList().MacListCreate(params)
+	fmt.Println(res)
 }
 
 // 获取maclist列表
@@ -30,8 +30,8 @@ func TestMacList_GetMacLists(t *testing.T) {
 		Limit: 10,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacList().GetMacLists(params)
-	fmt.Println(err, res)
+	res := NewClient(gateWay, appKey, token).MacList().GetMacLists(params)
+	fmt.Println( res)
 }
 
 // 删除maclist
@@ -41,6 +41,6 @@ func TestMacList_(t *testing.T) {
 		Id: 0,
 	}
 
-	res, err := NewClient(gateWay, appKey, token).MacList().DeleteMacList(params)
-	fmt.Println(err, res)
+	res:= NewClient(gateWay, appKey, token).MacList().DeleteMacList(params)
+	fmt.Println( res)
 }
