@@ -23,8 +23,8 @@ func (p *Device) GetDevice(query *query.DeviceGetQuery) *result.DeviceGetResult 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.DeviceGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -35,8 +35,8 @@ func (p *Device) GetDevice(query *query.DeviceGetQuery) *result.DeviceGetResult 
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.DeviceGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -49,11 +49,16 @@ func (p *Device) DeviceUpdate(query *query.DeviceUpdateQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
 	data["truename"] = query.Truename
+	data["mobile"] = query.Mobile
+	data["appkey"] = query.AppKey
+	data["model_id"] = query.ModelId
+	data["ic_card_sn"] = query.IccardSn
+	data["attence_sn"] = query.AttenceSn
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceUpdatePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -63,7 +68,39 @@ func (p *Device) DeviceUpdate(query *query.DeviceUpdateQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
+
+// 创建设备
+func (p *Device) DeviceCreate(query *query.DeviceCreateQuery) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["model_id"] = query.ModelId
+	data["attence_sn"] = query.AttenceSn
+	data["appkey"] = query.AppKey
+	data["iccard_sn"] = query.IccardSn
+	data["locate_upload"] = query.LocateUpload
+	data["partner_id"] = query.PartnerId
+	data["engine"] = query.Engine
+
+	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceCreatePath).SetData(data).HttpRequest()
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+
+	jsonString := res.Export()
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -86,8 +123,8 @@ func (p *Device) GetDevices(query *query.DevicesGetQuery) *result.DevicesResult 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDevicesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.DevicesResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -98,8 +135,8 @@ func (p *Device) GetDevices(query *query.DevicesGetQuery) *result.DevicesResult 
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.DevicesResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -116,7 +153,7 @@ func (p *Device) SendLocate(query *query.DeviceLocateQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -127,7 +164,7 @@ func (p *Device) SendLocate(query *query.DeviceLocateQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -143,7 +180,7 @@ func (p *Device) GetDeviceIsOnline(query *query.DeviceIsOnlineQuery) *result.Dev
 	if err != nil {
 		return &result.DeviceIsOnlineResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -155,7 +192,7 @@ func (p *Device) GetDeviceIsOnline(query *query.DeviceIsOnlineQuery) *result.Dev
 	if err != nil {
 		return &result.DeviceIsOnlineResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -173,7 +210,7 @@ func (p *Device) SendMessage(query *query.DeviceMessageQuery) *result.Result {
 	fmt.Println(res, err)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -183,7 +220,7 @@ func (p *Device) SendMessage(query *query.DeviceMessageQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -199,7 +236,7 @@ func (p *Device) GetDeviceModules(query *query.DeviceModulesQuery) *result.Devic
 	if err != nil {
 		return &result.DeviceModulesResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -211,7 +248,7 @@ func (p *Device) GetDeviceModules(query *query.DeviceModulesQuery) *result.Devic
 	if err != nil {
 		return &result.DeviceModulesResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -230,7 +267,7 @@ func (p *Device) BindDevice(query *query.DeviceBindQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -240,7 +277,7 @@ func (p *Device) BindDevice(query *query.DeviceBindQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -255,7 +292,7 @@ func (p *Device) UnBindDevice(query *query.DeviceUnBindQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -265,7 +302,7 @@ func (p *Device) UnBindDevice(query *query.DeviceUnBindQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -281,7 +318,7 @@ func (p *Device) SendFindDevice(query *query.DeviceFindQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -291,7 +328,7 @@ func (p *Device) SendFindDevice(query *query.DeviceFindQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -307,7 +344,7 @@ func (p *Device) SendLocateUpload(query *query.DeviceLocateUploadQuery) *result.
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -317,7 +354,7 @@ func (p *Device) SendLocateUpload(query *query.DeviceLocateUploadQuery) *result.
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -334,7 +371,7 @@ func (p *Device) SendUdtime(query *query.DeviceUdtimeQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -344,7 +381,7 @@ func (p *Device) SendUdtime(query *query.DeviceUdtimeQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -360,7 +397,7 @@ func (p *Device) SendFamily(query *query.DeviceFamilyQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -370,7 +407,7 @@ func (p *Device) SendFamily(query *query.DeviceFamilyQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -386,7 +423,7 @@ func (p *Device) SendLocateMode(query *query.DeviceLocateModeQuery) *result.Resu
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -396,7 +433,7 @@ func (p *Device) SendLocateMode(query *query.DeviceLocateModeQuery) *result.Resu
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -413,7 +450,7 @@ func (p *Device) SendHost(query *query.DeviceHostQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -423,7 +460,7 @@ func (p *Device) SendHost(query *query.DeviceHostQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -439,7 +476,7 @@ func (p *Device) SendPowerOff(query *query.DevicePowerOffQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -449,7 +486,7 @@ func (p *Device) SendPowerOff(query *query.DevicePowerOffQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -465,7 +502,7 @@ func (p *Device) SendRestart(query *query.DeviceRestartQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -475,7 +512,7 @@ func (p *Device) SendRestart(query *query.DeviceRestartQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -492,7 +529,7 @@ func (p *Device) SendMonitor(query *query.DeviceMonitorQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -502,7 +539,7 @@ func (p *Device) SendMonitor(query *query.DeviceMonitorQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -519,7 +556,7 @@ func (p *Device) SendDnd(query *query.DeviceDndQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -529,7 +566,7 @@ func (p *Device) SendDnd(query *query.DeviceDndQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

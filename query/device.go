@@ -6,10 +6,27 @@ type DeviceGetQuery struct {
 	AttenceSn string // 设备考勤号	长度不超过10
 }
 
+// 创建设备
+type DeviceCreateQuery struct {
+	ImeiSn       string // 设备Imei号 长度不超过20（必传）
+	ModelId      int64  // 设备型号ID（必传）
+	AppKey       int64  // 应用ID
+	AttenceSn    string // 2.4G考勤号
+	IccardSn     string // 13.56考勤号
+	PartnerId    int64
+	Engine       string
+	LocateUpload int64
+}
+
 // 更新设备信息
 type DeviceUpdateQuery struct {
-	ImeiSn   string // 设备Imei号 长度不超过20（必传）
-	Truename string // 设备名称 长度不超过50个字符（必传）
+	ImeiSn    string // 设备Imei号 长度不超过20（必传）
+	Truename  string // 设备名称 长度不超过50个字符
+	ModelId   int64  // 设备型号ID
+	Mobile    string // 手机号 长度11
+	AppKey    int64  // 应用ID
+	AttenceSn string // 2.4G考勤号
+	IccardSn  string // 13.56考勤号
 }
 
 // 获取设备列表
@@ -22,7 +39,7 @@ type DevicesGetQuery struct {
 	AttenceSn string // 设备考勤号 长度不超过10
 	IsOnline  string // 是否在线 1在线
 	ModelId   int64  // 设备型号ID
-	AppKey	  int64  // 应用ID
+	AppKey    int64  // 应用ID
 }
 
 // 下发定位指令到终端
@@ -90,7 +107,7 @@ type Family struct {
 // 下发设置定位模式指令
 type DeviceLocateModeQuery struct {
 	ImeiSn     string // 设备Imei号 长度不超过20（必传）
-	LocateMode string    // 定位模式 1：省电模式 2：智能模式 3：性能模式 （必传）
+	LocateMode string // 定位模式 1：省电模式 2：智能模式 3：性能模式 （必传）
 }
 
 // 下发设置终端host指令
