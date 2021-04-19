@@ -54,6 +54,7 @@ const (
 	TSPDeviceRestartPath      = "/tsp/device/restart"       // 下发重启指令
 	TSPDeviceMonitorPath      = "/tsp/device/monitor"       // 下发聆听指令
 	TSPDeviceDndPath          = "/tsp/device/dnd"           // 下发设置免打扰指令
+	TSPDeviceStatusPath       = "/tsp/device/status"        // 更改设备状态
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表

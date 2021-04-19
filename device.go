@@ -572,3 +572,30 @@ func (p *Device) SendDnd(query *query.DeviceDndQuery) *result.Result {
 	}
 	return resData
 }
+
+
+// 变更设备状态
+func (p *Device) DeviceUpdateStatus(query *query.DeviceStatusQuery) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["status"] = query.Status
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceStatusPath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

@@ -138,3 +138,9 @@ type DeviceDndQuery struct {
 	ImeiSn string // 设备Imei号 长度不超过20（必传）
 	Dnd    string // 免打扰时间段 格式：8:00-11:30|123456;14:00-17:30|12345 12345表示周一到周五生效，1234567表示每天都生效（必传）
 }
+
+// 变更设备状态
+type DeviceStatusQuery struct {
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+	Status string // 状态：1：正常 2：弃用 3：停机（必传）
+}
