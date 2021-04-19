@@ -71,4 +71,9 @@ const (
 	TspMacBookDrawPath   = "/tsp/macbook/draw"   // 重绘macbook
 	TspMacBookDeletePath = "/tsp/macbook/delete" // 删除macbook
 
+	/** 考勤管理 **/
+	TSPAttencesGetPath = "/tsp/attences/get" // 获取考勤数据列表
+
+	/** 报文管理 **/
+	TSPMessagesGetPath = "/tsp/messages/get" // 获取报文数据列表
 )

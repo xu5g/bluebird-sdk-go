@@ -114,3 +114,17 @@ func (p *Tsp) MacBook() *MacBook {
 	}
 }
 
+// 考勤
+func (p *Tsp) Attence() *Attence {
+	return &Attence{
+		Cfg: p.Cfg,
+	}
+}
+
+// 报文
+func (p *Tsp) Message() *Message {
+	return &Message{
+		Cfg: p.Cfg,
+	}
+}
+
