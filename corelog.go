@@ -14,7 +14,7 @@ type CoreLog struct {
 }
 
 // 获取api日志列表
-func (p *Message) GetCoreLogs(query *query.CoreLogsGetQuery) *result.CoreLogsGetResult {
+func (p *CoreLog) GetCoreLogs(query *query.CoreLogsGetQuery) *result.CoreLogsGetResult {
 	params := url.Values{}
 	params.Set("start_time", query.StartTime)
 	params.Set("end_time", query.EndTime)

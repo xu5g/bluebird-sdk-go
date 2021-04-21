@@ -14,7 +14,7 @@ type ApiLog struct {
 }
 
 // 获取api日志列表
-func (p *Message) GetApiLogs(query *query.ApiLogsGetQuery) *result.ApiLogsGetResult {
+func (p *ApiLog) GetApiLogs(query *query.ApiLogsGetQuery) *result.ApiLogsGetResult {
 	params := url.Values{}
 	params.Set("start_time", query.StartTime)
 	params.Set("end_time", query.EndTime)

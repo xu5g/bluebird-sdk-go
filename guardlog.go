@@ -14,7 +14,7 @@ type GuardLog struct {
 }
 
 // 获取api日志列表
-func (p *Message) GetGuardLogs(query *query.GuardLogsGetQuery) *result.GuardLogsGetResult {
+func (p *GuardLog) GetGuardLogs(query *query.GuardLogsGetQuery) *result.GuardLogsGetResult {
 	params := url.Values{}
 	params.Set("start_time", query.StartTime)
 	params.Set("end_time", query.EndTime)
