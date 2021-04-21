@@ -128,3 +128,22 @@ func (p *Tsp) Message() *Message {
 	}
 }
 
+// api日志
+func (p *Tsp) ApiLog() *ApiLog {
+	return &ApiLog{
+		Cfg: p.Cfg,
+	}
+}
+// core日志
+func (p *Tsp) CoreLog() *CoreLog {
+	return &CoreLog{
+		Cfg: p.Cfg,
+	}
+}
+// guard日志
+func (p *Tsp) GuardLog() *GuardLog {
+	return &GuardLog{
+		Cfg: p.Cfg,
+	}
+}
+

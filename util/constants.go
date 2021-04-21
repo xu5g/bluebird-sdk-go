@@ -76,4 +76,10 @@ const (
 
 	/** 报文管理 **/
 	TSPMessagesGetPath = "/tsp/messages/get" // 获取报文数据列表
+
+	/** 日志管理 **/
+	TSPApiLogsGetPath   = "/tsp/apilogs/get"   // 获取api日志列表
+	TSPCoreLogsGetPath  = "/tsp/corelogs/get"  // 获取core日志列表
+	TSPGuardLogsGetPath = "/tsp/guardlogs/get" // 获取guard日志列表
+
 )
