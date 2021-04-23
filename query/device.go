@@ -144,3 +144,9 @@ type DeviceStatusQuery struct {
 	ImeiSn string // 设备Imei号 长度不超过20（必传）
 	Status string // 状态：1：正常 2：弃用 3：停机（必传）
 }
+
+// 删除设备
+type DeviceDeleteQuery struct {
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+}
+
