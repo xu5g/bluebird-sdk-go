@@ -40,6 +40,7 @@ type DevicesGetQuery struct {
 	IsOnline  string // 是否在线 1在线
 	ModelId   int64  // 设备型号ID
 	AppKey    int64  // 应用ID
+	PartnerId int64  // 合作方ID
 }
 
 // 下发定位指令到终端

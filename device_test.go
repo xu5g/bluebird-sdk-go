@@ -213,3 +213,13 @@ func TestDevice_DeviceUpdate(t *testing.T) {
 	fmt.Println(res)
 }
 
+// 删除设备
+func TestDevice_DeviceDelete(t *testing.T) {
+	query := &query.DeviceDeleteQuery{
+		ImeiSn: "xxxxxxxxxxxxxxx",
+	}
+
+	res := NewClient(gateWay, appKey, token).Device().DeviceDelete(query)
+	fmt.Println(res)
+}
+
