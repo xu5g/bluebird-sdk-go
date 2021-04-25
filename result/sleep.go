@@ -6,7 +6,7 @@ type SleepEntity struct {
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
 	StartTime  string `json:"start_time"`
-	EndTime    string `json:"en_time"`
+	EndTime    string `json:"end_time"`
 	CreateTime string `json:"created"`
 	SleepType  int    `json:"sleep_type"`
 	SleepTime  int    `json:"sleep_time"`
