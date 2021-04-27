@@ -9,5 +9,5 @@ type TracksGetQuery struct {
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 	ImeiSn    string // 设备Imei号 长度不超过20
 	Uuid      string // 设备Uuid	  长度不超过40
-	IsIgnore  int    // 是否查询出被忽略的数据 值：0-不忽略 1：忽略
+	IsIgnore  string // 是否查询出被忽略的数据 值：0-不忽略 1：忽略
 }

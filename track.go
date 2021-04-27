@@ -23,6 +23,7 @@ func (p *Track) GetTracks(query *query.TracksGetQuery) *result.TracksGetResult {
 	params.Set("page", strconv.Itoa(int(query.Page)))
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
 	params.Set("sort", query.Sort)
+	params.Set("is_ignore", query.IsIgnore)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTracksGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
