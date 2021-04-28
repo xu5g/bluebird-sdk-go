@@ -1,33 +1,33 @@
 package result
 
-
 type TemperatureEntity struct {
-	PrimaryKey  string `json:"primary_key"`
+	AppKey      int64  `json:"appkey"`
+	CreateTime  string `json:"created"`
 	Id          int64  `json:"id"`
 	ImeiSn      string `json:"imei_sn"`
-	Uuid        string `json:"uuid"`
-	AppKey      int64  `json:"appkey"`
+	PrimaryKey  string `json:"primary_key"`
 	Temperature string `json:"temperature"`
-	CreateTime  string `json:"create_time"`
+	UserId      string `json:"user_id"`
+	Uuid        string `json:"uuid"`
 }
 
 // 体温最近测量数据
 type TemperatureResult struct {
 	Result
-	Data TemperatureEntity  `json:"data,omitempty"` // 返回结果
+	Data TemperatureEntity `json:"data,omitempty"` // 返回结果
 }
 
 // 体温测量数据列表
 type TemperaturesResult struct {
 	Result
-	Data struct{
-		Total int	`json:"total"`
-		Result []TemperatureEntity `json:"result"`
-	}  `json:"data,omitempty"` // 返回结果
+	Data struct {
+		Total  int                 `json:"total"`
+		Result []map[string]interface{} `json:"result"`
+	} `json:"data,omitempty"` // 返回结果
 }
 
 // 体温测量间隔时间
 type TemperatureUploadResult struct {
 	Result
-	Data float64  `json:"data,omitempty"` // 返回结果
+	Data float64 `json:"data,omitempty"` // 返回结果
 }
