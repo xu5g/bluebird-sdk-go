@@ -2,7 +2,7 @@ package result
 
 type TemperatureEntity struct {
 	AppKey      int64  `json:"appkey"`
-	Created     string `json:"created"`
+	CreateTime     string `json:"created"`
 	Id          int64  `json:"id"`
 	ImeiSn      string `json:"imei_sn"`
 	PrimaryKey  string `json:"primary_key"`
