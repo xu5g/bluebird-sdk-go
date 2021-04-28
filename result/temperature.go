@@ -8,7 +8,7 @@ type TemperatureEntity struct {
 	Uuid        string `json:"uuid"`
 	AppKey      int64  `json:"appkey"`
 	Temperature string `json:"temperature"`
-	CreateTime  string `json:"created"`
+	CreateTime  string `json:"create_time"`
 }
 
 // 体温最近测量数据
