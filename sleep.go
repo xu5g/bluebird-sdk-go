@@ -47,3 +47,33 @@ func (p *Sleep) GetSleeps(query *query.SleepsGetQuery) *result.SleepsResult {
 	}
 	return resData
 }
+
+// 获取最新睡眠数据
+func (p *Sleep) GetSleep(query *query.SleepGetQuery) *result.SleepResult {
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+	params.Set("uuid", query.Uuid)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPSleepGetPath + "?" + params.Encode()).HttpRequest()
+	if err != nil {
+		return &result.SleepResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
+	}
+
+	jsonString := res.Export()
+	var resData = new(result.SleepResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.SleepResult{
+			Result:result.Result{
+				Status: 1,
+				Message: err.Error(),
+			},
+		}
+	}
+	return resData
+}

@@ -20,3 +20,9 @@ type SleepsResult struct {
 		Result []SleepEntity `json:"result"`
 	} `json:"data,omitempty"`
 }
+
+//
+type SleepResult struct {
+	Result
+	Data SleepEntity `json:"data,omitempty"`
+}

@@ -18,3 +18,13 @@ func TestSleep_GetSleeps(t *testing.T) {
 	res := NewClient(gateWay, appKey, token).Sleep().GetSleeps(query)
 	fmt.Println(res)
 }
+
+func TestSleep_GetSleep(t *testing.T) {
+	query := &query.SleepGetQuery{
+		ImeiSn: "xxxxxxxxxxxxxxx",
+
+	}
+
+	res := NewClient(gateWay, appKey, token).Sleep().GetSleep(query)
+	fmt.Println(res)
+}

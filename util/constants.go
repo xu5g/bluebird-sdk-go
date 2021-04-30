@@ -29,6 +29,7 @@ const (
 
 	/** 睡眠管理 **/
 	TSPSleepsGetPath = "/tsp/sleeps/get" // 获取睡眠数据列表
+	TSPSleepGetPath  = "/tsp/sleep/get"  // 获取最近一次测量的睡眠数据
 
 	/** 轨迹管理 **/
 	TSPTracksGetPath = "/tsp/tracks/get" // 获取轨迹
