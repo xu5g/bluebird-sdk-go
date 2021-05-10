@@ -57,6 +57,7 @@ const (
 	TSPDeviceDndPath          = "/tsp/device/dnd"           // 下发设置免打扰指令
 	TSPDeviceStatusPath       = "/tsp/device/status"        // 更改设备状态
 	TSPDeviceDeletePath       = "/tsp/device/delete"        // 删除设备
+	TSPDeviceSleepTimePath    = "/tsp/device/sleeptime"     // 下发睡眠时间段指令
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表

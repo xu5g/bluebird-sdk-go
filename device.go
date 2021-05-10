@@ -626,3 +626,31 @@ func (p *Device) DeviceDelete(query *query.DeviceDeleteQuery) *result.Result {
 	}
 	return resData
 }
+
+
+//下发睡眠时间段指令
+func (p *Device) DeviceSleepTime(query *query.SendSleepTimeRequest) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["start"] = query.Start
+	data["end"] = query.End
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceSleepTimePath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

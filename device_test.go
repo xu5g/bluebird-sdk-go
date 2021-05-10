@@ -223,3 +223,15 @@ func TestDevice_DeviceDelete(t *testing.T) {
 	fmt.Println(res)
 }
 
+// 下发睡眠时间段指令
+func TestDevice_DeviceSleepTime(t *testing.T) {
+	query := &query.SendSleepTimeQuery{
+		ImeiSn: "xxxxxxxxxxxxxxx",
+		Start: "01:00",
+		End: "12:00",
+	}
+
+	res := NewClient(gateWay, appKey, token).Device().DeviceSleepTime(query)
+	fmt.Println(res)
+}
+

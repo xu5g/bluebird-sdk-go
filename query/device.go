@@ -151,3 +151,9 @@ type DeviceDeleteQuery struct {
 	ImeiSn string // 设备Imei号 长度不超过20（必传）
 }
 
+// 设置睡眠时间段
+type SendSleepTimeQuery struct {
+	ImeiSn string // 设备Imei号 长度不超过20（必传）
+	Start  string // 开始时间，格式：22:00（必传）
+	End    string // 结束时间，格式：07:00（必传）
+}

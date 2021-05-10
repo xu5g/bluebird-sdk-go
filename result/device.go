@@ -30,9 +30,16 @@ type DeviceEntity struct {
 	Lng               float64        `json:"lng,omitempty"`                // 经度
 	Lat               float64        `json:"lat,omitempty"`                // 维度
 	Udtime            udtime         `json:"udtime,omitempty"`             // 定位时间段
+	SleepTime		  sleepTime		 `json:"sleeptime,omitempty"`		   // 睡眠时间
 	Status            int64          `json:"status,omitempty"`             // 设备状态 1：正常 2：弃用 3：停机
 	GsmRate           int64          `json:"gsm_rate,omitempty"`           // 信号值
 
+}
+
+//设置睡眠时间段结构体
+type sleepTime struct {
+	Start string `json:"start"`
+	End   string `json:"end"`
 }
 
 type familyMember struct {
