@@ -629,7 +629,7 @@ func (p *Device) DeviceDelete(query *query.DeviceDeleteQuery) *result.Result {
 
 
 //下发睡眠时间段指令
-func (p *Device) DeviceSleepTime(query *query.SendSleepTimeRequest) *result.Result {
+func (p *Device) DeviceSleepTime(query *query.SendSleepTimeQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
 	data["start"] = query.Start
