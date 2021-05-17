@@ -20,7 +20,7 @@ type MacbookEntity struct {
 	Status     int64   `json:"status"`
 	TotalCount int64   `json:"total_count"`
 	Address    string  `json:"address"`
-	CreateTime string  `json:"create_time"`
+	CreateTime string  `json:"created"`
 	Remark     string  `json:"remark"`
 }
 

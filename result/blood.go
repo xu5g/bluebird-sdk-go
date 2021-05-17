@@ -9,7 +9,7 @@ type BloodEntity struct {
 	BloodRate  string `json:"blood_rate"`
 	MaxRate    int64  `json:"max_rate"`
 	MinRate    int64  `json:"min_rate"`
-	CreateTime string `json:"create_time"`
+	CreateTime string `json:"created"`
 }
 
 

@@ -6,7 +6,7 @@ type StepEntity struct {
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
 	StepRate   int    `json:"step_rate"`
-	CreateTime string `json:"create_time"`
+	CreateTime string `json:"created"`
 }
 
 // 计步数据列表

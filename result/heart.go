@@ -7,7 +7,7 @@ type HeartEntity struct {
 	Uuid       string `json:"uuid"`
 	AppKey     int64  `json:"appkey"`
 	HeartRate  int64  `json:"heart_rate"`
-	CreateTime string `json:"create_time"`
+	CreateTime string `json:"created"`
 }
 
 // 体温最近测量数据
