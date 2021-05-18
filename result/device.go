@@ -12,6 +12,7 @@ type DeviceEntity struct {
 	Engine            string         `json:"engine,omitempty"`             // 协议引擎名称
 	IccardSn          string         `json:"iccard_sn,omitempty"`          // 13.56考勤号
 	IsOnline          int64          `json:"is_online,omitempty"`          // 是否在线
+	PartnerId         int64          `json:"partner_id"`                   // 企业ID
 	AppKey            int64          `json:"appkey,omitempty"`             // =product_id
 	LocateUpload      int64          `json:"locate_upload,omitempty"`      // 定位上报间隔
 	Mobile            string         `json:"mobile,omitempty"`             // 设备内的手机号
@@ -30,7 +31,7 @@ type DeviceEntity struct {
 	Lng               float64        `json:"lng,omitempty"`                // 经度
 	Lat               float64        `json:"lat,omitempty"`                // 维度
 	Udtime            udtime         `json:"udtime,omitempty"`             // 定位时间段
-	SleepTime		  sleepTime		 `json:"sleeptime,omitempty"`		   // 睡眠时间
+	SleepTime         sleepTime      `json:"sleeptime,omitempty"`          // 睡眠时间
 	Status            int64          `json:"status,omitempty"`             // 设备状态 1：正常 2：弃用 3：停机
 	GsmRate           int64          `json:"gsm_rate,omitempty"`           // 信号值
 
