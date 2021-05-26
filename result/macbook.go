@@ -6,7 +6,7 @@ type MacBooksGetResult struct {
 	Data struct {
 		Total  int                      `json:"total"`
 		Result []map[string]interface{} `json:"result"`
-	} `json:"data,omitempty"` // 返回结果
+	} `json:"data"` // 返回结果
 }
 
 type MacbookEntity struct {
@@ -27,5 +27,5 @@ type MacbookEntity struct {
 // maclist详情
 type MacBookGetResult struct {
 	Result
-	Data MacbookEntity `json:"data,omitempty"` // 返回结果
+	Data MacbookEntity `json:"data"` // 返回结果
 }

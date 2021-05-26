@@ -14,7 +14,7 @@ type TemperatureEntity struct {
 // 体温最近测量数据
 type TemperatureResult struct {
 	Result
-	Data TemperatureEntity `json:"data,omitempty"` // 返回结果
+	Data TemperatureEntity `json:"data"` // 返回结果
 }
 
 // 体温测量数据列表
@@ -23,11 +23,11 @@ type TemperaturesResult struct {
 	Data struct {
 		Total  int                 `json:"total"`
 		Result []map[string]interface{} `json:"result"`
-	} `json:"data,omitempty"` // 返回结果
+	} `json:"data"` // 返回结果
 }
 
 // 体温测量间隔时间
 type TemperatureUploadResult struct {
 	Result
-	Data float64 `json:"data,omitempty"` // 返回结果
+	Data float64 `json:"data"` // 返回结果
 }

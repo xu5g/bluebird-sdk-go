@@ -26,5 +26,5 @@ type TracksGetResult struct {
 	Data struct {
 		Total  int           `json:"total"`
 		Result []map[string]interface{} `json:"result"`
-	} `json:"data,omitempty"` // 返回结果
+	} `json:"data"` // 返回结果
 }

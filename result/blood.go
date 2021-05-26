@@ -15,7 +15,7 @@ type BloodEntity struct {
 
 type BloodGetResult struct {
 	Result
-	Data BloodEntity `json:"data,omitempty"` // 返回结果
+	Data BloodEntity `json:"data"` // 返回结果
 }
 
 type BloodsGetResult struct {
@@ -23,11 +23,11 @@ type BloodsGetResult struct {
 	Data struct {
 		Total  int           `json:"total"`
 		Result []BloodEntity `json:"result"`
-	} `json:"data,omitempty"` // 返回结果
+	} `json:"data"` // 返回结果
 }
 
 // 血压测量间隔时间
 type BloodUploadResult struct {
 	Result
-	Data float64  `json:"data,omitempty"` // 返回结果
+	Data float64  `json:"data"` // 返回结果
 }

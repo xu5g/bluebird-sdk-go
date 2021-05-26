@@ -1,11 +1,11 @@
 package result
 
 type FenceEntity struct {
-	Id         int64  `json:"id,omitempty"`
-	Created    string `json:"created,omitempty"`     // 测量时间
-	ImeiSn     string `json:"imei_sn,omitempty"`     // 设备号
-	Uuid       string `json:"uuid,omitempty"`        // uuid
-	PrimaryKey string `json:"primary_key,omitempty"` // 主键
+	Id         int64  `json:"id"`
+	Created    string `json:"created"`     // 测量时间
+	ImeiSn     string `json:"imei_sn"`     // 设备号
+	Uuid       string `json:"uuid"`        // uuid
+	PrimaryKey string `json:"primary_key"` // 主键
 	TrueName   string `json:"truename"`
 }
 
@@ -15,11 +15,11 @@ type FencesGetResult struct {
 	Data struct {
 		Total  int                      `json:"total"`
 		Result []map[string]interface{} `json:"result"`
-	} `json:"data,omitempty"` // 返回结果
+	} `json:"data"` // 返回结果
 }
 
 // 添加围栏
 type FenceCreateResult struct {
 	Result
-	Data int64 `json:"data,omitempty"` // 围栏ID
+	Data int64 `json:"data"` // 围栏ID
 }

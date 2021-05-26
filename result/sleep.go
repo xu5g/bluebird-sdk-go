@@ -18,11 +18,11 @@ type SleepsResult struct {
 	Data struct {
 		Total  int           `json:"total"`
 		Result []SleepEntity `json:"result"`
-	} `json:"data,omitempty"`
+	} `json:"data"`
 }
 
 //
 type SleepResult struct {
 	Result
-	Data SleepEntity `json:"data,omitempty"`
+	Data SleepEntity `json:"data"`
 }
