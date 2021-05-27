@@ -34,7 +34,7 @@ type DeviceEntity struct {
 	SleepTime         sleepTime      `json:"sleeptime"`          // 睡眠时间
 	Status            int64          `json:"status"`             // 设备状态 1：正常 2：弃用 3：停机
 	GsmRate           int64          `json:"gsm_rate"`           // 信号值
-
+	Created           string          `json:"created"`           // 时间
 }
 
 //设置睡眠时间段结构体

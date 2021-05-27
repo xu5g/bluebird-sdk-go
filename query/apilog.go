@@ -10,4 +10,6 @@ type ApiLogsGetQuery struct {
 	TransId   string // 事件id
 	LogType   string // 日志类型
 	AppKey    string // 应用id
+	ApiAlias  string // 接口别名
+	ReqMethod string // 请求方式
 }
