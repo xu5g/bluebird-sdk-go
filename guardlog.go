@@ -23,6 +23,7 @@ func (p *GuardLog) GetGuardLogs(query *query.GuardLogsGetQuery) *result.GuardLog
 	params.Set("sort", query.Sort)
 	params.Set("event_id", query.EventId)
 	params.Set("status", strconv.Itoa(query.Status))
+	params.Set("imei_sn", query.ImeiSn)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPGuardLogsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {

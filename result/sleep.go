@@ -9,7 +9,7 @@ type SleepEntity struct {
 	EndTime    string `json:"end_time"`
 	CreateTime string `json:"created"`
 	SleepType  int    `json:"sleep_type"`
-	SleepTime  int    `json:"sleep_time"`
+	SleepTime  string    `json:"sleep_time"`
 }
 
 // 睡眠数据列表

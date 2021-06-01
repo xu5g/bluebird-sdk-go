@@ -9,4 +9,5 @@ type GuardLogsGetQuery struct {
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 	EventId   string // 事件id
 	Status    int    // 日志状态 整数：1. 未消费； 2：已消费；已成功； 3：已消费，已失败
+	ImeiSn    string // 设备IMEI号  长度不超过20
 }
