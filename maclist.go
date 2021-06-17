@@ -22,6 +22,7 @@ func (p *MacList) MacListCreate(query *query.MacListCreateQuery) *result.Result 
 	data.Set("lat", query.Lat)
 	data.Set("mac", query.Mac)
 	data.Set("signal", query.Signal)
+	data.Set("remark", query.Remark)
 
 	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacListCreatePath).SetData(data).HttpRequest()
 	if err != nil {
