@@ -8,6 +8,7 @@ type MacListCreateQuery struct {
 	Lat    string // 纬度
 	Lng    string // 经度
 	Remark string // 备注
+	Status int64  // 状态
 }
 
 // 获取maclist列表
