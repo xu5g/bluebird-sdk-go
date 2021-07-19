@@ -32,7 +32,8 @@ const (
 	TSPSleepGetPath  = "/tsp/sleep/get"  // 获取最近一次测量的睡眠数据
 
 	/** 轨迹管理 **/
-	TSPTracksGetPath = "/tsp/tracks/get" // 获取轨迹
+	TSPTracksGetPath    = "/tsp/tracks/get"   // 获取轨迹
+	TSPTracksUpdatePath = "/tsp/track/update" // 修改轨迹数据
 
 	/** 设备管理 **/
 	TSPDeviceGetPath          = "/tsp/device/get"           // 获取设备详情

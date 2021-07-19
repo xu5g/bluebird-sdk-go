@@ -2,6 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
+	"github.com/gogf/gf/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -44,6 +45,33 @@ func (p *Track) GetTracks(query *query.TracksGetQuery) *result.TracksGetResult {
 				Status: 1,
 				Message: err.Error(),
 			},
+		}
+	}
+	return resData
+}
+
+
+// TrackUpdate 修改轨迹数据
+func (p *Track) TrackUpdate(query *query.TracksUpdateQuery) *result.Result {
+	var data = gmap.New(true)
+	data.Set("primary_key", query.PrimaryKey)
+	data.Set("id", query.Id)
+	data.Set("is_ignore", query.IsIgnore)
+
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTracksUpdatePath).SetData(data).HttpRequest()
+	if err != nil {
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
 		}
 	}
 	return resData

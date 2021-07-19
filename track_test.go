@@ -19,3 +19,16 @@ func TestTrack_GetTracks(t *testing.T) {
 	res := NewClient(gateWay, appKey, token).Track().GetTracks(query)
 	fmt.Println(res)
 }
+
+// TestTrack_TrackUpdate 更新轨迹数据
+func TestTrack_TrackUpdate(t *testing.T) {
+	query := &query.TracksUpdateQuery{
+		Id: 0,
+		PrimaryKey: "000",
+		IsIgnore: "0",
+	}
+	res := NewClient(gateWay, appKey, token).Track().TrackUpdate(query)
+	fmt.Println(res)
+
+
+}
