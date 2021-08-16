@@ -235,3 +235,14 @@ func TestDevice_DeviceSleepTime(t *testing.T) {
 	fmt.Println(res)
 }
 
+// 下发传输微聊音频文件到设备的指令
+func TestDevice_DeviceWechat(t *testing.T) {
+	query := &query.DeviceWechatQuery{
+		ImeiSn: "xxxxxxxxxxxxxxx",
+		WechatAudioUrl:"",
+	}
+
+	res := NewClient(gateWay, appKey, token).Device().DeviceWechat(query)
+	fmt.Println(res)
+}
+
