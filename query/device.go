@@ -109,7 +109,7 @@ type Family struct {
 type DeviceLocateModeQuery struct {
 	ImeiSn     string // 设备Imei号 长度不超过20
 	LocateMode string // 定位模式 1：省电模式 2：智能模式 3：性能模式
-	LocateUpload string // 定位上报
+	LocateUpload int64 // 定位上报
 }
 
 // 下发设置终端host指令
