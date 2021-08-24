@@ -59,6 +59,7 @@ const (
 	TSPDeviceStatusPath       = "/tsp/device/status"        // 更改设备状态
 	TSPDeviceDeletePath       = "/tsp/device/delete"        // 删除设备
 	TSPDeviceSleepTimePath    = "/tsp/device/sleeptime"     // 下发睡眠时间段指令
+	TSPDeviceDeviceWechatPath = "/tsp/device/wchat"         // 下发传输微聊音频文件到设备的指令
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表

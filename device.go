@@ -655,3 +655,29 @@ func (p *Device) DeviceSleepTime(query *query.SendSleepTimeQuery) *result.Result
 	}
 	return resData
 }
+
+// DeviceWechat 下发传输微聊音频文件到设备的指令
+func (p *Device) DeviceWechat(query *query.DeviceWechatQuery) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["wchat_audio_url"] = query.WechatAudioUrl
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceDeviceWechatPath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

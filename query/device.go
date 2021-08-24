@@ -158,3 +158,9 @@ type SendSleepTimeQuery struct {
 	Start  string // 开始时间，格式：22:00
 	End    string // 结束时间，格式：07:00
 }
+
+// 下发传输微聊音频文件到设备的指令
+type DeviceWechatQuery struct {
+	ImeiSn        string // 设备Imei号 长度不超过20
+	WechatAudioUrl string // amr音频文件的地址
+}
