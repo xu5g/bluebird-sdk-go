@@ -16,5 +16,5 @@ type TracksGetQuery struct {
 type TracksUpdateQuery struct {
 	PrimaryKey string // 主键
 	Id         int64  // 结束时间	格式为2006-01-01 00:00:00
-	IsIgnore   string // 是否忽略，0：未忽略；1：忽略
+	IsIgnore   int64  // 是否忽略，0：未忽略；1：忽略
 }
