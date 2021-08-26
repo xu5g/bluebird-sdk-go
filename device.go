@@ -682,3 +682,29 @@ func (p *Device) DeviceWechat(query *query.DeviceWechatQuery) *result.Result {
 	}
 	return resData
 }
+
+// DeviceWhitelistStatus 变更通话白名单状态
+func (p *Device) DeviceWhitelistStatus(query *query.DeviceWhitelistStatus) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["is_open"] = query.IsOpen
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceDeviceWhitelistStatusPath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

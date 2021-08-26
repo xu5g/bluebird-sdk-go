@@ -246,3 +246,14 @@ func TestDevice_DeviceWechat(t *testing.T) {
 	fmt.Println(res)
 }
 
+// 变更通话白名单状态
+func TestDevice_DeviceWhitelistStatus(t *testing.T) {
+	query := &query.DeviceWhitelistStatus{
+		ImeiSn: "xxxxxxxxxxxxxxx",
+		IsOpen: 0,
+	}
+
+	res := NewClient(gateWay, appKey, token).Device().DeviceWhitelistStatus(query)
+	fmt.Println(res)
+}
+

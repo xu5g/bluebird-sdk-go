@@ -12,7 +12,7 @@ type DeviceEntity struct {
 	Engine            string         `json:"engine"`             // 协议引擎名称
 	IccardSn          string         `json:"iccard_sn"`          // 13.56考勤号
 	IsOnline          int64          `json:"is_online"`          // 是否在线
-	PartnerId         int64          `json:"partner_id"`                   // 企业ID
+	PartnerId         int64          `json:"partner_id"`         // 企业ID
 	AppKey            int64          `json:"appkey"`             // =product_id
 	LocateUpload      int64          `json:"locate_upload"`      // 定位上报间隔
 	Mobile            string         `json:"mobile"`             // 设备内的手机号
@@ -34,7 +34,8 @@ type DeviceEntity struct {
 	SleepTime         sleepTime      `json:"sleeptime"`          // 睡眠时间
 	Status            int64          `json:"status"`             // 设备状态 1：正常 2：弃用 3：停机
 	GsmRate           int64          `json:"gsm_rate"`           // 信号值
-	Created           string          `json:"created"`           // 时间
+	Created           string         `json:"created"`            // 时间
+	WhitelistStatus   int64          `json:"whitelist_status"`   // 通话白名单状态 0：暂未使用 1：开启通话白名单 2：关闭通话白名单
 }
 
 //设置睡眠时间段结构体

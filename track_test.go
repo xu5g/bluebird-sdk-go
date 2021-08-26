@@ -25,7 +25,7 @@ func TestTrack_TrackUpdate(t *testing.T) {
 	query := &query.TracksUpdateQuery{
 		Id: 0,
 		PrimaryKey: "000",
-		IsIgnore: "0",
+		IsIgnore: 0,
 	}
 	res := NewClient(gateWay, appKey, token).Track().TrackUpdate(query)
 	fmt.Println(res)

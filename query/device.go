@@ -165,3 +165,9 @@ type DeviceWechatQuery struct {
 	ImeiSn         string // 设备Imei号 长度不超过20
 	WechatAudioUrl string // amr音频文件的地址
 }
+
+// DeviceWhitelistStatus 变更通话白名单状态
+type DeviceWhitelistStatus struct {
+	ImeiSn string // 设备Imei号 长度不超过20
+	IsOpen int    // 0：关闭通话白名单，即不阻止陌生来电1：开启通话白名单，只有亲情号码才可来电
+}
