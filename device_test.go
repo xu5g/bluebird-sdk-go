@@ -250,7 +250,7 @@ func TestDevice_DeviceWechat(t *testing.T) {
 func TestDevice_DeviceWhitelistStatus(t *testing.T) {
 	query := &query.DeviceWhitelistStatus{
 		ImeiSn: "xxxxxxxxxxxxxxx",
-		IsOpen: 0,
+		WhitelistStatus: 0,
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().DeviceWhitelistStatus(query)

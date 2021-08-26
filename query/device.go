@@ -168,6 +168,6 @@ type DeviceWechatQuery struct {
 
 // DeviceWhitelistStatus 变更通话白名单状态
 type DeviceWhitelistStatus struct {
-	ImeiSn string // 设备Imei号 长度不超过20
-	IsOpen int    // 1：开启通话白名单，只有亲情号码才可来电  2：关闭通话白名单，即不阻止陌生来电
+	ImeiSn          string // 设备Imei号 长度不超过20
+	WhitelistStatus int    // 1：开启通话白名单，只有亲情号码才可来电  2：关闭通话白名单，即不阻止陌生来电
 }

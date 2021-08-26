@@ -687,7 +687,7 @@ func (p *Device) DeviceWechat(query *query.DeviceWechatQuery) *result.Result {
 func (p *Device) DeviceWhitelistStatus(query *query.DeviceWhitelistStatus) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
-	data["is_open"] = query.IsOpen
+	data["whitelist_status"] = query.WhitelistStatus
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceDeviceWhitelistStatusPath).SetData(data).HttpRequest()
 
 	if err != nil {
