@@ -394,6 +394,7 @@ func (p *Device) SendFamily(query *query.DeviceFamilyQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
 	data["families"] = query.Families
+	data["status"] = query.Status
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceFamilyPath).SetData(data).HttpRequest()
 
 	if err != nil {

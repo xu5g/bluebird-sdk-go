@@ -99,6 +99,7 @@ type DeviceUdtimeQuery struct {
 type DeviceFamilyQuery struct {
 	ImeiSn   string   // 设备Imei号 长度不超过20
 	Families []Family // 亲情号号码信息
+	Status   int      // 状态 0： 设置亲情号与sos 1：设置亲情号 2：设置sos
 }
 type Family struct {
 	Relation string `json:"relation"` // 亲人名称
@@ -107,9 +108,9 @@ type Family struct {
 
 // 下发设置定位模式指令
 type DeviceLocateModeQuery struct {
-	ImeiSn     string // 设备Imei号 长度不超过20
-	LocateMode string // 定位模式 1：省电模式 2：智能模式 3：性能模式
-	LocateUpload int64 // 定位上报
+	ImeiSn       string // 设备Imei号 长度不超过20
+	LocateMode   string // 定位模式 1：省电模式 2：智能模式 3：性能模式
+	LocateUpload int64  // 定位上报
 }
 
 // 下发设置终端host指令
@@ -161,6 +162,6 @@ type SendSleepTimeQuery struct {
 
 // 下发传输微聊音频文件到设备的指令
 type DeviceWechatQuery struct {
-	ImeiSn        string // 设备Imei号 长度不超过20
+	ImeiSn         string // 设备Imei号 长度不超过20
 	WechatAudioUrl string // amr音频文件的地址
 }
