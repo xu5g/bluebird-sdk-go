@@ -54,6 +54,7 @@ func (p *Device) DeviceUpdate(query *query.DeviceUpdateQuery) *result.Result {
 	data["model_id"] = query.ModelId
 	data["ic_card_sn"] = query.IccardSn
 	data["attence_sn"] = query.AttenceSn
+	data["partner_id"] = query.PartnerId
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceUpdatePath).SetData(data).HttpRequest()
 	if err != nil {

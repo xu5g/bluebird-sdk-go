@@ -27,6 +27,7 @@ type DeviceUpdateQuery struct {
 	AppKey    int64  // 应用ID
 	AttenceSn string // 2.4G考勤号
 	IccardSn  string // 13.56考勤号
+	PartnerId int64  // 企业ID
 }
 
 // 获取设备列表
