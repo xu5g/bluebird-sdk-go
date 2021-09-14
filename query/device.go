@@ -172,3 +172,8 @@ type DeviceWhitelistStatus struct {
 	ImeiSn          string // 设备Imei号 长度不超过20
 	WhitelistStatus int    // 1：开启通话白名单，只有亲情号码才可来电  2：关闭通话白名单，即不阻止陌生来电
 }
+
+// DeviceBatchLocateMode 批量设置设备的定位模式指令
+type DeviceBatchLocateMode struct {
+	LocateMode interface{}
+}

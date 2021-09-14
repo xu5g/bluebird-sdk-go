@@ -9,10 +9,10 @@ import (
 // 设备详情
 func TestDevice_GetDevice(t *testing.T) {
 	query := &query.DeviceGetQuery{
-		ImeiSn: "589465010004004",
+		ImeiSn: "123456789222222",
 	}
 	res := NewClient(gateWay, appKey, token).Device().GetDevice(query)
-	fmt.Println(res)
+	fmt.Println(fmt.Sprintf("%+v", res))
 }
 
 // 设备列表
@@ -254,6 +254,16 @@ func TestDevice_DeviceWhitelistStatus(t *testing.T) {
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().DeviceWhitelistStatus(query)
+	fmt.Println(res)
+}
+
+// 批量设置设备的定位模式指令
+func TestDevice_DeviceBatchLocateMode(t *testing.T) {
+	param := []string{"hhh"}
+	query := &query.DeviceBatchLocateMode{
+		LocateMode: param,
+	}
+	res := NewClient(gateWay, appKey, token).Device().DeviceBatchLocateMode(query)
 	fmt.Println(res)
 }
 

@@ -709,3 +709,28 @@ func (p *Device) DeviceWhitelistStatus(query *query.DeviceWhitelistStatus) *resu
 	}
 	return resData
 }
+
+// DeviceBatchLocateMode 批量设置设备的定位模式指令
+func (p *Device) DeviceBatchLocateMode(query *query.DeviceBatchLocateMode) *result.Result {
+	var data = make(map[string]interface{})
+	data["locatemode"] = query.LocateMode
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceBatchLocateMode).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

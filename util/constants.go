@@ -36,31 +36,32 @@ const (
 	TSPTracksUpdatePath = "/tsp/track/update" // 修改轨迹数据
 
 	/** 设备管理 **/
-	TSPDeviceGetPath                   = "/tsp/device/get"              // 获取设备详情
-	TSPDeviceUpdatePath                = "/tsp/device/update"           // 更新设备信息
-	TSPDeviceCreatePath                = "/tsp/device/create"           // 创建设备信息
-	TSPDevicesGetPath                  = "/tsp/devices/get"             // 获取设备列表
-	TSPDeviceLocatePath                = "/tsp/device/locate"           // 下发定位指令到终端
-	TSPDeviceOnlinePath                = "/tsp/device/online"           // 获取设备是否在线
-	TSPDeviceMessagePath               = "/tsp/device/message"          // 向设备透传报文
-	TSPDeviceModulesPath               = "/tsp/device/modules"          // 获取设备功能清单
-	TSPDeviceBindPath                  = "/tsp/device/bind"             // 设备绑定
-	TSPDeviceUnBindPath                = "/tsp/device/unbind"           // 设备解绑
-	TSPDeviceFindPath                  = "/tsp/device/find"             // 下发寻找设备指令
-	TSPDeviceLocateUploadPath          = "/tsp/device/locate/upload"    // 下发定位上报间隔指令
-	TSPDeviceUdtimePath                = "/tsp/device/udtime"           // 下发定位时间段指令
-	TSPDeviceFamilyPath                = "/tsp/device/family"           // 下发设置亲情号码指令
-	TSPDeviceLocateModePath            = "/tsp/device/locate/mode"      // 下发设置定位模式指令
-	TSPDeviceHostPath                  = "/tsp/device/host"             // 下发设置终端host指令
-	TSPDevicePowerOffPath              = "/tsp/device/poweroff"         // 下发关机指令
-	TSPDeviceRestartPath               = "/tsp/device/restart"          // 下发重启指令
-	TSPDeviceMonitorPath               = "/tsp/device/monitor"          // 下发聆听指令
-	TSPDeviceDndPath                   = "/tsp/device/dnd"              // 下发设置免打扰指令
-	TSPDeviceStatusPath                = "/tsp/device/status"           // 更改设备状态
-	TSPDeviceDeletePath                = "/tsp/device/delete"           // 删除设备
-	TSPDeviceSleepTimePath             = "/tsp/device/sleeptime"        // 下发睡眠时间段指令
-	TSPDeviceDeviceWechatPath          = "/tsp/device/wchat"            // 下发传输微聊音频文件到设备的指令
-	TSPDeviceDeviceWhitelistStatusPath = "/tsp/device/whitelist/status" // 变更通话白名单状态
+	TSPDeviceGetPath                   = "/tsp/device/get"               // 获取设备详情
+	TSPDeviceUpdatePath                = "/tsp/device/update"            // 更新设备信息
+	TSPDeviceCreatePath                = "/tsp/device/create"            // 创建设备信息
+	TSPDevicesGetPath                  = "/tsp/devices/get"              // 获取设备列表
+	TSPDeviceLocatePath                = "/tsp/device/locate"            // 下发定位指令到终端
+	TSPDeviceOnlinePath                = "/tsp/device/online"            // 获取设备是否在线
+	TSPDeviceMessagePath               = "/tsp/device/message"           // 向设备透传报文
+	TSPDeviceModulesPath               = "/tsp/device/modules"           // 获取设备功能清单
+	TSPDeviceBindPath                  = "/tsp/device/bind"              // 设备绑定
+	TSPDeviceUnBindPath                = "/tsp/device/unbind"            // 设备解绑
+	TSPDeviceFindPath                  = "/tsp/device/find"              // 下发寻找设备指令
+	TSPDeviceLocateUploadPath          = "/tsp/device/locate/upload"     // 下发定位上报间隔指令
+	TSPDeviceUdtimePath                = "/tsp/device/udtime"            // 下发定位时间段指令
+	TSPDeviceFamilyPath                = "/tsp/device/family"            // 下发设置亲情号码指令
+	TSPDeviceLocateModePath            = "/tsp/device/locate/mode"       // 下发设置定位模式指令
+	TSPDeviceHostPath                  = "/tsp/device/host"              // 下发设置终端host指令
+	TSPDevicePowerOffPath              = "/tsp/device/poweroff"          // 下发关机指令
+	TSPDeviceRestartPath               = "/tsp/device/restart"           // 下发重启指令
+	TSPDeviceMonitorPath               = "/tsp/device/monitor"           // 下发聆听指令
+	TSPDeviceDndPath                   = "/tsp/device/dnd"               // 下发设置免打扰指令
+	TSPDeviceStatusPath                = "/tsp/device/status"            // 更改设备状态
+	TSPDeviceDeletePath                = "/tsp/device/delete"            // 删除设备
+	TSPDeviceSleepTimePath             = "/tsp/device/sleeptime"         // 下发睡眠时间段指令
+	TSPDeviceDeviceWechatPath          = "/tsp/device/wchat"             // 下发传输微聊音频文件到设备的指令
+	TSPDeviceDeviceWhitelistStatusPath = "/tsp/device/whitelist/status"  // 变更通话白名单状态
+	TSPDeviceBatchLocateMode           = "/tsp/device/batch/locate/mode" // 批量设置设备的定位模式指令
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
