@@ -22,6 +22,8 @@ type FenceCreateQuery struct {
 	ValidEnd    string // 有效结束时间 PS: 18:00
 	ValidWeek   string // 有效周天 周一至周日分别为1-7，逗号分割（1,2,3,4,5,6,7）
 	Uuid        string // uuid
+	PartnerId	int64
+	AppKey		int64
 }
 
 // FenceDeleteQuery 删除围栏

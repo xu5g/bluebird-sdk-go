@@ -61,6 +61,8 @@ func (p *Fence) CreateFence(query *query.FenceCreateQuery) *result.FenceCreateRe
 	data["valid_start"] = query.ValidStart
 	data["valid_end"] = query.ValidEnd
 	data["valid_week"] = query.ValidWeek
+	data["partner_id"] = query.PartnerId
+	data["appkey"] = query.AppKey
 	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPFenceCreatePath).SetData(data).HttpRequest()
 
 	if err != nil {
