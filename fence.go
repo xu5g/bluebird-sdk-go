@@ -55,7 +55,8 @@ func (p *Fence) CreateFence(query *query.FenceCreateQuery) *result.FenceCreateRe
 	data["fence_type"] = query.FenceType
 	data["shape_type"] = query.ShapeType
 	data["collide_type"] = query.CollideType
-	data["geo"] = query.Geo
+	data["points"] = query.Points
+	data["point_radius"] = query.PointRadius
 	data["near_radius"] = query.NearRadius
 	data["valid_start"] = query.ValidStart
 	data["valid_end"] = query.ValidEnd

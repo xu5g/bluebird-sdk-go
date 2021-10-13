@@ -1,6 +1,6 @@
 package query
 
-// 获取围栏列表
+// FencesGetQuery 获取围栏列表
 type FencesGetQuery struct {
 	Page      int    // 页码 范围为1-5000
 	Limit     int    // 每页条数 范围为1-100
@@ -9,13 +9,14 @@ type FencesGetQuery struct {
 	ShapeType int64  // 围栏形状类型 1：点状围栏（圆形围栏）；2：多边形围栏
 }
 
-// 添加围栏
+// FenceCreateQuery 添加围栏
 type FenceCreateQuery struct {
 	Truename    string // 围栏名称 长度不超过32
 	FenceType   int64  // 围栏类型 1：应用围栏；2：设备围栏
 	ShapeType   int64  // 围栏形状类型 1：点状围栏（圆形围栏）；2：多边形围栏
 	CollideType int64  // 告警类型 1：进出告警；2：靠近告警；3：进出+靠近告警
-	Geo         string // geo坐标系
+	Points      interface{}
+	PointRadius int64
 	NearRadius  int64  // 靠近围栏预警半径（单位：米）
 	ValidStart  string // 有效开始时间 PS: 08:00
 	ValidEnd    string // 有效结束时间 PS: 18:00
@@ -23,7 +24,7 @@ type FenceCreateQuery struct {
 	Uuid        string // uuid
 }
 
-// 删除围栏
+// FenceDeleteQuery 删除围栏
 type FenceDeleteQuery struct {
-	Id int64	// 主键ID
+	Id int64 // 主键ID
 }

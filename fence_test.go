@@ -24,7 +24,7 @@ func TestFence_CreateFence(t *testing.T) {
 		FenceType: 1,
 		ShapeType: 2,
 		CollideType: 2,
-		Geo: "xxxx",
+		Points: "xxxx",
 		NearRadius: 1,
 		ValidStart: "xxx",
 		ValidEnd: "xxx",
