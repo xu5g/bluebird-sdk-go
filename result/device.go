@@ -36,6 +36,7 @@ type DeviceEntity struct {
 	GsmRate           int64          `json:"gsm_rate"`           // 信号值
 	Created           string         `json:"created"`            // 时间
 	WhitelistStatus   int64          `json:"whitelist_status"`   // 通话白名单状态 0：暂未使用 1：开启通话白名单 2：关闭通话白名单
+	Iccid			  string		 `json:"iccid"`			     // iccid
 }
 
 //设置睡眠时间段结构体
