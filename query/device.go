@@ -177,3 +177,9 @@ type DeviceWhitelistStatus struct {
 type DeviceBatchLocateMode struct {
 	LocateMode interface{}
 }
+
+// DeviceRemind 设置设备闹钟
+type DeviceRemind struct {
+	ImeiSn          string // 设备Imei号 长度不超过20
+	Remind 			interface{} // 参数
+}

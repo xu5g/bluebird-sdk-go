@@ -734,3 +734,29 @@ func (p *Device) DeviceBatchLocateMode(query *query.DeviceBatchLocateMode) *resu
 	}
 	return resData
 }
+
+// DeviceRemind 设置设备闹钟
+func (p *Device) DeviceRemind(query *query.DeviceRemind) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["remind"] = query.Remind
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceRemind).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

@@ -2,6 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
+	"github.com/gogf/gf/frame/g"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"testing"
 )
@@ -264,6 +265,25 @@ func TestDevice_DeviceBatchLocateMode(t *testing.T) {
 		LocateMode: param,
 	}
 	res := NewClient(gateWay, appKey, token).Device().DeviceBatchLocateMode(query)
+	fmt.Println(res)
+}
+
+// 设置设备闹钟
+func TestDevice_DeviceRemind(t *testing.T) {
+	param := g.List{}
+	param = append(param, g.Map{
+		"date":"08:00",
+		"status":1,
+		"remind_type":"2",
+		"week":"0111110",
+		"title":"起床闹钟",
+	})
+
+	query := &query.DeviceRemind{
+		Remind: param,
+		ImeiSn: "xxxxxxxxxxxxxxx",
+	}
+	res := NewClient(gateWay, appKey, token).Device().DeviceRemind(query)
 	fmt.Println(res)
 }
 
