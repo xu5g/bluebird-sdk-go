@@ -37,6 +37,7 @@ type DeviceEntity struct {
 	Created           string         `json:"created"`            // 时间
 	WhitelistStatus   int64          `json:"whitelist_status"`   // 通话白名单状态 0：暂未使用 1：开启通话白名单 2：关闭通话白名单
 	Iccid			  string		 `json:"iccid"`			     // iccid
+	Remind			  []interface{}	 `json:"remind"`			 // 闹钟数据
 }
 
 //设置睡眠时间段结构体
