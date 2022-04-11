@@ -42,7 +42,8 @@ type DevicesGetQuery struct {
 	ModelId   int64  // 设备型号ID
 	AppKey    int64  // 应用ID
 	PartnerId int64  // 合作方ID
-	ActiveTime string
+	StartActiveTime string
+	EndActiveTime string
 }
 
 // 下发定位指令到终端
