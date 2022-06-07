@@ -38,6 +38,7 @@ type DeviceEntity struct {
 	WhitelistStatus   int64          `json:"whitelist_status"`   // 通话白名单状态 0：暂未使用 1：开启通话白名单 2：关闭通话白名单
 	Iccid			  string		 `json:"iccid"`			     // iccid
 	Remind			  []interface{}	 `json:"remind"`			 // 闹钟数据
+	FirstlinkTime     string         `json:"firstlink_time"`     // 设备初次链接时间
 }
 
 //设置睡眠时间段结构体
