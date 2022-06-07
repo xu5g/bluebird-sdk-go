@@ -123,6 +123,8 @@ func (p *Device) GetDevices(query *query.DevicesGetQuery) *result.DevicesResult 
 	params.Set("partner_id", strconv.FormatInt(query.PartnerId, 10))
 	params.Set("start_active_time", query.StartActiveTime)
 	params.Set("end_active_time", query.EndActiveTime)
+	params.Set("start_firstlink_time", query.StartFirstlinkTime)
+	params.Set("end_firstlink_time", query.EndFirstlinkTime)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDevicesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {

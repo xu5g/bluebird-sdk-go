@@ -44,6 +44,8 @@ type DevicesGetQuery struct {
 	PartnerId int64  // 合作方ID
 	StartActiveTime string
 	EndActiveTime string
+	StartFirstlinkTime string
+	EndFirstlinkTime string
 }
 
 // 下发定位指令到终端
