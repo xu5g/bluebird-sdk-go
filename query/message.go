@@ -11,3 +11,9 @@ type MessagesGetQuery struct {
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 	Status    string // 状态
 }
+
+// 删除报文
+type MessageDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

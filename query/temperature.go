@@ -25,3 +25,9 @@ type TemperatureUploadSetQuery struct {
 	ImeiSn string // 设备IMEI号  长度不超过20
 	Second int    // 体温上报间隔时间（单位秒）
 }
+
+// 删除体温数据
+type TemperatureDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

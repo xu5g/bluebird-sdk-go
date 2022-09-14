@@ -2,6 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
+	"github.com/gogf/gf/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -124,6 +125,32 @@ func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUploadSetQ
 
 	jsonString := res.Export()
 
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
+
+// 删除体温数据
+func (p *Temperature) DeleteTemperature(query *query.TemperatureDeleteQuery) *result.Result {
+	var data = gmap.New(true)
+	data.Set("id", query.Id)
+	data.Set("primary_key", query.PrimaryKey)
+
+	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureDeletePath).SetData(data).HttpRequest()
+	if err != nil {
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
+	}
+
+	jsonString := res.Export()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {

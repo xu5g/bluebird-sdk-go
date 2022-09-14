@@ -9,3 +9,9 @@ type CoreLogsGetQuery struct {
 	Sort      string // 排序方向 DESC/ASC；默认倒序
 	LogType   string // 日志类型
 }
+
+// 删除core日志
+type CoreLogDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

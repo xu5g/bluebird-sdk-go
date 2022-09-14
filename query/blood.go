@@ -27,3 +27,9 @@ type BloodUploadSetQuery struct {
 	ImeiSn string // 设备IMEI号  长度不超过20
 	Second int    // 血压上报间隔时间（单位秒）
 }
+
+// 删除血压数据
+type BloodDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

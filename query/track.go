@@ -18,3 +18,9 @@ type TracksUpdateQuery struct {
 	Id         int64  // 结束时间	格式为2006-01-01 00:00:00
 	IsIgnore   int64  // 是否忽略，0：未忽略；1：忽略
 }
+
+// 删除轨迹数据
+type TrackDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

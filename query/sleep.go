@@ -16,3 +16,9 @@ type SleepGetQuery struct {
 	ImeiSn    string // 设备号	长度不超过20
 	Uuid      string // UUID	长度不超过40
 }
+
+// 删除睡眠数据
+type SleepDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

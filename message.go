@@ -2,6 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
+	"github.com/gogf/gf/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -44,6 +45,33 @@ func (p *Message) GetMessages(query *query.MessagesGetQuery) *result.MessagesGet
 				Status:  1,
 				Message: err.Error(),
 			},
+		}
+	}
+	return resData
+}
+
+
+// 删除报文
+func (p *Message) DeleteMessage(query *query.MessageDeleteQuery) *result.Result {
+	var data = gmap.New(true)
+	data.Set("id", query.Id)
+	data.Set("primary_key", query.PrimaryKey)
+
+	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPMessagesDeletePath).SetData(data).HttpRequest()
+	if err != nil {
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
+		}
+	}
+
+	jsonString := res.Export()
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status: 1,
+			Message: err.Error(),
 		}
 	}
 	return resData

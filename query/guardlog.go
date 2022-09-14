@@ -11,3 +11,9 @@ type GuardLogsGetQuery struct {
 	Status    int    // 日志状态 整数：1. 未消费； 2：已消费；已成功； 3：已消费，已失败
 	ImeiSn    string // 设备IMEI号  长度不超过20
 }
+
+// 删除guard日志
+type GuardLogDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

@@ -27,3 +27,9 @@ type HeartUploadSetQuery struct {
 	ImeiSn string // 设备IMEI号  长度不超过20
 	Second int    // 体温上报间隔时间（单位秒）
 }
+
+// 删除心率
+type HeartDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}

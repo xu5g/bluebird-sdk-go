@@ -11,29 +11,34 @@ const (
 	TSPTemperaturesGetPath      = "/tsp/temperatures/get"       // 获取体温结果列表
 	TSPTemperatureUploadGetPath = "/tsp/temperature/upload/get" // 获取体温测量间隔时间
 	TSPTemperatureUploadSetPath = "/tsp/temperature/upload/set" // 设置体温测量间隔时间
+	TSPTemperatureDeletePath    = "/tsp/temperature/delete"     // 删除体温数据
 
 	/** 心率管理 **/
 	TSPHeartGetPath       = "/tsp/heart/get"        // 获取最新心率数据
 	TSPHeartsGetPath      = "/tsp/hearts/get"       // 获取心率结果列表
 	TSPHeartUploadGetPath = "/tsp/heart/upload/get" // 获取心率测量间隔时间
 	TSPHeartUploadSetPath = "/tsp/heart/upload/set" // 设置心率测量间隔时间
+	TSPHeartDeletePath    = "/tsp/heart/delete"     // 删除心率数据
 
 	/** 血压管理 **/
 	TSPBloodGetPath       = "/tsp/blood/get"        // 获取最新血压数据
 	TSPBloodsGetPath      = "/tsp/bloods/get"       // 获取血压结果列表
 	TSPBloodUploadGetPath = "/tsp/blood/upload/get" // 获取血压测量间隔时间
 	TSPBloodUploadSetPath = "/tsp/blood/upload/set" // 设置血压测量间隔时间
+	TSPBloodDeletePath    = "/tsp/blood/delete"     // 删除血压数据
 
 	/** 计步管理 **/
 	TSPStepsGetPath = "/tsp/steps/get" // 获取计步数据列表
 
 	/** 睡眠管理 **/
-	TSPSleepsGetPath = "/tsp/sleeps/get" // 获取睡眠数据列表
-	TSPSleepGetPath  = "/tsp/sleep/get"  // 获取最近一次测量的睡眠数据
+	TSPSleepsGetPath   = "/tsp/sleeps/get"   // 获取睡眠数据列表
+	TSPSleepGetPath    = "/tsp/sleep/get"    // 获取最近一次测量的睡眠数据
+	TSPSleepDeletePath = "/tsp/sleep/delete" // 删除睡眠数据
 
 	/** 轨迹管理 **/
 	TSPTracksGetPath    = "/tsp/tracks/get"   // 获取轨迹
 	TSPTracksUpdatePath = "/tsp/track/update" // 修改轨迹数据
+	TSPTrackDeletePath  = "/tsp/track/delete" // 删除轨迹数据
 
 	/** 设备管理 **/
 	TSPDeviceGetPath                   = "/tsp/device/get"               // 获取设备详情
@@ -80,14 +85,19 @@ const (
 	TspMacBookDeletePath = "/tsp/macbook/delete" // 删除macbook
 
 	/** 考勤管理 **/
-	TSPAttencesGetPath = "/tsp/attences/get" // 获取考勤数据列表
+	TSPAttencesGetPath   = "/tsp/attences/get"   // 获取考勤数据列表
+	TSPAttenceDeletePath = "/tsp/attence/delete" // 删除考勤数据
 
 	/** 报文管理 **/
-	TSPMessagesGetPath = "/tsp/messages/get" // 获取报文数据列表
+	TSPMessagesGetPath    = "/tsp/messages/get"   // 获取报文数据列表
+	TSPMessagesDeletePath = "/tsp/message/delete" // 删除报文数据
 
 	/** 日志管理 **/
-	TSPApiLogsGetPath   = "/tsp/apilogs/get"   // 获取api日志列表
-	TSPCoreLogsGetPath  = "/tsp/corelogs/get"  // 获取core日志列表
-	TSPGuardLogsGetPath = "/tsp/guardlogs/get" // 获取guard日志列表
+	TSPApiLogsGetPath     = "/tsp/apilogs/get"     // 获取api日志列表
+	TSPApiLogDeletePath   = "/tsp/apilog/delete"   // 删除api日志
+	TSPCoreLogsGetPath    = "/tsp/corelogs/get"    // 获取core日志列表
+	TSPCoreLogDeletePath  = "/tsp/corelog/delete"  // 删除core日志
+	TSPGuardLogsGetPath   = "/tsp/guardlogs/get"   // 获取guard日志列表
+	TSPGuardLogDeletePath = "/tsp/guardlog/delete" // 删除guard日志
 
 )

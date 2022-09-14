@@ -13,3 +13,9 @@ type ApiLogsGetQuery struct {
 	ApiAlias  string // 接口别名
 	ReqMethod string // 请求方式
 }
+
+// 删除api日志
+type ApiLogDeleteQuery struct {
+	PrimaryKey string // primary_key的值
+	Id      int64  // ID
+}
