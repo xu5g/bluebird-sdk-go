@@ -157,12 +157,10 @@ func (p *Request) delete() (*gjson.Json, error) {
 
 
 	res, err := client.Delete(p.Url, p.Data)
-	if res == nil {
-		return nil, err
-	}
-	if res.StatusCode != 200 {
-		return nil, errors.New(res.Status)
-	}
+
+	//if res.StatusCode != 200 {
+	//	return nil, errors.New(res.Status)
+	//}
 	if err != nil {
 		return nil, err
 	}
