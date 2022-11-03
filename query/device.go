@@ -46,6 +46,8 @@ type DevicesGetQuery struct {
 	EndActiveTime string
 	StartFirstlinkTime string
 	EndFirstlinkTime string
+	StartTime string //查询开始时间
+	EndTime   string //查询结束时间
 }
 
 // 下发定位指令到终端
