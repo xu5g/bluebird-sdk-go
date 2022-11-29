@@ -65,6 +65,13 @@ func (p *Tsp) Blood() *Blood {
 	}
 }
 
+// 血氧
+func (p *Tsp) BloodOxygen() *BloodOxygen {
+	return &BloodOxygen{
+		Cfg: p.Cfg,
+	}
+}
+
 // 计步
 func (p *Tsp) Step() *Step {
 	return &Step{
