@@ -7,7 +7,7 @@ type BloodOxygenEntity struct {
 	AppKey          int64  `json:"appkey"`
 	ImeiSn          string `json:"imei_sn"`
 	Uuid            string `json:"uuid"`
-	BloodOxygenRate string `json:"blood_oxygen_rate"`
+	BloodOxygenRate int64 `json:"blood_oxygen_rate"`
 	Created         string `json:"created"`
 }
 
