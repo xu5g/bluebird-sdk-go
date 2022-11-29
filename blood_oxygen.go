@@ -41,7 +41,6 @@ func (p *BloodOxygen) GetBloodOxygen(query *query.BloodOxygenGetQuery) *result.B
 			},
 		}
 	}
-	
 	return resData
 }
 
