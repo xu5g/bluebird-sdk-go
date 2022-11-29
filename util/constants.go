@@ -27,6 +27,11 @@ const (
 	TSPBloodUploadSetPath = "/tsp/blood/upload/set" // 设置血压测量间隔时间
 	TSPBloodDeletePath    = "/tsp/blood/delete"     // 删除血压数据
 
+	/** 血氧管理 **/
+	TSPBloodOxygenGetPath       = "/tsp/bloodoxygen/get"        // 获取最新血氧数据
+	TSPBloodOxygensGetPath      = "/tsp/bloodoxygens/get"       // 获取血氧结果列表
+	TSPBloodOxygenDeletePath    = "/tsp/bloodoxygen/delete"     // 删除血氧数据
+
 	/** 计步管理 **/
 	TSPStepsGetPath = "/tsp/steps/get" // 获取计步数据列表
 
