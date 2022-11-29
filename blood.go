@@ -23,8 +23,8 @@ func (p *Blood) GetBlood(query *query.BloodGetQuery) *result.BloodGetResult {
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.BloodGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -35,8 +35,8 @@ func (p *Blood) GetBlood(query *query.BloodGetQuery) *result.BloodGetResult {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.BloodGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -58,8 +58,8 @@ func (p *Blood) GetBloods(query *query.BloodsGetQuery) *result.BloodsGetResult {
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.BloodsGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -70,8 +70,8 @@ func (p *Blood) GetBloods(query *query.BloodsGetQuery) *result.BloodsGetResult {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.BloodsGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -87,8 +87,8 @@ func (p *Blood) GetBloodUpload(query *query.BloodUploadGetQuery) *result.BloodUp
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.BloodUploadResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -99,8 +99,8 @@ func (p *Blood) GetBloodUpload(query *query.BloodUploadGetQuery) *result.BloodUp
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.BloodUploadResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -118,7 +118,7 @@ func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) *result.Resu
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -129,7 +129,7 @@ func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) *result.Resu
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -145,7 +145,7 @@ func (p *Blood) DeleteBlood(query *query.BloodDeleteQuery) *result.Result {
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -155,7 +155,7 @@ func (p *Blood) DeleteBlood(query *query.BloodDeleteQuery) *result.Result {
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

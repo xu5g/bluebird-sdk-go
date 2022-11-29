@@ -23,8 +23,8 @@ func (p *BloodOxygen) GetBloodOxygen(query *query.BloodOxygenGetQuery) *result.B
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodOxygenGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.BloodOxygenGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -35,8 +35,8 @@ func (p *BloodOxygen) GetBloodOxygen(query *query.BloodOxygenGetQuery) *result.B
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.BloodOxygenGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -58,8 +58,8 @@ func (p *BloodOxygen) GetBloodOxygens(query *query.BloodOxygensGetQuery) *result
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodOxygensGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.BloodOxygensGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -70,8 +70,8 @@ func (p *BloodOxygen) GetBloodOxygens(query *query.BloodOxygensGetQuery) *result
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.BloodOxygensGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -88,7 +88,7 @@ func (p *BloodOxygen) DeleteBloodOxygen(query *query.BloodOxygenDeleteQuery) *re
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodOxygenDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -98,7 +98,7 @@ func (p *BloodOxygen) DeleteBloodOxygen(query *query.BloodOxygenDeleteQuery) *re
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
