@@ -107,7 +107,7 @@ type deviceModules struct {
 //设置是否允许按键关机,以及定时开关机时间
 type cronShutdown struct {
 	IsHandshutdown int `json:"is_handshutdown"`
-	IsCronshutdown int `json:"is_cornshutdown"`
+	IsCronshutdown int `json:"is_cronshutdown"`
 	PoweronTime    string `json:"poweron_time"`
 	ShutdownTime   string `json:"shutdown_time"`
 }
