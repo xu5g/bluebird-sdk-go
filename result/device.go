@@ -40,8 +40,8 @@ type DeviceEntity struct {
 	Remind            []interface{}  `json:"remind"`             // 闹钟数据
 	FirstlinkTime     string         `json:"firstlink_time"`     // 设备初次链接时间
 	HeartbeatUpload   int64          `json:"heartbeat_upload"`   // 心跳
-	Runstatus         int64          `json:"runstatus"`			 //运动静止状态
-	CronShutdown      int64          `json:"cron_shutdown"`	     //定时开关机状态
+	Runstatus         int64          `json:"runstatus"`          //运动静止状态
+	CronShutdown      cronShutdown   `json:"cron_shutdown"`      //定时开关机状态
 }
 
 //设置睡眠时间段结构体
@@ -102,4 +102,12 @@ type deviceModules struct {
 	Remark   string `json:"remark"`
 	Icon     string `json:"icon"`
 	Alias    string `json:"alias"`
+}
+
+//设置是否允许按键关机,以及定时开关机时间
+type cronShutdown struct {
+	IsHandshutdown string `json:"isHandshutdown"`
+	IsCronshutdown string `json:"isCornshutdown"`
+	PoweronTime    string `json:"poweron_time"`
+	ShutdownTime   string `json:"shutdown_time"`
 }
