@@ -73,6 +73,7 @@ const (
 	TSPDeviceDeviceWhitelistStatusPath = "/tsp/device/whitelist/status"  // 变更通话白名单状态
 	TSPDeviceBatchLocateMode           = "/tsp/device/batch/locate/mode" // 批量设置设备的定位模式指令
 	TSPDeviceRemind                    = "/tsp/device/remind"            // 设置设备闹钟
+	TSPDeviceCronshutdown              = "/tsp/device/cronshutdown"      // 设置设备定时开关机
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
