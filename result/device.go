@@ -41,6 +41,7 @@ type DeviceEntity struct {
 	FirstlinkTime     string         `json:"firstlink_time"`     // 设备初次链接时间
 	HeartbeatUpload   int64          `json:"heartbeat_upload"`   // 心跳
 	Runstatus         int64          `json:"runstatus"`			 //运动静止状态
+	CronShutdown      int64          `json:"cron_shutdown"`	     //定时开关机状态
 }
 
 //设置睡眠时间段结构体
