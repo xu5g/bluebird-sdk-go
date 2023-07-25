@@ -193,8 +193,8 @@ type DeviceRemind struct {
 // DeviceRemind 设置定时开关机
 type TspSetCronshutdownRequest struct {
 	ImeiSn         string
-	IsHandshutdown string //is_handshutdown:1代表为不允许按键关机,0代表为允许按键关机。默认为0
-	IsCornshutdown string //is_cronshutdown:1代表为开启定时开关机,0代表为关闭定时开关机。默认为0
+	IsHandshutdown int //is_handshutdown:1代表为不允许按键关机,0代表为允许按键关机。默认为0
+	IsCornshutdown int //is_cronshutdown:1代表为开启定时开关机,0代表为关闭定时开关机。默认为0
 	PoweronTime    string //poweron_time：开机时间
 	ShutdownTime   string //Shutdown_time：关机时间
 
