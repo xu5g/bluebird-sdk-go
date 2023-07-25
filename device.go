@@ -772,7 +772,7 @@ func (p *Device) SetCronshutdown(query *query.TspSetCronshutdownRequest) *result
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
 	data["is_handshutdown"] = query.IsHandshutdown
-	data["is_cronshutdown"] = query.IsCornshutdown
+	data["is_cronshutdown"] = query.IsCronshutdown
 	data["poweron_time"] = query.PoweronTime
 	data["shutdown_time"] = query.ShutdownTime
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceCronshutdown).SetData(data).HttpRequest()
