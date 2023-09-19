@@ -32,22 +32,22 @@ type DeviceUpdateQuery struct {
 
 // 获取设备列表
 type DevicesGetQuery struct {
-	Page      int32  // 页码 范围为1-5000
-	Limit     int32  // 每页条数 范围为1-200
-	ImeiSn    string // 设备Imei号 长度不超过20
-	Uuid      string // 设备Uuid 长度不超过40
-	Mobile    string // 手机号 长度11
-	AttenceSn string // 设备考勤号 长度不超过10
-	IsOnline  string // 是否在线 1在线
-	ModelId   int64  // 设备型号ID
-	AppKey    int64  // 应用ID
-	PartnerId int64  // 合作方ID
-	StartActiveTime string
-	EndActiveTime string
+	Page               int32  // 页码 范围为1-5000
+	Limit              int32  // 每页条数 范围为1-200
+	ImeiSn             string // 设备Imei号 长度不超过20
+	Uuid               string // 设备Uuid 长度不超过40
+	Mobile             string // 手机号 长度11
+	AttenceSn          string // 设备考勤号 长度不超过10
+	IsOnline           string // 是否在线 1在线
+	ModelId            int64  // 设备型号ID
+	AppKey             int64  // 应用ID
+	PartnerId          int64  // 合作方ID
+	StartActiveTime    string
+	EndActiveTime      string
 	StartFirstlinkTime string
-	EndFirstlinkTime string
-	StartTime string //查询开始时间
-	EndTime   string //查询结束时间
+	EndFirstlinkTime   string
+	StartTime          string //查询开始时间
+	EndTime            string //查询结束时间
 }
 
 // 下发定位指令到终端
@@ -186,17 +186,23 @@ type DeviceBatchLocateMode struct {
 
 // DeviceRemind 设置设备闹钟
 type DeviceRemind struct {
-	ImeiSn          string // 设备Imei号 长度不超过20
-	Remind 			interface{} // 参数
+	ImeiSn string      // 设备Imei号 长度不超过20
+	Remind interface{} // 参数
 }
 
 // DeviceRemind 设置定时开关机
 type TspSetCronshutdownRequest struct {
 	ImeiSn         string
-	IsHandshutdown int //is_handshutdown:1代表为不允许按键关机,0代表为允许按键关机。默认为0
-	IsCronshutdown int //is_cronshutdown:1代表为开启定时开关机,0代表为关闭定时开关机。默认为0
+	IsHandshutdown int    //is_handshutdown:1代表为不允许按键关机,0代表为允许按键关机。默认为0
+	IsCronshutdown int    //is_cronshutdown:1代表为开启定时开关机,0代表为关闭定时开关机。默认为0
 	PoweronTime    string //poweron_time：开机时间
 	ShutdownTime   string //Shutdown_time：关机时间
 
 	//isCronShutodwn=0关闭定时开关机的时候poweron_time、Shutdown_time 可为空
+}
+
+// 发送文字消息
+type DeviceWordsmessage struct {
+	ImeiSn  string `json:"imei_sn"`
+	Message string `json:"message"`
 }

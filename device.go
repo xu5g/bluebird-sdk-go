@@ -583,7 +583,6 @@ func (p *Device) SendDnd(query *query.DeviceDndQuery) *result.Result {
 	return resData
 }
 
-
 // 变更设备状态
 func (p *Device) DeviceUpdateStatus(query *query.DeviceStatusQuery) *result.Result {
 	var data = make(map[string]interface{})
@@ -610,7 +609,6 @@ func (p *Device) DeviceUpdateStatus(query *query.DeviceStatusQuery) *result.Resu
 	return resData
 }
 
-
 // 删除设备
 func (p *Device) DeviceDelete(query *query.DeviceDeleteQuery) *result.Result {
 	var data = make(map[string]interface{})
@@ -636,8 +634,7 @@ func (p *Device) DeviceDelete(query *query.DeviceDeleteQuery) *result.Result {
 	return resData
 }
 
-
-//下发睡眠时间段指令
+// 下发睡眠时间段指令
 func (p *Device) DeviceSleepTime(query *query.SendSleepTimeQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
@@ -776,6 +773,32 @@ func (p *Device) SetCronshutdown(query *query.TspSetCronshutdownRequest) *result
 	data["poweron_time"] = query.PoweronTime
 	data["shutdown_time"] = query.ShutdownTime
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDeviceCronshutdown).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
+
+// DeviceRemind 发送文字消息
+func (p *Device) DeviceWordsmessage(query *query.DeviceWordsmessage) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["message"] = query.Message
+	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspDeviceWordsmessage).SetData(data).HttpRequest()
 
 	if err != nil {
 		return &result.Result{

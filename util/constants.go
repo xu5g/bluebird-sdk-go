@@ -28,9 +28,9 @@ const (
 	TSPBloodDeletePath    = "/tsp/blood/delete"     // 删除血压数据
 
 	/** 血氧管理 **/
-	TSPBloodOxygenGetPath       = "/tsp/bloodoxygen/get"        // 获取最新血氧数据
-	TSPBloodOxygensGetPath      = "/tsp/bloodoxygens/get"       // 获取血氧结果列表
-	TSPBloodOxygenDeletePath    = "/tsp/bloodoxygen/delete"     // 删除血氧数据
+	TSPBloodOxygenGetPath    = "/tsp/bloodoxygen/get"    // 获取最新血氧数据
+	TSPBloodOxygensGetPath   = "/tsp/bloodoxygens/get"   // 获取血氧结果列表
+	TSPBloodOxygenDeletePath = "/tsp/bloodoxygen/delete" // 删除血氧数据
 
 	/** 计步管理 **/
 	TSPStepsGetPath = "/tsp/steps/get" // 获取计步数据列表
@@ -74,6 +74,7 @@ const (
 	TSPDeviceBatchLocateMode           = "/tsp/device/batch/locate/mode" // 批量设置设备的定位模式指令
 	TSPDeviceRemind                    = "/tsp/device/remind"            // 设置设备闹钟
 	TSPDeviceCronshutdown              = "/tsp/device/cronshutdown"      // 设置设备定时开关机
+	TspDeviceWordsmessage              = "/tsp/device/wordsmessage"      // 发送文字消息到设备
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
