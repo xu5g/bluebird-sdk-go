@@ -206,3 +206,17 @@ type DeviceWordsmessage struct {
 	ImeiSn  string `json:"imei_sn"`
 	Message string `json:"message"`
 }
+
+// 下发单词
+type TspSetWordBookRequest struct {
+	ImeiSn string
+	Id     int64
+	Title  string
+}
+
+// 下发古诗词
+type TspSetPoetryBookRequest struct {
+	ImeiSn string
+	Id     int64
+	Title  string
+}

@@ -75,6 +75,8 @@ const (
 	TSPDeviceRemind                    = "/tsp/device/remind"            // 设置设备闹钟
 	TSPDeviceCronshutdown              = "/tsp/device/cronshutdown"      // 设置设备定时开关机
 	TspDeviceWordsmessage              = "/tsp/device/wordsmessage"      // 发送文字消息到设备
+	TspDeviceWordbook                  = "/tsp/device/wordbook"          // 下发单词
+	TspDevicePoetrybook                = "/tsp/device/poetrybook"        // 下发古诗词
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
