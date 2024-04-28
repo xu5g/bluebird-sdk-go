@@ -50,6 +50,7 @@ const (
 	TSPDeviceUpdatePath                = "/tsp/device/update"            // 更新设备信息
 	TSPDeviceCreatePath                = "/tsp/device/create"            // 创建设备信息
 	TSPDevicesGetPath                  = "/tsp/devices/get"              // 获取设备列表
+	TSPDevicesBatchGetPath             = "/tsp/devices/batch/get"        // 批量获取设备列表
 	TSPDeviceLocatePath                = "/tsp/device/locate"            // 下发定位指令到终端
 	TSPDeviceOnlinePath                = "/tsp/device/online"            // 获取设备是否在线
 	TSPDeviceMessagePath               = "/tsp/device/message"           // 向设备透传报文
@@ -108,5 +109,8 @@ const (
 	TSPCoreLogDeletePath  = "/tsp/corelog/delete"  // 删除core日志
 	TSPGuardLogsGetPath   = "/tsp/guardlogs/get"   // 获取guard日志列表
 	TSPGuardLogDeletePath = "/tsp/guardlog/delete" // 删除guard日志
+
+	/** 获取萤石token **/
+	TSPYsmonitorAccesstokenGetPath = "/tsp/ysmonitor/accesstoken" // 获取萤石token
 
 )

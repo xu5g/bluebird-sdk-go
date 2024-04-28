@@ -15,9 +15,9 @@ func NewClient(gateWay, appKey, token string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
 			HttpClient: &util.Request{
-				Token: token,
+				Token:   token,
 				GateWay: gateWay,
-				AppKey: appKey,
+				AppKey:  appKey,
 			},
 		},
 	}
@@ -28,8 +28,8 @@ func NewAuth(gateWay, appKey, secret string) *Tsp {
 	return &Tsp{
 		Cfg: &Config{
 			&util.Request{
-				AppKey: appKey,
-				Secret: secret,
+				AppKey:  appKey,
+				Secret:  secret,
 				GateWay: gateWay,
 			},
 		},
@@ -42,7 +42,6 @@ func (p *Tsp) Auth() *Auth {
 		Cfg: p.Cfg,
 	}
 }
-
 
 // 体温
 func (p *Tsp) Temperature() *Temperature {
@@ -141,12 +140,14 @@ func (p *Tsp) ApiLog() *ApiLog {
 		Cfg: p.Cfg,
 	}
 }
+
 // core日志
 func (p *Tsp) CoreLog() *CoreLog {
 	return &CoreLog{
 		Cfg: p.Cfg,
 	}
 }
+
 // guard日志
 func (p *Tsp) GuardLog() *GuardLog {
 	return &GuardLog{
@@ -154,3 +155,9 @@ func (p *Tsp) GuardLog() *GuardLog {
 	}
 }
 
+// 萤石token
+func (p *Tsp) YsMonitor() *YsMonitor {
+	return &YsMonitor{
+		Cfg: p.Cfg,
+	}
+}
