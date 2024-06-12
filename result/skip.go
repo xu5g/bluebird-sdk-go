@@ -11,7 +11,7 @@ type SkipEntity struct {
 	ActualSkipTime    int64  `json:"actual_skip_time"`    //实际跳绳时间，单位：秒
 	Calorie           int64  `json:"calorie"`             //消耗卡路里
 	ActualSkipCreated string `json:"actual_skip_created"` //实际跳绳的起跳时间
-	Created           string `json:"create_time"`         //数据创建时间
+	CreateTime           string `json:"create_time"`      //数据创建时间
 }
 
 // 跳绳数据列表
