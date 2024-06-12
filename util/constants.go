@@ -113,4 +113,7 @@ const (
 	/** 获取萤石token **/
 	TSPYsmonitorAccesstokenGetPath = "/tsp/ysmonitor/accesstoken" // 获取萤石token
 
+	/** 蓝牙跳绳 **/
+	TspBluetoothLinkPath = "/tsp/bluetooth/link" // 蓝牙配对设置
+	TspSkipsGetPath      = "/tsp/skips/get"      // 获取跳绳数据列表
 )
