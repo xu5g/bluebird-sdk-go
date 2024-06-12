@@ -161,3 +161,17 @@ func (p *Tsp) YsMonitor() *YsMonitor {
 		Cfg: p.Cfg,
 	}
 }
+
+// 跳绳
+func (p *Tsp) Skip() *Skip {
+	return &Skip{
+		Cfg: p.Cfg,
+	}
+}
+
+// 跳绳蓝牙
+func (p *Tsp) Bluetooth() *Bluetooth {
+	return &Bluetooth{
+		Cfg: p.Cfg,
+	}
+}
