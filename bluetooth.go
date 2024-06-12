@@ -12,7 +12,7 @@ type Bluetooth struct {
 }
 
 // 蓝牙配对
-func (p *Heart) SetBluetoothLink(param *query.TspBluetoothLinkRequest) *result.Result {
+func (p *Bluetooth) SetBluetoothLink(param *query.TspBluetoothLinkRequest) *result.Result {
 
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn
