@@ -15,8 +15,8 @@ type Bluetooth struct {
 func (p *Bluetooth) SetBluetoothLink(param *query.TspBluetoothLinkRequest) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = param.ImeiSn
-	data["status"] = param.ImeiSn
-	data["mac"] = param.ImeiSn
+	data["status"] = param.Status
+	data["mac"] = param.Mac
 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspBluetoothLinkPath).SetData(data).HttpRequest()
 	if err != nil {
