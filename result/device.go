@@ -42,6 +42,7 @@ type DeviceEntity struct {
 	HeartbeatUpload   int64          `json:"heartbeat_upload"`   // 心跳
 	Runstatus         int64          `json:"runstatus"`          //运动静止状态
 	CronShutdown      cronShutdown   `json:"cron_shutdown"`      //定时开关机状态
+	SmsStatus         int64          `json:"sms_status"`         //0 不拦截； 1 保留亲情号码及白名单号码的短信； 2 保留亲情号码及白名单号码的短信和10086短信；3 全部拦截；
 }
 
 //设置睡眠时间段结构体
@@ -106,8 +107,8 @@ type deviceModules struct {
 
 //设置是否允许按键关机,以及定时开关机时间
 type cronShutdown struct {
-	IsHandshutdown int `json:"is_handshutdown"`
-	IsCronshutdown int `json:"is_cronshutdown"`
+	IsHandshutdown int    `json:"is_handshutdown"`
+	IsCronshutdown int    `json:"is_cronshutdown"`
 	PoweronTime    string `json:"poweron_time"`
 	ShutdownTime   string `json:"shutdown_time"`
 }
