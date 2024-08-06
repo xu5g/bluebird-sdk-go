@@ -872,3 +872,81 @@ func (p *Device) DevicePoetrybook(query *query.TspSetPoetryBookRequest) *result.
 	}
 	return resData
 }
+
+// DeviceSimLock sim卡机卡绑定
+func (p *Device) DeviceSimLock(query *query.TspSetSimLockRequest) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["status"] = query.Status
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspDeviceSimlock).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
+
+// DeviceSimPinLock sim卡pin码锁
+func (p *Device) DeviceSimPinLock(query *query.TspSetSimPinLockRequest) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["status"] = query.Status
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspDeviceSimpinlock).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
+
+// DeviceSmsStatus 下发短信拦截开关设置指令
+func (p *Device) DeviceSmsStatus(query *query.TspSetSmsStatusRequest) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["status"] = query.Status
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspDeviceSmsstatus).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

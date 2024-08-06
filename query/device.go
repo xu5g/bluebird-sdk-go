@@ -220,3 +220,18 @@ type TspSetPoetryBookRequest struct {
 	Id     int64
 	Title  string
 }
+
+type TspSetSimLockRequest struct {
+	ImeiSn string
+	Status string
+}
+
+type TspSetSimPinLockRequest struct {
+	ImeiSn string
+	Status string
+}
+
+type TspSetSmsStatusRequest struct {
+	ImeiSn string
+	Status string
+}

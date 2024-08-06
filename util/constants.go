@@ -78,6 +78,9 @@ const (
 	TspDeviceWordsmessage              = "/tsp/device/wordsmessage"      // 发送文字消息到设备
 	TspDeviceWordbook                  = "/tsp/device/wordbook"          // 下发单词
 	TspDevicePoetrybook                = "/tsp/device/poetrybook"        // 下发古诗词
+	TspDeviceSimlock                   = "/tsp/device/simlock"           // 机卡绑定 sim卡锁卡
+	TspDeviceSimpinlock                = "/tsp/device/simpinlock"        // 设置sim卡pin码锁
+	TspDeviceSmsstatus                 = "/tsp/device/smsstatus"         // 下发短信拦截开关设置指令
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
