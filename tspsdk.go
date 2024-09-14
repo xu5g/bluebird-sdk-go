@@ -155,6 +155,13 @@ func (p *Tsp) GuardLog() *GuardLog {
 	}
 }
 
+// 兔盯云日志
+func (p *Tsp) TdcloudLog() *TdcloudLog {
+	return &TdcloudLog{
+		Cfg: p.Cfg,
+	}
+}
+
 // 萤石token
 func (p *Tsp) YsMonitor() *YsMonitor {
 	return &YsMonitor{
