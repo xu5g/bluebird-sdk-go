@@ -112,6 +112,7 @@ const (
 	TSPCoreLogDeletePath  = "/tsp/corelog/delete"  // 删除core日志
 	TSPGuardLogsGetPath   = "/tsp/guardlogs/get"   // 获取guard日志列表
 	TSPGuardLogDeletePath = "/tsp/guardlog/delete" // 删除guard日志
+	TSPTdcloudLogsGetPath = "/tsp/tdcloudlogs/get" // 获取兔盯云日志列表
 
 	/** 获取萤石token **/
 	TSPYsmonitorAccesstokenGetPath = "/tsp/ysmonitor/accesstoken" // 获取萤石token
