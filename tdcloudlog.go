@@ -14,7 +14,7 @@ type TdcloudLog struct {
 }
 
 // 获取api日志列表
-func (p *TdcloudLog) GetGuardLogs(query *query.TdcloudLogsGetQuery) *result.TdcloudLogsGetResult {
+func (p *TdcloudLog) GetTdcloudLogs(query *query.TdcloudLogsGetQuery) *result.TdcloudLogsGetResult {
 	params := url.Values{}
 	params.Set("start_time", query.StartTime)
 	params.Set("end_time", query.EndTime)
