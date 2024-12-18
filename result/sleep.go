@@ -2,14 +2,14 @@ package result
 
 type SleepEntity struct {
 	PrimaryKey string `json:"primary_key"`
-	Id         int64  `json:"id"`
+	Id         string `json:"id"`
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
 	StartTime  string `json:"start_time"`
 	EndTime    string `json:"end_time"`
 	CreateTime string `json:"created"`
 	SleepType  int    `json:"sleep_type"`
-	SleepTime  string    `json:"sleep_time"`
+	SleepTime  string `json:"sleep_time"`
 }
 
 // 睡眠数据列表
