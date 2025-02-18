@@ -182,3 +182,10 @@ func (p *Tsp) Bluetooth() *Bluetooth {
 		Cfg: p.Cfg,
 	}
 }
+
+// 视频通话
+func (p *Tsp) Agora() *Agora {
+	return &Agora{
+		Cfg: p.Cfg,
+	}
+}
