@@ -43,6 +43,7 @@ type DeviceEntity struct {
 	Runstatus         int64          `json:"runstatus"`          //运动静止状态
 	CronShutdown      cronShutdown   `json:"cron_shutdown"`      //定时开关机状态
 	SmsStatus         int64          `json:"sms_status"`         //0 不拦截； 1 保留亲情号码及白名单号码的短信； 2 保留亲情号码及白名单号码的短信和10086短信；3 全部拦截；
+	AgoraUsers        []agoraUsers   `json:"agora_users"`        //视频通话用户列表
 }
 
 //设置睡眠时间段结构体
@@ -111,4 +112,13 @@ type cronShutdown struct {
 	IsCronshutdown int    `json:"is_cronshutdown"`
 	PoweronTime    string `json:"poweron_time"`
 	ShutdownTime   string `json:"shutdown_time"`
+}
+
+//视频通话用户列表
+type agoraUsers struct {
+	Uid     int64  `json:"uid"`      //业务层用户id
+	RelName string `json:"rel_name"` //关系名称
+	RelIcon string `json:"rel_icon"` //关系头像
+	Mobile  string `json:"mobile"`   //手机号
+	Status  int    `json:"status"`   //是否可音/视频状态,1代表是，0代表否；
 }

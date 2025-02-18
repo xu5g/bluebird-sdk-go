@@ -120,4 +120,8 @@ const (
 	/** 蓝牙跳绳 **/
 	TspBluetoothLinkPath = "/tsp/bluetooth/link" // 蓝牙配对设置
 	TspSkipsGetPath      = "/tsp/skips/get"      // 获取跳绳数据列表
+
+	/** 视频通话 **/
+	TspAgoraUsers         = "/tsp/agora/users"         // 更新音视频通话用户列表
+	TspAgoraAppcalldevice = "/tsp/agora/appcalldevice" // 下发APP邀请手表进行音视频通话指令
 )
