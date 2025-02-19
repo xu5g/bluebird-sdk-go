@@ -18,7 +18,6 @@ func (p *Agora) UpdateAgoraUsers(query *query.UpdateAgoraUsersQuery) *result.Res
 	data["imei_sn"] = query.ImeiSn
 	data["agora"] = query.Agora
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspAgoraUsers).SetData(data).HttpRequest()
-
 	if err != nil {
 		return &result.Result{
 			Status:  1,
@@ -45,7 +44,6 @@ func (p *Agora) SendAppcalldevice(query *query.AgoraAppcalldeviceQuery) *result.
 	data["uid"] = query.Uid
 	data["rel_name"] = query.RelName
 	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspAgoraAppcalldevice).SetData(data).HttpRequest()
-
 	if err != nil {
 		return &result.Result{
 			Status:  1,
