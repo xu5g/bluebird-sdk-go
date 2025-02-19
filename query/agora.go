@@ -6,7 +6,7 @@ type UpdateAgoraUsersQuery struct {
 	Agora  []AgoraUsers // 视频通话列表信息
 }
 type AgoraUsers struct {
-	Uid     string `json:"relation"` // 业务层用户唯一ID
+	Uid     string `json:"uid"`      // 业务层用户唯一ID
 	RelName string `json:"rel_name"` // 关系名称
 	RelIcon string `json:"rel_icon"` // https头像地址
 	Mobile  string `json:"mobile"`   // 手机号
