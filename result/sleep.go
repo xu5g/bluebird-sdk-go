@@ -2,7 +2,7 @@ package result
 
 type SleepEntity struct {
 	PrimaryKey string `json:"primary_key"`
-	Id         string `json:"id"`
+	Id         int64  `json:"id"`
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
 	StartTime  string `json:"start_time"`
