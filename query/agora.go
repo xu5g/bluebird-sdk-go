@@ -5,6 +5,7 @@ type UpdateAgoraUsersQuery struct {
 	ImeiSn string       // 设备Imei号 长度不超过20
 	Agora  []AgoraUsers // 视频通话列表信息
 }
+
 type AgoraUsers struct {
 	Uid     int64  `json:"uid"`      // 业务层用户唯一ID
 	RelName string `json:"rel_name"` // 关系名称
