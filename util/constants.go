@@ -122,6 +122,7 @@ const (
 	TspSkipsGetPath      = "/tsp/skips/get"      // 获取跳绳数据列表
 
 	/** 视频通话 **/
-	TspAgoraUsers         = "/tsp/agora/users"         // 更新音视频通话用户列表
-	TspAgoraAppcalldevice = "/tsp/agora/appcalldevice" // 下发APP邀请手表进行音视频通话指令
+	TspAgoraUsers           = "/tsp/agora/users"           // 更新音视频通话用户列表
+	TspAgoraAppcalldevice   = "/tsp/agora/appcalldevice"   // 下发APP邀请手表进行音视频通话指令
+	TspAgoraApphangupdevice = "/tsp/agora/apphangupdevice" // 下发APP挂断视频通话指令
 )

@@ -63,3 +63,28 @@ func (p *Agora) SendAppcalldevice(query *query.AgoraAppcalldeviceQuery) *result.
 	}
 	return resData
 }
+
+// 下发APP挂断视频通话
+func (p *Agora) SendApphangupdevice(query *query.AgoraApphangupdeviceQuery) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspAgoraApphangupdevice).SetData(data).HttpRequest()
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+	fmt.Println(jsonString)
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

@@ -19,3 +19,8 @@ type AgoraAppcalldeviceQuery struct {
 	Uid     int64
 	RelName string
 }
+
+// 下发APP挂断视频通话
+type AgoraApphangupdeviceQuery struct {
+	ImeiSn string
+}
