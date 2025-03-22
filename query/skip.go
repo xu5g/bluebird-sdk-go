@@ -11,3 +11,19 @@ type SkipsGetQuery struct {
 	Sort      string
 	AppKey    int64
 }
+
+type SetAcdateSkipRequest struct {
+	ImeiSn   string
+	Skipdate []Skip
+}
+
+type Skip struct {
+	Start string
+	End   string
+	Dates string
+}
+
+type SetAcuSkipRequest struct {
+	ImeiSn    string
+	Countdown int
+}

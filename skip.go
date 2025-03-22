@@ -48,3 +48,55 @@ func (p *Skip) GetSkips(query *query.SkipsGetQuery) *result.SkipsResult {
 	}
 	return resData
 }
+
+// 设置手表和蓝牙跳绳定时开启自动建立连接
+func (p *Skip) SetAcdateskip(query *query.SetAcdateSkipRequest) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["skipdate"] = query.Skipdate
+	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspSkipAcdateskipPath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
+
+// 设置手表和蓝牙跳绳自动连接以及跳绳数据的倒计时上报时间
+func (p *Skip) SetAcuskip(query *query.SetAcuSkipRequest) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["countdown"] = query.Countdown
+	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TspSkipAcuskipPath).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.Export()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}

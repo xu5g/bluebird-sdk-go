@@ -118,8 +118,10 @@ const (
 	TSPYsmonitorAccesstokenGetPath = "/tsp/ysmonitor/accesstoken" // 获取萤石token
 
 	/** 蓝牙跳绳 **/
-	TspBluetoothLinkPath = "/tsp/bluetooth/link" // 蓝牙配对设置
-	TspSkipsGetPath      = "/tsp/skips/get"      // 获取跳绳数据列表
+	TspBluetoothLinkPath  = "/tsp/bluetooth/link"  // 蓝牙配对设置
+	TspSkipsGetPath       = "/tsp/skips/get"       // 获取跳绳数据列表
+	TspSkipAcdateskipPath = "/tsp/skip/acdateskip" // 设置手表和蓝牙跳绳定时开启自动建立连接
+	TspSkipAcuskipPath    = "/tsp/skips/acuskip"   // 设置手表和蓝牙跳绳自动连接以及跳绳数据的倒计时上报时间
 
 	/** 视频通话 **/
 	TspAgoraUsers           = "/tsp/agora/users"           // 更新音视频通话用户列表
