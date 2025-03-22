@@ -18,9 +18,9 @@ type SetAcdateSkipRequest struct {
 }
 
 type Skip struct {
-	Start string
-	End   string
-	Dates string
+	Start string `json:"start"`
+	End   string `json:"end"`
+	Dates string `json:"dates"`
 }
 
 type SetAcuSkipRequest struct {
