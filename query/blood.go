@@ -31,5 +31,5 @@ type BloodUploadSetQuery struct {
 // 删除血压数据
 type BloodDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }

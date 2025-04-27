@@ -15,5 +15,5 @@ type MessagesGetQuery struct {
 // 删除报文
 type MessageDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }

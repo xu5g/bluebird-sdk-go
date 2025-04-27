@@ -14,5 +14,5 @@ type AttencesGetQuery struct {
 // 删除考勤数据
 type AttenceDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }

@@ -29,5 +29,5 @@ type TemperatureUploadSetQuery struct {
 // 删除体温数据
 type TemperatureDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }

@@ -31,5 +31,5 @@ type HeartUploadSetQuery struct {
 // 删除心率
 type HeartDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }

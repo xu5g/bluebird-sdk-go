@@ -20,5 +20,5 @@ type BloodOxygensGetQuery struct {
 // 删除血压数据
 type BloodOxygenDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }

@@ -13,5 +13,5 @@ type CoreLogsGetQuery struct {
 // 删除core日志
 type CoreLogDeleteQuery struct {
 	PrimaryKey string // primary_key的值
-	Id      int64  // ID
+	Id         string // ID
 }
