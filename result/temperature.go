@@ -3,7 +3,7 @@ package result
 type TemperatureEntity struct {
 	AppKey      int64  `json:"appkey"`
 	CreateTime  string `json:"created"`
-	Id          int64  `json:"id"`
+	Id          string `json:"id"`
 	ImeiSn      string `json:"imei_sn"`
 	PrimaryKey  string `json:"primary_key"`
 	Temperature string `json:"temperature"`
@@ -21,7 +21,7 @@ type TemperatureResult struct {
 type TemperaturesResult struct {
 	Result
 	Data struct {
-		Total  int                 `json:"total"`
+		Total  int                      `json:"total"`
 		Result []map[string]interface{} `json:"result"`
 	} `json:"data"` // 返回结果
 }

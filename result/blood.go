@@ -2,7 +2,7 @@ package result
 
 type BloodEntity struct {
 	PrimaryKey string `json:"primary_key"`
-	Id         int64  `json:"id"`
+	Id         string `json:"id"`
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
 	AppKey     int64  `json:"appkey"`
@@ -11,7 +11,6 @@ type BloodEntity struct {
 	MinRate    int64  `json:"min_rate"`
 	CreateTime string `json:"created"`
 }
-
 
 type BloodGetResult struct {
 	Result
@@ -29,5 +28,5 @@ type BloodsGetResult struct {
 // 血压测量间隔时间
 type BloodUploadResult struct {
 	Result
-	Data float64  `json:"data"` // 返回结果
+	Data float64 `json:"data"` // 返回结果
 }
