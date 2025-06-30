@@ -44,6 +44,7 @@ type DeviceEntity struct {
 	CronShutdown      cronShutdown   `json:"cron_shutdown"`      //定时开关机状态
 	SmsStatus         int64          `json:"sms_status"`         //0 不拦截； 1 保留亲情号码及白名单号码的短信； 2 保留亲情号码及白名单号码的短信和10086短信；3 全部拦截；
 	AgoraUsers        []agoraUsers   `json:"agora_users"`        //视频通话用户列表
+	Version           string         `json:"version"`            //设备固件版本号
 }
 
 //设置睡眠时间段结构体
