@@ -35,7 +35,7 @@ func (p *Skip) GetSkips(query *query.SkipsGetQuery) *result.SkipsResult {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 	var resData = new(result.SkipsResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -62,7 +62,7 @@ func (p *Skip) SetAcdateskip(query *query.SetAcdateSkipRequest) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -88,7 +88,7 @@ func (p *Skip) SetAcuskip(query *query.SetAcuSkipRequest) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)

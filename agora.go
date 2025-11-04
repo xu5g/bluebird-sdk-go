@@ -24,7 +24,7 @@ func (p *Agora) UpdateAgoraUsers(query *query.UpdateAgoraUsersQuery) *result.Res
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -50,7 +50,7 @@ func (p *Agora) SendAppcalldevice(query *query.AgoraAppcalldeviceQuery) *result.
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 	fmt.Println(jsonString)
 
 	var resData = new(result.Result)
@@ -75,7 +75,7 @@ func (p *Agora) SendApphangupdevice(query *query.AgoraApphangupdeviceQuery) *res
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 	fmt.Println(jsonString)
 
 	var resData = new(result.Result)

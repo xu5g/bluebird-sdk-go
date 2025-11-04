@@ -38,7 +38,7 @@ func (p *TdcloudLog) GetTdcloudLogs(query *query.TdcloudLogsGetQuery) *result.Td
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString := res.MustToJsonString()
 	var resData = new(result.TdcloudLogsGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
