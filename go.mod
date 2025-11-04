@@ -1,4 +1,4 @@
-module github.com/xu5g/bluebird-sdk-go
+module github.com/xu5g/bluebird-sdk-go/v2
 
 go 1.23
 
