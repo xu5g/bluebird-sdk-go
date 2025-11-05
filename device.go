@@ -3,9 +3,9 @@ package tspsdk
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xu5g/bluebird-sdk-go/query"
-	"github.com/xu5g/bluebird-sdk-go/result"
-	"github.com/xu5g/bluebird-sdk-go/util"
+	"github.com/xu5g/bluebird-sdk-go/v2/query"
+	"github.com/xu5g/bluebird-sdk-go/v2/result"
+	"github.com/xu5g/bluebird-sdk-go/v2/util"
 	"net/url"
 	"strconv"
 )

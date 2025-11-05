@@ -2,8 +2,8 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/xu5g/bluebird-sdk-go/result"
-	"github.com/xu5g/bluebird-sdk-go/util"
+	"github.com/xu5g/bluebird-sdk-go/v2/result"
+	"github.com/xu5g/bluebird-sdk-go/v2/util"
 )
 
 type YsMonitor struct {
