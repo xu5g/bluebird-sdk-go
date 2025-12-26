@@ -45,6 +45,8 @@ type DeviceEntity struct {
 	SmsStatus         int64          `json:"sms_status"`         //0 不拦截； 1 保留亲情号码及白名单号码的短信； 2 保留亲情号码及白名单号码的短信和10086短信；3 全部拦截；
 	AgoraUsers        []agoraUsers   `json:"agora_users"`        //视频通话用户列表
 	Version           string         `json:"version"`            //设备固件版本号
+	HealthReminds     HealthRemind   `json:"health_reminds"`     //健康提醒，1-久坐提醒，2-喝水提醒
+	GoodHabits        GoodHabit      `json:"good_habits"`        //好习惯
 }
 
 //设置睡眠时间段结构体
@@ -122,4 +124,30 @@ type agoraUsers struct {
 	RelIcon string `json:"rel_icon"` //关系头像
 	Mobile  string `json:"mobile"`   //手机号
 	Status  int    `json:"status"`   //是否可音/视频状态,1代表是，0代表否；
+}
+
+type HealthRemind struct {
+	Type         int64  `json:"type"`           //健康提醒类型， 1:久坐提醒，2:喝水提醒
+	IsOpen       int64  `json:"is_open"`        //是否开启 0：关闭 1：开启
+	Interval     int64  `json:"interval"`       //间隔分钟数
+	StartTime    string `json:"star_time"`      //每天提醒的开始时间，格式：HH:mm（时:分）
+	EndTime      string `json:"end_time"`       //每天提醒的结束时间，格式：HH:mm（时:分）
+	IsNoondnd    int64  `json:"is_noondnd"`     //是否开启午休免打扰：0-关，1-开
+	DndStartTime string `json:"dnd_start_time"` //午休免打扰开始时间，格式：HH:mm（时:分）
+	DndEndTime   string `json:"dnd_end_time"`   //午休免打扰结束时间，格式：HH:mm（时:分）
+	RepStr       int64  `json:"repstr"`         //重复提醒字符串，周天到周六0或1组成的字符串，默认每天为：1111111，0：关，1：开
+	Target       string `json:"target"`         //目标值，根据不同功能选用
+}
+
+type GoodHabit struct {
+	HabitFlag   string `json:"habit_flag"`   //习惯唯一标识
+	Name        string `json:"name"`         //习惯名称
+	Icon        int64  `json:"icon"`         //图标标识
+	InsistDay   int64  `json:"insist_day"`   //坚持天数	0-永远，1-1天，2-3天，3-7天，4-21天，5-60天
+	ClockTimes  int64  `json:"clock_times"`  //每日打卡目标次数  ?
+	TimedSwitch int64  `json:"timed_switch"` //定时提醒开关，0-关，1-开
+	Time1String string `json:"time1"`        //定时1,	示例：‘10:00’默认为空字符串
+	Time2String string `json:"time2"`        //定时2
+	Time3String string `json:"time3"`        //定时3
+	Status      string `json:"status"`       //好习惯的状态 0-进行中，1-暂停
 }

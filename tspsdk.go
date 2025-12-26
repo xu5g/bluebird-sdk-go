@@ -191,8 +191,8 @@ func (p *Tsp) Agora() *Agora {
 }
 
 // 健康提醒
-func (p *Tsp) Health() *Helth {
-	return &Helth{
+func (p *Tsp) Health() *Health {
+	return &Health{
 		Cfg: p.Cfg,
 	}
 }

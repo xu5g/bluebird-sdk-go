@@ -9,12 +9,12 @@ import (
 	"strconv"
 )
 
-type Helth struct {
+type Health struct {
 	Cfg *Config
 }
 
 // 获取喝水记录列表
-func (p *Helth) GetWaters(query *query.WaterrecordsGetQuery) *result.WaterrecordsGetResult {
+func (p *Health) GetWaters(query *query.WaterrecordsGetQuery) *result.WaterrecordsGetResult {
 	params := url.Values{}
 	params.Set("imei_sn", query.ImeiSn)
 	params.Set("uuid", query.Uuid)
@@ -49,7 +49,7 @@ func (p *Helth) GetWaters(query *query.WaterrecordsGetQuery) *result.Waterrecord
 }
 
 // DeviceRemind 设置健康提醒
-func (p *Helth) SetHealthremind(query *query.HealthremindSetQuery) *result.Result {
+func (p *Health) SetHealthremind(query *query.HealthremindSetQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
 	data["healthremind_type"] = query.HealthremindType
