@@ -127,4 +127,9 @@ const (
 	TspAgoraUsers           = "/tsp/agora/users"           // 更新音视频通话用户列表
 	TspAgoraAppcalldevice   = "/tsp/agora/appcalldevice"   // 下发APP邀请手表进行音视频通话指令
 	TspAgoraApphangupdevice = "/tsp/agora/apphangupdevice" // 下发APP挂断视频通话指令
+
+	/** 健康提醒 **/
+	TSPHealthremindPath = "/tsp/healthremind"              // 获取喝水列表
+	TSPWaterrecordsPath = "/tsp/healthremind/waterrecords" // 获取喝水列表
+
 )
