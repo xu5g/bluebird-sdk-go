@@ -62,7 +62,7 @@ func (p *Health) SetHealthremind(query *query.HealthremindSetQuery) *result.Resu
 	data["dnd_endTime"] = query.DndEndTime
 	data["week"] = query.Week
 	data["target"] = query.Target
-	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHealthremindPath).SetData(data).HttpRequest()
+	res, err := p.Cfg.HttpClient.SetMethod("post").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHealthremindPath).SetData(data).HttpRequest()
 
 	if err != nil {
 		return &result.Result{
