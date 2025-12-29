@@ -46,7 +46,6 @@ type DeviceEntity struct {
 	AgoraUsers        []agoraUsers   `json:"agora_users"`        //视频通话用户列表
 	Version           string         `json:"version"`            //设备固件版本号
 	HealthReminds     HealthRemind   `json:"health_reminds"`     //健康提醒，1-久坐提醒，2-喝水提醒
-	GoodHabits        GoodHabit      `json:"good_habits"`        //好习惯
 }
 
 //设置睡眠时间段结构体

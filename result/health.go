@@ -5,7 +5,7 @@ type WaterrecordEntity struct {
 	Id         string `json:"id"`
 	ImeiSn     string `json:"imei_sn"`
 	Uuid       string `json:"uuid"`
-	Ml         string `json:"ml"`
+	Ml         int    `json:"ml"`
 	Created    string `json:"created"`
 }
 
