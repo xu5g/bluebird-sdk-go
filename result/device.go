@@ -129,12 +129,12 @@ type HealthRemind struct {
 	Type         int64  `json:"type"`           //健康提醒类型， 1:久坐提醒，2:喝水提醒
 	IsOpen       int64  `json:"is_open"`        //是否开启 0：关闭 1：开启
 	Interval     int64  `json:"interval"`       //间隔分钟数
-	StartTime    string `json:"star_time"`      //每天提醒的开始时间，格式：HH:mm（时:分）
+	StartTime    string `json:"start_time"`     //每天提醒的开始时间，格式：HH:mm（时:分）
 	EndTime      string `json:"end_time"`       //每天提醒的结束时间，格式：HH:mm（时:分）
 	IsNoondnd    int64  `json:"is_noondnd"`     //是否开启午休免打扰：0-关，1-开
 	DndStartTime string `json:"dnd_start_time"` //午休免打扰开始时间，格式：HH:mm（时:分）
 	DndEndTime   string `json:"dnd_end_time"`   //午休免打扰结束时间，格式：HH:mm（时:分）
-	RepStr       int64  `json:"repstr"`         //重复提醒字符串，周天到周六0或1组成的字符串，默认每天为：1111111，0：关，1：开
+	RepStr       int64  `json:"rep_str"`        //重复提醒字符串，周天到周六0或1组成的字符串，默认每天为：1111111，0：关，1：开
 	Target       string `json:"target"`         //目标值，根据不同功能选用
 }
 
