@@ -23,5 +23,5 @@ type HealthremindSetQuery struct {
 	DndStartTime     string
 	DndEndTime       string
 	Week             int64
-	Target           string
+	Target           int64
 }

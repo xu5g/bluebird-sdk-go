@@ -135,7 +135,7 @@ type HealthRemind struct {
 	DndStartTime string `json:"dnd_start_time"` //午休免打扰开始时间，格式：HH:mm（时:分）
 	DndEndTime   string `json:"dnd_end_time"`   //午休免打扰结束时间，格式：HH:mm（时:分）
 	Week         int64  `json:"week"`           //重复提醒字符串，周天到周六0或1组成的字符串，默认每天为：1111111，0：关，1：开
-	Target       string `json:"target"`         //目标值，根据不同功能选用
+	Target       int64  `json:"target"`         //目标值，根据不同功能选用
 }
 
 type GoodHabit struct {
