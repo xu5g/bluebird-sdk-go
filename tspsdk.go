@@ -196,3 +196,10 @@ func (p *Tsp) Health() *Health {
 		Cfg: p.Cfg,
 	}
 }
+
+// 运动管理
+func (p *Tsp) Exercise() *Exercise {
+	return &Exercise{
+		Cfg: p.Cfg,
+	}
+}

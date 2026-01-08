@@ -132,4 +132,7 @@ const (
 	TSPHealthremindPath = "/tsp/healthremind"              // 获取喝水列表
 	TSPWaterrecordsPath = "/tsp/healthremind/waterrecords" // 获取喝水列表
 
+	/** 运动管理 **/
+	TSPExercisesPath = "/tsp/exercises" // 获取运动数据列表
+
 )
