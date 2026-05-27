@@ -24,6 +24,7 @@ func (p *Skip) GetSkips(query *query.SkipsGetQuery) *result.SkipsResult {
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
 	params.Set("sort", query.Sort)
 	params.Set("appkey", strconv.Itoa(int(query.AppKey)))
+	params.Set("partner_id", strconv.Itoa(int(query.PartnerId)))
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TspSkipsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {

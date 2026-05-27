@@ -25,6 +25,7 @@ func (p *Message) GetMessages(query *query.MessagesGetQuery) *result.MessagesGet
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
 	params.Set("sort", query.Sort)
 	params.Set("status", query.Status)
+	params.Set("partner_id", strconv.Itoa(int(query.PartnerId)))
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPMessagesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {

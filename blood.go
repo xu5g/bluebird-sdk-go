@@ -54,6 +54,7 @@ func (p *Blood) GetBloods(query *query.BloodsGetQuery) *result.BloodsGetResult {
 	params.Set("page", strconv.Itoa(int(query.Page)))
 	params.Set("limit", strconv.Itoa(int(query.Limit)))
 	params.Set("sort", query.Sort)
+	params.Set("partner_id", strconv.Itoa(int(query.PartnerId)))
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPBloodsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {

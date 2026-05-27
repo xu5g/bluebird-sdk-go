@@ -1,6 +1,6 @@
 package util
 
-const SdkVersion = "1.0.0"
+const SdkVersion = "2.0.0"
 
 const (
 	// 身份认证

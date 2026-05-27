@@ -10,6 +10,7 @@ type SkipsGetQuery struct {
 	Limit     int32
 	Sort      string
 	AppKey    int64
+	PartnerId int32
 }
 
 type SetAcdateSkipRequest struct {

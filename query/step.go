@@ -8,4 +8,5 @@ type StepsGetQuery struct {
 	ImeiSn    string // 设备号	长度不超过20
 	Uuid      string // UUID	长度不超过40
 	Sort      string // 排序方向 DESC/ASC；默认倒序
+	PartnerId int32
 }
