@@ -235,3 +235,16 @@ type TspSetSmsStatusRequest struct {
 	ImeiSn string
 	Status string
 }
+
+// 下发设置防欺凌预警
+type DeviceAntiBullyQuery struct {
+	ImeiSn    string      // 设备Imei号 长度不超过20
+	AntiBully []AntiBully // 防欺凌预警时间段
+}
+type AntiBully struct {
+	Name      string `json:"name"`       // 名称
+	StartTime string `json:"start_time"` //防欺凌时间段的监测开始时间，时间段格式：时:分
+	EndTime   string `json:"end_time"`   //防欺凌时间段的监测结束时间，时间段格式：时:分
+	Status    int    `json:"status"`     //0为关，不拨打电话也不上报防欺凌定位位置； 1为上报防欺凌定位位置和上报10s录音，但不拨打sos设置的电话； 2为上报防欺凌定位位置和拨打电话，但不上报录音；
+	Week      string `json:"week"`       //重复星期值，共7位数，循环周期格式：12345 表示周一到周五生效，1234567 表示每天都生效
+}

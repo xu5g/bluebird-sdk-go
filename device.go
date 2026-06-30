@@ -950,3 +950,29 @@ func (p *Device) DeviceSmsStatus(query *query.TspSetSmsStatusRequest) *result.Re
 	}
 	return resData
 }
+
+// 下发设置防欺凌预警时间段
+func (p *Device) SendAntiBully(query *query.DeviceAntiBullyQuery) *result.Result {
+	var data = make(map[string]interface{})
+	data["imei_sn"] = query.ImeiSn
+	data["antibully_time"] = query.AntiBully
+	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspDeviceAntibullytime).SetData(data).HttpRequest()
+
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	jsonString := res.MustToJsonString()
+
+	var resData = new(result.Result)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.Result{
+			Status:  1,
+			Message: err.Error(),
+		}
+	}
+	return resData
+}
