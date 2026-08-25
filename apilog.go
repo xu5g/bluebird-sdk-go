@@ -27,6 +27,7 @@ func (p *ApiLog) GetApiLogs(query *query.ApiLogsGetQuery) *result.ApiLogsGetResu
 	params.Set("app_key", query.AppKey)
 	params.Set("api_alias", query.ApiAlias)
 	params.Set("req_method", query.ReqMethod)
+	params.Set("imei_sn", query.ImeiSn)
 
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPApiLogsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
