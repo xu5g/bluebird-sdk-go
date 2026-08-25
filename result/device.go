@@ -147,3 +147,12 @@ type ExerciseTarget struct {
 	TargetStep     int64   `json:"target_step"`     //运动步数，单位千步，（1-100千步）int类型
 	Type           int64   `json:"type"`            //运动类型 0-未知，1-户外跑步，2-室内跑步，3-户外健走，4-户外骑行，5-室内骑行，6-瑜伽，7-健身操
 }
+
+// 获取设备告警
+type DevicewarnsResult struct {
+	Result
+	Data struct {
+		Total  int                      `json:"total"`
+		Result []map[string]interface{} `json:"result"`
+	} `json:"data"` // 返回结果
+}

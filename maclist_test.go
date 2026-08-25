@@ -38,7 +38,7 @@ func TestMacList_GetMacLists(t *testing.T) {
 func TestMacList_(t *testing.T) {
 	params := &query.MacListDeleteQuery{
 		MacAddr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-		Id:      0,
+		Id:      "0",
 	}
 
 	res := NewClient(gateWay, appKey, token).MacList().DeleteMacList(params)

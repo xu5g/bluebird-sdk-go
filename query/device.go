@@ -248,3 +248,15 @@ type AntiBully struct {
 	Status    int    `json:"status"`     //0为关，不拨打电话也不上报防欺凌定位位置； 1为上报防欺凌定位位置和上报10s录音，但不拨打sos设置的电话； 2为上报防欺凌定位位置和拨打电话，但不上报录音；
 	Week      string `json:"week"`       //重复星期值，共7位数，循环周期格式：12345 表示周一到周五生效，1234567 表示每天都生效
 }
+
+type DeviceWarnsGetQuery struct {
+	ImeiSn    string // 设备IMEI号  长度不超过20
+	AppKey    int64  // AppKey
+	Uuid      string // 设备UUID  长度不超过40
+	WarnType  int64  // 告警类型 1:SOS告警 2:水域预警 3:特殊区域告警 4:防欺凌预警 5:脱腕告警 6:个人围栏告警 7:应用围栏告警 8:低电量告警
+	StartTime string // 开始时间  格式为2006-01-01 15:04:05
+	EndTime   string // 结束时间  格式为2006-01-01 15:04:05
+	Page      int32  // 页码  范围为1-5000
+	Limit     int32  // 每页条数  范围为1-100
+	Sort      string // 排序方向 desc/asc
+}

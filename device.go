@@ -976,3 +976,40 @@ func (p *Device) SendAntiBully(query *query.DeviceAntiBullyQuery) *result.Result
 	}
 	return resData
 }
+
+// 获取设备列表
+func (p *Device) GetDeviceWarns(query *query.DeviceWarnsGetQuery) *result.DevicewarnsResult {
+	params := url.Values{}
+	params.Set("imei_sn", query.ImeiSn)
+	params.Set("uuid", query.Uuid)
+	params.Set("page", strconv.Itoa(int(query.Page)))
+	params.Set("limit", strconv.Itoa(int(query.Limit)))
+	params.Set("appkey", strconv.FormatInt(query.AppKey, 10))
+	params.Set("warn_type", strconv.Itoa(int(query.WarnType)))
+	params.Set("start_time", query.StartTime)
+	params.Set("end_time", query.EndTime)
+	params.Set("sort", query.Sort)
+
+	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPDevicewarnsGetPath + "?" + params.Encode()).HttpRequest()
+	if err != nil {
+		return &result.DevicewarnsResult{
+			Result: result.Result{
+				Status:  1,
+				Message: err.Error(),
+			},
+		}
+	}
+
+	jsonString := res.MustToJsonString()
+	var resData = new(result.DevicewarnsResult)
+	err = json.Unmarshal([]byte(jsonString), resData)
+	if err != nil {
+		return &result.DevicewarnsResult{
+			Result: result.Result{
+				Status:  1,
+				Message: err.Error(),
+			},
+		}
+	}
+	return resData
+}

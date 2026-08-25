@@ -82,6 +82,7 @@ const (
 	TspDeviceSimpinlock                = "/tsp/device/simpinlock"        // 设置sim卡pin码锁
 	TspDeviceSmsstatus                 = "/tsp/device/smsstatus"         // 下发短信拦截开关设置指令
 	TspDeviceAntibullytime             = "/tsp/device/antibullytime"     // 下发防欺凌时间段设置指令
+	TSPDevicewarnsGetPath              = "/tsp/devicewarns/get"          // 获取设备告警
 
 	/** 围栏管理 **/
 	TSPFencesGetPath   = "/tsp/fences/get"   // 获取围栏列表
