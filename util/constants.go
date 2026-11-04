@@ -130,6 +130,11 @@ const (
 	TspAgoraAppcalldevice   = "/tsp/agora/appcalldevice"   // 下发APP邀请手表进行音视频通话指令
 	TspAgoraApphangupdevice = "/tsp/agora/apphangupdevice" // 下发APP挂断视频通话指令
 
+	/** 视频话机（开架易） **/
+	TspPhoneStudent       = "/tsp/kjyphone/student"        // 批量设置学生（删除学生用同路径 delete 方法）
+	TspPhoneParent        = "/tsp/kjyphone/parent"         // 设置家长关系
+	TspPhoneParentMessage = "/tsp/kjyphone/parent/message" // 家长向学生发送消息
+
 	/** 健康提醒 **/
 	TSPHealthremindPath = "/tsp/healthremind"              // 获取喝水列表
 	TSPWaterrecordsPath = "/tsp/healthremind/waterrecords" // 获取喝水列表

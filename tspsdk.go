@@ -203,3 +203,10 @@ func (p *Tsp) Exercise() *Exercise {
 		Cfg: p.Cfg,
 	}
 }
+
+// 视频话机（开架易）
+func (p *Tsp) Phone() *Phone {
+	return &Phone{
+		Cfg: p.Cfg,
+	}
+}
