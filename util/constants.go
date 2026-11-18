@@ -131,9 +131,12 @@ const (
 	TspAgoraApphangupdevice = "/tsp/agora/apphangupdevice" // 下发APP挂断视频通话指令
 
 	/** 视频话机（开架易） **/
-	TspPhoneStudent       = "/tsp/kjyphone/student"        // 批量设置学生（删除学生用同路径 delete 方法）
-	TspPhoneParent        = "/tsp/kjyphone/parent"         // 设置家长关系
-	TspPhoneParentMessage = "/tsp/kjyphone/parent/message" // 家长向学生发送消息
+	TspPhoneStudent       = "/tsp/kjyphone/student"        // kjy-设置学生信息(PUT)/删除学生(DELETE)，别名 tsp.kjyphone.student
+	TspPhoneParent        = "/tsp/kjyphone/parent"         // kjy-设置家长关系，别名 tsp.kjyphone.parent
+	TspPhoneParentMessage = "/tsp/kjyphone/parent/message" // kjy-家长向学生发送消息，别名 tsp.kjyphone.parent.message
+
+	/** 音箱（IP网络广播系统 lyds） **/
+	TspSpeakerSpeechText = "/tsp/speaker/speech/text" // 文本转语音播放(TTS)，别名 tsp.speaker.speech.text
 
 	/** 健康提醒 **/
 	TSPHealthremindPath = "/tsp/healthremind"              // 获取喝水列表

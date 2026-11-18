@@ -210,3 +210,10 @@ func (p *Tsp) Phone() *Phone {
 		Cfg: p.Cfg,
 	}
 }
+
+// 音箱（IP网络广播系统 lyds）
+func (p *Tsp) Speaker() *Speaker {
+	return &Speaker{
+		Cfg: p.Cfg,
+	}
+}

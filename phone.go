@@ -11,7 +11,7 @@ type Phone struct {
 	Cfg *Config
 }
 
-// 批量设置学生（添加和修改共用，删除学生请用 DeletePhoneStudents）
+// kjy-设置学生信息（批量/单个 添加与修改共用，删除学生用 DeletePhoneStudents）
 func (p *Phone) SetPhoneStudents(query *query.PhoneStudentSetQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
@@ -36,7 +36,7 @@ func (p *Phone) SetPhoneStudents(query *query.PhoneStudentSetQuery) *result.Resu
 	return resData
 }
 
-// 批量删除学生
+// kjy-删除学生（PUT 是添加/修改语义，已删学生不会被快照覆盖，必须显式删除）
 func (p *Phone) DeletePhoneStudents(query *query.PhoneStudentDeleteQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
@@ -61,7 +61,7 @@ func (p *Phone) DeletePhoneStudents(query *query.PhoneStudentDeleteQuery) *resul
 	return resData
 }
 
-// 设置家长关系（增删改一体，删除用 del_flag=1 条目）
+// kjy-设置家长关系（增删改一体，删除用 del_flag=1 条目；TSP 对每个条目都校验 relationship 与 avatar，删除条目也要带上）
 func (p *Phone) SetPhoneParents(query *query.PhoneParentSetQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
@@ -86,7 +86,7 @@ func (p *Phone) SetPhoneParents(query *query.PhoneParentSetQuery) *result.Result
 	return resData
 }
 
-// 家长向学生发送消息（type=0 文字传 content，type=1 语音传 audio_url）
+// kjy-家长向学生发送消息（type=0 文本传 content，type=1 语音传 audio_url 且必须为 mp3）
 func (p *Phone) SendPhoneMessage(query *query.PhoneParentMessageQuery) *result.Result {
 	var data = make(map[string]interface{})
 	data["imei_sn"] = query.ImeiSn
